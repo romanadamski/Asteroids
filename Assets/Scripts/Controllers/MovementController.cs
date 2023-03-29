@@ -4,7 +4,7 @@ using UnityEditor.UI;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MovementController : MonoBehaviour
+public class MovementController : InputController
 {
     private readonly string HORIZONTAL_AXIS_NAME = "Horizontal";
     private readonly string VERTICAL_AXIS_NAME = "Vertical";
@@ -22,15 +22,23 @@ public class MovementController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    public override void HandleInput()
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
             StopMovement();
+            //todo where to put player death
+            Managers.EventsManager.OnPlayerDeath(name);
         }
 
         _xAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);
         _yAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
+    }
+
+    public override void HandleFixedInput()
+    {
+        MoveByArrows();
+        Rotate();
     }
 
     private float CalculateAxis(float axis)
@@ -44,16 +52,10 @@ public class MovementController : MonoBehaviour
         _rigidbody2D.angularVelocity= 0;
     }
 
-    private void FixedUpdate()
-    {
-        MoveByArrows();
-        ManageScreenEdges();
-        Rotate();
-    }
-
     private void MoveByArrows()
     {
         _rigidbody2D.velocity = Vector2.Lerp(_rigidbody2D.velocity, MovementAxis, Time.deltaTime * Managers.SettingsManager.Settings.PlayerMovementPrecision);
+        ManageScreenEdges();
     }
 
     private void ManageScreenEdges()

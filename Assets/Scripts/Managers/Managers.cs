@@ -9,6 +9,8 @@ public class Managers : MonoBehaviour
 {
     public static GameManager GameManager;
     public static SettingsManager SettingsManager;
+    public static InputManager InputManager;
+    public static EventsManager EventsManager;
 
     private void Awake()
     {
