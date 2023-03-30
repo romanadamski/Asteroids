@@ -7,10 +7,16 @@ using UnityEngine;
 
 public class EventsManager : MonoBehaviour
 {
-    public event Action<string> PlayerDeath;
-    public void OnPlayerDeath(string name)
+    public event Action<uint> PlayerDeath;
+    public void OnPlayerDeath(uint livesCount)
     {
-        PlayerDeath?.Invoke(name);
+        PlayerDeath?.Invoke(livesCount);
+    }
+    
+    public event Action<uint> AsteroidShotted;
+    public void OnAsteroidShotted(uint livesCount)
+    {
+        AsteroidShotted?.Invoke(livesCount);
     }
 
 }

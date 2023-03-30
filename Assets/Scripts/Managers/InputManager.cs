@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    List<InputController> _inputControllers = new List<InputController>();
+    List<BaseInputController> _inputControllers = new List<BaseInputController>();
 
     private void Update()
     {
@@ -35,12 +35,12 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void AddInputController(InputController inputController)
+    public void AddInputController(BaseInputController inputController)
     {
         _inputControllers.Add(inputController);
     }
 
-    public void RemoveInputController(InputController inputController)
+    public void RemoveInputController(BaseInputController inputController)
     {
         _inputControllers.Remove(inputController);
     }

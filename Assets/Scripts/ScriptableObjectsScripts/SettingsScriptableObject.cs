@@ -12,5 +12,7 @@ public class SettingsScriptableObject : ScriptableObject
 
     [Header("Bullet settings")]
     public float BaseBulletMovementSpeed;
-
+    
+    [Header("Bullet settings")]
+    public float BaseAsteroidMovementSpeed;
 }

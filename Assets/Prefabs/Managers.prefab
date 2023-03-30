@@ -46,7 +46,11 @@ MonoBehaviour:
   pools:
   - StartPoolCount: 30
     PoolObjectPrefab: {fileID: 4245572761706607601, guid: 2a44c843ffa3ab447af1889ec9192b98, type: 3}
-    Tag: SimpleBullet
+    CanGrow: 0
+    ObjectsParent: {fileID: 0}
+    ObjectCount: 0
+  - StartPoolCount: 30
+    PoolObjectPrefab: {fileID: 3909010953527000373, guid: 4009f21067af50f4885f6731726e930b, type: 3}
     CanGrow: 0
     ObjectsParent: {fileID: 0}
     ObjectCount: 0

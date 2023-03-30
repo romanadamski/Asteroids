@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
-public abstract class Bullet : MonoBehaviour
+public abstract class BaseMovementController : MonoBehaviour
 {
     [SerializeField]
-    protected float _bulletSpeedMultiplier = 1;
+    protected float _speedMultiplier = 1;
 
+    [SerializeField]
     protected bool _isReleased;
+
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
 
-    public abstract void OnScreenEdgesCrossed();
+    protected abstract void MoveObject();
+    public virtual void OnOutsideScreen() { }
+    public virtual void OnInsideScreen() { }
 
     private void Awake()
     {
@@ -28,14 +32,19 @@ public abstract class Bullet : MonoBehaviour
         var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
         if (!GeometryUtility.TestPlanesAABB(planes, _spriteRenderer.bounds))
         {
-            OnScreenEdgesCrossed();
+            OnOutsideScreen();
+        }
+        else
+        {
+            OnInsideScreen();
         }
     }
 
     private void FixedUpdate()
     {
         if (!_isReleased) return;
-        _rigidbody2D.velocity = transform.up * Managers.SettingsManager.Settings.BaseBulletMovementSpeed * _bulletSpeedMultiplier;
+
+        MoveObject();
     }
 
     public void Release()
