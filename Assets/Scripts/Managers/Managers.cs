@@ -11,6 +11,7 @@ public class Managers : MonoBehaviour
     public static SettingsManager SettingsManager;
     public static InputManager InputManager;
     public static EventsManager EventsManager;
+    public static ObjectPoolingManager ObjectPoolingManager;
 
     private void Awake()
     {

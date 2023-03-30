@@ -15,3 +15,4 @@ MonoBehaviour:
   PlayerMovementSpeed: 10
   PlayerRotationSpeed: 10
   PlayerMovementPrecision: 10
+  BaseBulletMovementSpeed: 11
