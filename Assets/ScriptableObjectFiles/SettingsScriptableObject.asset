@@ -16,3 +16,4 @@ MonoBehaviour:
   PlayerRotationSpeed: 10
   PlayerMovementPrecision: 10
   BaseBulletMovementSpeed: 11
+  BaseAsteroidMovementSpeed: 1

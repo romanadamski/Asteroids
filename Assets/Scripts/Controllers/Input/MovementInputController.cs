@@ -4,7 +4,7 @@ using UnityEditor.UI;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
-public class MovementInputController : InputController
+public class MovementInputController : BaseInputController
 {
     private readonly string HORIZONTAL_AXIS_NAME = "Horizontal";
     private readonly string VERTICAL_AXIS_NAME = "Vertical";
@@ -27,8 +27,6 @@ public class MovementInputController : InputController
         if (Input.GetKey(KeyCode.LeftControl))
         {
             StopMovement();
-            //todo where to put player death
-            Managers.EventsManager.OnPlayerDeath(name);
         }
 
         _xAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);

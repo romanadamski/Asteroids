@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingInputController : InputController
+public class ShootingInputController : BaseInputController
 {
     [SerializeField]
     private Transform shootStartCoordinates;
-    [SerializeField]
-    private string bulletTag;
     [SerializeField]
     KeyCode shootKey = KeyCode.Space;
 
@@ -33,8 +31,8 @@ public class ShootingInputController : InputController
         bullet.Release();
     }
 
-    private Bullet GetBulletFromPool()
+    private BaseMovementController GetBulletFromPool()
     {
-        return Managers.ObjectPoolingManager.GetFromPool(bulletTag).GetComponent<Bullet>();
+        return Managers.ObjectPoolingManager.GetFromPool<BulletPoolableController>().GetComponent<SimpleBulletMovementController>();
     }
 }

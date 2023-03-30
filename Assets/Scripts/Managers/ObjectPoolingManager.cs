@@ -12,13 +12,13 @@ public class ObjectPoolingManager : MonoBehaviour
     {
         public int StartPoolCount;
         public GameObject PoolObjectPrefab;
-        public string Tag;
         public bool CanGrow;
         public Queue<GameObject> PooledObjects = new Queue<GameObject>();
         public Transform ObjectsParent;
 
         [HideInInspector]
         public int ObjectCount;
+        public Type ObjectType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType();
     }
 
     [SerializeField]
@@ -38,9 +38,14 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public GameObject GetFromPool(string tag)
+    public GameObject GetFromPool<T>() where T : BasePoolableController
     {
-        var pool = GetPoolByTag(tag);
+        var pool = GetPoolByType<T>();
+        if (pool == null)
+        {
+            Debug.LogError($"There is no pool of {typeof(T).Name} type!");
+            return null;
+        }
         if (pool.PooledObjects.Count > 0)
         {
             return pool.PooledObjects.Dequeue();
@@ -50,7 +55,8 @@ public class ObjectPoolingManager : MonoBehaviour
             if (pool.CanGrow)
             {
                 pool.ObjectCount++;
-                return Instantiate(pool.PoolObjectPrefab, pool.ObjectsParent);
+                var newObject = Instantiate(pool.PoolObjectPrefab, pool.ObjectsParent);
+                return newObject;
             }
             else
             {
@@ -59,14 +65,26 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void ReturnToPool(string tag, GameObject objectToReturn)
+    public void ReturnToPool(GameObject objectToReturn)
     {
         objectToReturn.SetActive(false);
-        GetPoolByTag(tag).PooledObjects.Enqueue(objectToReturn);
+        var poolableType = GetPoolableTypeByGameObject(objectToReturn);
+        var pool = GetPoolByType(poolableType);
+        pool.PooledObjects.Enqueue(objectToReturn);
     }
 
-    private Pool GetPoolByTag(string tag)
+    private Type GetPoolableTypeByGameObject(GameObject objectToReturn)
     {
-        return pools.FirstOrDefault(x => x.Tag == tag);
+        return objectToReturn.GetComponent<BasePoolableController>().GetType();
+    }
+
+    private Pool GetPoolByType<T>() where T : BasePoolableController
+    {
+        return GetPoolByType(typeof(T));
+    }
+
+    private Pool GetPoolByType(Type objectType)
+    {
+        return pools.FirstOrDefault(x => x.ObjectType.Equals(objectType));
     }
 }
