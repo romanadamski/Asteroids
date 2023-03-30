@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
         Managers.EventsManager.PlayerDeath += OnPlayerDeath;
     }
 
-    private void OnPlayerDeath(string obj)
+    private void OnPlayerDeath(uint livesCount)
     {
-        Debug.Log("OnPlayerDeath " + obj);
     }
 }
