@@ -7,11 +7,12 @@ using UnityEngine;
 
 public abstract class InputController : MonoBehaviour
 {
-    public abstract void HandleInput();
-    public abstract void HandleFixedInput();
+    public abstract void OnUpdate();
+    public abstract void OnFixedUpdate();
 
     private void Start()
     {
+        //todo adding inputs in states?
         Managers.InputManager.AddInputController(this);
     }
 }

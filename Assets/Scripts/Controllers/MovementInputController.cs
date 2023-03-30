@@ -3,8 +3,8 @@ using UnityEditor;
 using UnityEditor.UI;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class MovementController : InputController
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+public class MovementInputController : InputController
 {
     private readonly string HORIZONTAL_AXIS_NAME = "Horizontal";
     private readonly string VERTICAL_AXIS_NAME = "Vertical";
@@ -22,7 +22,7 @@ public class MovementController : InputController
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public override void HandleInput()
+    public override void OnUpdate()
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -35,7 +35,7 @@ public class MovementController : InputController
         _yAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
     }
 
-    public override void HandleFixedInput()
+    public override void OnFixedUpdate()
     {
         MoveByArrows();
         Rotate();

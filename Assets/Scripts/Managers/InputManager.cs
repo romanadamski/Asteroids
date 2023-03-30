@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     {
         foreach (var input in _inputControllers)
         {
-            input.HandleInput();
+            input.OnUpdate();
         }
     }
 
@@ -31,7 +31,7 @@ public class InputManager : MonoBehaviour
     {
         foreach (var input in _inputControllers)
         {
-            input.HandleFixedInput();
+            input.OnFixedUpdate();
         }
     }
 
