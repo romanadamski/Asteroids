@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3938047483055299148}
   - component: {fileID: 4181482277596349960}
   - component: {fileID: 3183700407203918364}
+  - component: {fileID: 5227165344776928440}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -164,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootStartCoordinates: {fileID: 6398973563876913920}
-  bulletTag: SimpleBullet
   shootKey: 32
 --- !u!60 &4181482277596349960
 PolygonCollider2D:
@@ -265,6 +265,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _livesCount: 0
-  _enemyObjectsTags:
-  - Asteroid
-  - Bullet
+--- !u!114 &5227165344776928440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873032853012233273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344c81912fac6dc4cb9aa9a2b9145614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

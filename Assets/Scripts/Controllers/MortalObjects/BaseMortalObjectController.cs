@@ -5,22 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(BaseCollisionController))]
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
     [SerializeField]
     protected uint _livesCount;
     private string[] _enemyObjectsTags;
-    
-    private void Awake()
-    {
-        _enemyObjectsTags = GetEnemies();
-    }
+    private BaseCollisionController _collideController;
 
     protected abstract void OnCollisionWithEnemy(Collision2D collision);
     protected abstract string[] GetEnemies();
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Awake()
+    {
+        _enemyObjectsTags = GetEnemies();
+        _collideController = GetComponent<BaseCollisionController>();
+        _collideController.CollisionEnter += OnCollision;
+    }
+
+    private void OnCollision(Collision2D collision)
     {
         var message = $"{gameObject.name}: {transform.tag} collided with {collision.gameObject.name} {collision.transform.tag}";
         if (_enemyObjectsTags.Contains(collision.transform.tag))
@@ -30,4 +33,5 @@ public abstract class BaseMortalObjectController : MonoBehaviour
         }
         Debug.Log(message);
     }
+
 }
