@@ -9,11 +9,11 @@ public class MortalBulletController : BaseMortalObjectController
 {
     protected override string[] GetEnemies()
     {
-        return new string[] { "Asteroid", "Player" };
+        return new string[] { GameObjectTags.ASTEROID,GameObjectTags.PLAYER };
     }
 
     protected override void OnCollisionWithEnemy(Collision2D collision)
     {
-        Managers.ObjectPoolingManager.ReturnToPool(gameObject);
+        Managers.ObjectPoolingManager.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }
 }

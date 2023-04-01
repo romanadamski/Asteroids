@@ -23,7 +23,10 @@ public class InputManager : MonoBehaviour
     {
         foreach (var input in _inputControllers)
         {
-            input.OnUpdate();
+            if (input.enabled && input.gameObject.activeInHierarchy)
+            {
+                input.OnUpdate();
+            }
         }
     }
 
@@ -31,7 +34,10 @@ public class InputManager : MonoBehaviour
     {
         foreach (var input in _inputControllers)
         {
-            input.OnFixedUpdate();
+            if (input.enabled && input.gameObject.activeInHierarchy)
+            {
+                input.OnFixedUpdate();
+            }
         }
     }
 

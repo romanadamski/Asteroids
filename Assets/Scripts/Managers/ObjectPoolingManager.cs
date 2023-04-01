@@ -7,20 +7,6 @@ using UnityEngine;
 
 public class ObjectPoolingManager : MonoBehaviour
 {
-    [Serializable]
-    public class Pool
-    {
-        public int StartPoolCount;
-        public GameObject PoolObjectPrefab;
-        public bool CanGrow;
-        public Queue<GameObject> PooledObjects = new Queue<GameObject>();
-        public Transform ObjectsParent;
-
-        [HideInInspector]
-        public int ObjectCount;
-        public Type ObjectType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType();
-    }
-
     [SerializeField]
     private List<Pool> pools = new List<Pool>();
 
@@ -30,20 +16,20 @@ public class ObjectPoolingManager : MonoBehaviour
         {
             for (int i = 0; i < pool.StartPoolCount; i++)
             {
-                var newObject = Instantiate(pool.PoolObjectPrefab, pool.ObjectsParent);
-                newObject.SetActive(false);
-                pool.PooledObjects.Enqueue(newObject);
+                var newObject = Instantiate(pool.PoolObjectPrefab.gameObject, pool.ObjectsParent);
+                newObject.gameObject.SetActive(false);
+                pool.PooledObjects.Enqueue(newObject.GetComponent<BasePoolableController>());
                 pool.ObjectCount++;
             }
         }
     }
 
-    public GameObject GetFromPool<T>() where T : BasePoolableController
+    public BasePoolableController GetFromPool(string poolableType)/* where T : BasePoolableController*/
     {
-        var pool = GetPoolByType<T>();
+        var pool = GetPoolByType(poolableType);
         if (pool == null)
         {
-            Debug.LogError($"There is no pool of {typeof(T).Name} type!");
+            Debug.LogError($"There is no pool of {poolableType} type!");
             return null;
         }
         if (pool.PooledObjects.Count > 0)
@@ -65,26 +51,15 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void ReturnToPool(GameObject objectToReturn)
+    public void ReturnToPool(BasePoolableController objectToReturn)
     {
-        objectToReturn.SetActive(false);
-        var poolableType = GetPoolableTypeByGameObject(objectToReturn);
-        var pool = GetPoolByType(poolableType);
-        pool.PooledObjects.Enqueue(objectToReturn);
+        objectToReturn.gameObject.SetActive(false);
+        var pool = GetPoolByType(objectToReturn.PoolableType);
+        pool.PooledObjects.Enqueue(objectToReturn.GetComponent<BasePoolableController>());
     }
 
-    private Type GetPoolableTypeByGameObject(GameObject objectToReturn)
+    private Pool GetPoolByType(string poolableType)
     {
-        return objectToReturn.GetComponent<BasePoolableController>().GetType();
-    }
-
-    private Pool GetPoolByType<T>() where T : BasePoolableController
-    {
-        return GetPoolByType(typeof(T));
-    }
-
-    private Pool GetPoolByType(Type objectType)
-    {
-        return pools.FirstOrDefault(x => x.ObjectType.Equals(objectType));
+        return pools.FirstOrDefault(x => x.ObjectType.Equals(poolableType));
     }
 }

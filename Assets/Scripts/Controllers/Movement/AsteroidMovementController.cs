@@ -22,7 +22,7 @@ public class AsteroidMovementController : BaseMovementController
 
         if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > _maxOutsideScreenTime)
         {
-            Managers.ObjectPoolingManager.ReturnToPool(gameObject);
+            Managers.ObjectPoolingManager.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
         }
     }
 

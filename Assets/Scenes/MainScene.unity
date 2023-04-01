@@ -263,7 +263,23 @@ PrefabInstance:
     - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
       propertyPath: pools.Array.data[1].ObjectsParent
       value: 
+      objectReference: {fileID: 844897182}
+    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
+      propertyPath: pools.Array.data[2].ObjectsParent
+      value: 
       objectReference: {fileID: 675815364}
+    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
+      propertyPath: pools.Array.data[0].PoolObjectPrefab
+      value: 
+      objectReference: {fileID: 7117399712587549171, guid: 681f721ad11f6d041944f0fa4fd90027, type: 3}
+    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
+      propertyPath: pools.Array.data[1].PoolObjectPrefab
+      value: 
+      objectReference: {fileID: 7117399712587549171, guid: 2a44c843ffa3ab447af1889ec9192b98, type: 3}
+    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
+      propertyPath: pools.Array.data[2].PoolObjectPrefab
+      value: 
+      objectReference: {fileID: 1006996477057112103, guid: 4009f21067af50f4885f6731726e930b, type: 3}
     - target: {fileID: 6139016675400060282, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -442,6 +458,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6399742665235218062, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+      propertyPath: shootKey
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399742665235218062, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+      propertyPath: bulletTypeName
+      value: SimpleBulletMovementController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399742665235218062, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+      propertyPath: selectedTypeIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8649188709760131041, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -484,6 +512,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8649188709760131041, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711251345290764011, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+      propertyPath: bulletTypeName
+      value: CrossingEdgesBulletMovementController
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711251345290764011, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+      propertyPath: selectedTypeIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

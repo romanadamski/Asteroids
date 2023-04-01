@@ -9,13 +9,13 @@ public class MortalAsteroidController : BaseMortalObjectController
 {
     protected override string[] GetEnemies()
     {
-        return new string[] { "Bullet" };
+        return new string[] { GameObjectTags.BULLET };
     }
 
     protected override void OnCollisionWithEnemy(Collision2D collision)
     {
         _livesCount--;
-        Managers.ObjectPoolingManager.ReturnToPool(gameObject);
+        Managers.ObjectPoolingManager.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
         Managers.EventsManager.OnAsteroidShotted(_livesCount);
     }
 }

@@ -61,36 +61,7 @@ public class MovementInputController : BaseInputController
         var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
         if (!GeometryUtility.TestPlanesAABB(planes, _spriteRenderer.bounds))
         {
-            var screenPos = Camera.main.WorldToScreenPoint(transform.position);
-            if (screenPos.y < 0)
-            {
-                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(
-                    screenPos.x,
-                    Screen.height,
-                    screenPos.z));
-            }
-            else if (screenPos.y > Screen.height)
-            {
-                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(
-                    screenPos.x,
-                    0,
-                    screenPos.z));
-            }
-
-            if (screenPos.x < 0)
-            {
-                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(
-                    Screen.width,
-                    screenPos.y,
-                    screenPos.z));
-            }
-            else if (screenPos.x > Screen.width)
-            {
-                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(
-                    0,
-                    screenPos.y,
-                    screenPos.z));
-            }
+            Managers.ScreenManager.HandleScreenEdgeCrossing(transform);
         }
     }
 

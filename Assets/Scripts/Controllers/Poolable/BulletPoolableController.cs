@@ -6,4 +6,12 @@ using System.Threading.Tasks;
 
 public class BulletPoolableController : BasePoolableController
 {
+    public override string[] GetPoolableTypes()
+    {
+        return new string[]
+        {
+            typeof(CrossingEdgesBulletMovementController).Name,
+            typeof(SimpleBulletMovementController).Name
+        };
+    }
 }
