@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2026773274}
     m_Modifications:
-    - target: {fileID: 3606859666954047742, guid: 4009f21067af50f4885f6731726e930b, type: 3}
-      propertyPath: _maxOutsideScreenTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3909010953527000373, guid: 4009f21067af50f4885f6731726e930b, type: 3}
       propertyPath: m_Name
       value: Asteroid
@@ -458,18 +454,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6399742665235218062, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
-      propertyPath: shootKey
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399742665235218062, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
-      propertyPath: bulletTypeName
-      value: SimpleBulletMovementController
-      objectReference: {fileID: 0}
-    - target: {fileID: 6399742665235218062, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
-      propertyPath: selectedTypeIndex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8649188709760131041, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -512,14 +496,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8649188709760131041, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8711251345290764011, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
-      propertyPath: bulletTypeName
-      value: CrossingEdgesBulletMovementController
-      objectReference: {fileID: 0}
-    - target: {fileID: 8711251345290764011, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
-      propertyPath: selectedTypeIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

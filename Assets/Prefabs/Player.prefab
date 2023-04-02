@@ -285,11 +285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4999060892972715063, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: bulletTypeName
-      value: SimpleBulletMovementController
+      value: CrossingEdgesBulletMovementController
       objectReference: {fileID: 0}
     - target: {fileID: 4999060892972715063, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: selectedTypeIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5153310891857614070, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: m_Name
@@ -305,7 +305,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7301702373490885429, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: bulletTypeName
-      value: CrossingEdgesBulletMovementController
+      value: SimpleBulletMovementController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301702373490885429, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
+      propertyPath: selectedTypeIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}

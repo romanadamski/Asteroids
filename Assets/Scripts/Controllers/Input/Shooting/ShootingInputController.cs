@@ -10,11 +10,11 @@ public class ShootingInputController : BaseInputController
     private StartShootingPositionController _startShootingPosition;
 
     [SerializeField]
-    KeyCode shootKey = KeyCode.Space;
+    private KeyCode shootKey = KeyCode.Space;
     [SerializeField]
-    string bulletTypeName;
+    private string bulletTypeName;
     [SerializeField]
-    int selectedTypeIndex;
+    private int selectedTypeIndex;
 
     private void Awake()
     {

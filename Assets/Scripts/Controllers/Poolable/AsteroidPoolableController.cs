@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class AsteroidPoolableController : BasePoolableController
 {
-    public override string[] GetPoolableTypes()
+    protected override string[] GetPoolableTypes()
     {
         return new string[]
         {

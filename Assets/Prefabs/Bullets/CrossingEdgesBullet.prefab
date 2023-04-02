@@ -191,4 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e8e8f9c9b382d4b8683c00ef0a0aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedTypeIndex: 0
   PoolableType: CrossingEdgesBulletMovementController
