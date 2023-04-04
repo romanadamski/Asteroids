@@ -15,4 +15,9 @@ public abstract class BaseInputController : MonoBehaviour
         //todo adding inputs in states?
         InputManager.Instance.AddInputController(this);
     }
+
+    private void OnDestroy()
+    {
+        InputManager.Instance.RemoveInputController(this);
+    }
 }
