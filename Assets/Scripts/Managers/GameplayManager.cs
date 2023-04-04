@@ -7,6 +7,7 @@ public class GameplayManager : BaseManager<GameplayManager>
     [SerializeField]
     GameObject playerPrefab;
     GameObject _playerInstance;
+    public GameObject PlayerInstance => _playerInstance;
 
     #region States
     private StateMachine _gameplayStateMachine;
@@ -25,6 +26,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void InitStates()
     {
+        _gameplayStateMachine = new StateMachine();
         GameplayState = new GameplayState(_gameplayStateMachine);
         WinState = new WinState(_gameplayStateMachine);
         LoseState = new LoseState(_gameplayStateMachine);
@@ -34,8 +36,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void StartGameplay()
     {
-        _gameplayStateMachine = new StateMachine();
-        
+        _gameplayStateMachine.SetState(GameplayState);
     }
 
     public void SpawnPlayer()

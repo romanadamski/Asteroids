@@ -17,6 +17,6 @@ public class MainMenu : BaseMenu
 
     private void OnPlayClick()
     {
-
+        GameManager.Instance.StartGameplay();
     }
 }

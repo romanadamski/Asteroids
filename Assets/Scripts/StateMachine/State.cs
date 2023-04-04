@@ -7,11 +7,20 @@ using UnityEngine;
 
 public abstract class State
 {
-    protected abstract void OnEnter();
-    protected abstract void OnUpdate();
-    protected abstract void OnExit();
-
     protected StateMachine _stateMachine;
+ 
+    protected virtual void OnEnter()
+    {
+
+    }
+    protected virtual void OnUpdate()
+    {
+
+    }
+    protected virtual void OnExit()
+    {
+
+    }
 
     public State(StateMachine stateMachine)
     {

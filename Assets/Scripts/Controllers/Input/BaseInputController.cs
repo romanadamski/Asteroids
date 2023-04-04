@@ -18,6 +18,6 @@ public abstract class BaseInputController : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputManager.Instance.RemoveInputController(this);
+        InputManager.Instance?.RemoveInputController(this);
     }
 }

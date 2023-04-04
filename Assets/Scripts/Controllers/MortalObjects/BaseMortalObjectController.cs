@@ -8,8 +8,9 @@ using UnityEngine;
 [RequireComponent(typeof(BaseCollisionController))]
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
-    [SerializeField]
     protected uint _livesCount;
+    public uint LivesCount => _livesCount;
+
     private string[] _enemyObjectsTags;
     private BaseCollisionController _collideController;
 
@@ -34,4 +35,11 @@ public abstract class BaseMortalObjectController : MonoBehaviour
         Debug.Log(message);
     }
 
+    protected void DecrementLive()
+    {
+        if (_livesCount > 0)
+        {
+            _livesCount--;
+        }
+    }
 }

@@ -7,7 +7,7 @@ public class GameManager : BaseManager<GameManager>
     #region States
     StateMachine gameStateMachine;
     public MainMenuState MainMenuState;
-    public LevelState GameplayState;
+    public LevelState LevelState;
     #endregion
 
     private void Start()
@@ -29,11 +29,12 @@ public class GameManager : BaseManager<GameManager>
         gameStateMachine = new StateMachine();
 
         MainMenuState = new MainMenuState(gameStateMachine);
-        GameplayState = new LevelState(gameStateMachine);
+        LevelState = new LevelState(gameStateMachine);
     }
 
     public void StartGameplay()
     {
+        gameStateMachine.SetState(LevelState);
     }
 
     private void OnPlayerDeath(uint livesCount)

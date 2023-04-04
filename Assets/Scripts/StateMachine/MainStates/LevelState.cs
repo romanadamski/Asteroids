@@ -10,7 +10,7 @@ public class LevelState : State
 
     protected override void OnEnter()
     {
-
+        GameplayManager.Instance.StartGameplay();
     }
 
     protected override void OnExit()

@@ -33,9 +33,9 @@ public class UIManager : BaseManager<UIManager>
         }
     }
 
-    public bool TryGetMenuByType<T>(out BaseMenu menu) where T : BaseMenu
+    public bool TryGetMenuByType<T>(out T menu) where T : BaseMenu
     {
-        menu = _menus.FirstOrDefault(x => x.GetType().Equals(typeof(T)));
+        menu = _menus.FirstOrDefault(x => x.GetType().Equals(typeof(T))) as T;
         if (menu)
         {
             return true;

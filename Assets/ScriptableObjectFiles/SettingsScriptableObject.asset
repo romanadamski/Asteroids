@@ -15,6 +15,6 @@ MonoBehaviour:
   PlayerMovementSpeed: 10
   PlayerRotationSpeed: 10
   PlayerMovementPrecision: 10
+  PlayerStartLivesCount: 10
   BaseBulletMovementSpeed: 11
   BaseAsteroidMovementSpeed: 1
-  BaseAsteroidMovementSpeed2: 0

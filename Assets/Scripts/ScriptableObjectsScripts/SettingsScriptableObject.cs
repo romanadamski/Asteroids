@@ -9,6 +9,7 @@ public class SettingsScriptableObject : ScriptableObject
     public float PlayerMovementSpeed;
     public float PlayerRotationSpeed;
     public float PlayerMovementPrecision;
+    public uint PlayerStartLivesCount;
 
     [Header("Bullet settings")]
     public float BaseBulletMovementSpeed;

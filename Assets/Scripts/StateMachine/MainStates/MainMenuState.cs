@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuState : State
 {
-    private BaseMenu _mainMenu;
+    private MainMenu _mainMenu;
 
     public MainMenuState(StateMachine stateMachine) : base(stateMachine)
     {
@@ -12,7 +12,7 @@ public class MainMenuState : State
 
     protected override void OnEnter()
     {
-        if (_mainMenu || UIManager.Instance.TryGetMenuByType<MainMenu>(out _mainMenu))
+        if (_mainMenu || UIManager.Instance.TryGetMenuByType(out _mainMenu))
         {
             _mainMenu.Show();
         }
@@ -20,7 +20,7 @@ public class MainMenuState : State
 
     protected override void OnExit()
     {
-        if (_mainMenu || UIManager.Instance.TryGetMenuByType<MainMenu>(out _mainMenu))
+        if (_mainMenu || UIManager.Instance.TryGetMenuByType(out _mainMenu))
         {
             _mainMenu.Hide();
         }

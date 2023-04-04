@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameplayState : State
 {
+    private GameplayMenu _gameplayMenu;
+
     public GameplayState(StateMachine stateMachine) : base(stateMachine)
     {
 
@@ -11,12 +13,19 @@ public class GameplayState : State
 
     protected override void OnEnter()
     {
-
+        GameplayManager.Instance.SpawnPlayer();
+        if (_gameplayMenu || UIManager.Instance.TryGetMenuByType(out _gameplayMenu))
+        {
+            _gameplayMenu.Show();
+        }
     }
 
     protected override void OnExit()
     {
-
+        if (_gameplayMenu || UIManager.Instance.TryGetMenuByType(out _gameplayMenu))
+        {
+            _gameplayMenu.Hide();
+        }
     }
 
     protected override void OnUpdate()

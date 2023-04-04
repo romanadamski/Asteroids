@@ -8,7 +8,7 @@ using UnityEngine;
 public class EventsManager : BaseManager<EventsManager>
 {
     public event Action<uint> PlayerDeath;
-    public void OnPlayerDeath(uint livesCount)
+    public void OnPlayerLoseLife(uint livesCount)
     {
         PlayerDeath?.Invoke(livesCount);
     }
