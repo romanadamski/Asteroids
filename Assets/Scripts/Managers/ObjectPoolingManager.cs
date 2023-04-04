@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ObjectPoolingManager : MonoBehaviour
+public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
 {
     [SerializeField]
     private List<Pool> pools = new List<Pool>();

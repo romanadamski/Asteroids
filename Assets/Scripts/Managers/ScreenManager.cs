@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ScreenManager : MonoBehaviour
+public class ScreenManager : BaseManager<ScreenManager>
 {
     ScreenEdgesHelper _screenEdgesHelper;
 
-    private void Awake()
+    private void Start()
     {
         _screenEdgesHelper = new ScreenEdgesHelper();
     }

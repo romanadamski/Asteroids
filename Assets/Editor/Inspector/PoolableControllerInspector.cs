@@ -27,7 +27,7 @@ public class PoolableControllerInspector : Editor
             _poolableTypesGUI[i] = new GUIContent()
             {
                 text = System.Text.RegularExpressions.Regex.Replace(
-                _poolableTypes[i].Replace("MovementController", ""), "([A-Z])", " $1").Trim(),
+                _poolableTypes[i].Replace("Controller", ""), "([A-Z])", " $1").Trim(),
                 tooltip = _poolableTypes[i]
             };
         }

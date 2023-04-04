@@ -39,7 +39,7 @@ public class ShootingInputController : BaseInputController
         if (!CheckBulletBeginningPosition(bullet))
         {
             Debug.LogError($"Start shooting position {name.Bold()} is too close to shooter!");
-            Managers.ObjectPoolingManager.ReturnToPool(bullet.gameObject.GetComponent<BasePoolableController>());
+            ObjectPoolingManager.Instance.ReturnToPool(bullet.gameObject.GetComponent<BasePoolableController>());
             return;
         }
 
@@ -48,7 +48,7 @@ public class ShootingInputController : BaseInputController
 
     private BaseBulletMovementController GetBulletFromPool()
     {
-        return Managers.ObjectPoolingManager.GetFromPool(bulletTypeName).GetComponent(bulletTypeName) as BaseBulletMovementController;
+        return ObjectPoolingManager.Instance.GetFromPool(bulletTypeName).GetComponent(bulletTypeName) as BaseBulletMovementController;
     }
 
     private bool CheckBulletBeginningPosition(BaseBulletMovementController bullet)

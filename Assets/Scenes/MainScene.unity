@@ -264,18 +264,6 @@ PrefabInstance:
       propertyPath: pools.Array.data[2].ObjectsParent
       value: 
       objectReference: {fileID: 675815364}
-    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
-      propertyPath: pools.Array.data[0].PoolObjectPrefab
-      value: 
-      objectReference: {fileID: 7117399712587549171, guid: 681f721ad11f6d041944f0fa4fd90027, type: 3}
-    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
-      propertyPath: pools.Array.data[1].PoolObjectPrefab
-      value: 
-      objectReference: {fileID: 7117399712587549171, guid: 2a44c843ffa3ab447af1889ec9192b98, type: 3}
-    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
-      propertyPath: pools.Array.data[2].PoolObjectPrefab
-      value: 
-      objectReference: {fileID: 1006996477057112103, guid: 4009f21067af50f4885f6731726e930b, type: 3}
     - target: {fileID: 6139016675400060282, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
       propertyPath: m_RootOrder
       value: 1

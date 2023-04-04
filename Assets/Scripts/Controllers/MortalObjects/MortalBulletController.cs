@@ -14,6 +14,6 @@ public class MortalBulletController : BaseMortalObjectController
 
     protected override void OnCollisionWithEnemy(Collision2D collision)
     {
-        Managers.ObjectPoolingManager.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }
 }

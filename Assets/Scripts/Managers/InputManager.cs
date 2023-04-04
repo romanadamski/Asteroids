@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : BaseManager<InputManager>
 {
     List<BaseInputController> _inputControllers = new List<BaseInputController>();
 

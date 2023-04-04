@@ -13,6 +13,6 @@ public abstract class BaseInputController : MonoBehaviour
     private void Start()
     {
         //todo adding inputs in states?
-        Managers.InputManager.AddInputController(this);
+        InputManager.Instance.AddInputController(this);
     }
 }

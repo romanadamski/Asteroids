@@ -15,6 +15,6 @@ public class MortalPlayerController : BaseMortalObjectController
     protected override void OnCollisionWithEnemy(Collision2D collision)
     {
         _livesCount--;
-        Managers.EventsManager.OnPlayerDeath(_livesCount);
+        EventsManager.Instance.OnPlayerDeath(_livesCount);
     }
 }

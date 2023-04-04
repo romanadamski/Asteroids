@@ -22,7 +22,7 @@ public class AsteroidMovementController : BaseMovementController
 
         if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > _maxOutsideScreenTime)
         {
-            Managers.ObjectPoolingManager.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+            ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
         }
     }
 
@@ -37,6 +37,6 @@ public class AsteroidMovementController : BaseMovementController
     protected override void MoveObject()
     {
         //todo moving asteroid
-        _rigidbody2D.velocity = transform.up * Managers.SettingsManager.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
+        _rigidbody2D.velocity = transform.up * SettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
     }
 }

@@ -8,6 +8,6 @@ public class CrossingEdgesBulletMovementController : BaseBulletMovementControlle
 {
     public override void OnOutsideScreen()
     {
-        Managers.ScreenManager.HandleScreenEdgeCrossing(transform);
+        ScreenManager.Instance.HandleScreenEdgeCrossing(transform);
     }
 }

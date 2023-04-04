@@ -8,12 +8,12 @@ public class BaseBulletMovementController : BaseMovementController
 {
     protected override void MoveObject()
     {
-        _rigidbody2D.velocity = transform.up * Managers.SettingsManager.Settings.BaseBulletMovementSpeed * _speedMultiplier;
+        _rigidbody2D.velocity = transform.up * SettingsManager.Instance.Settings.BaseBulletMovementSpeed * _speedMultiplier;
     }
 
     protected void ReturnToPool()
     {
-        Managers.ObjectPoolingManager.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }
 
     private void OnDisable()
