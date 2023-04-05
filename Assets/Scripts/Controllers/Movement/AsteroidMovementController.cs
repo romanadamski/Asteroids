@@ -37,6 +37,6 @@ public class AsteroidMovementController : BaseMovementController
     protected override void MoveObject()
     {
         //todo moving asteroid
-        _rigidbody2D.velocity = transform.up * SettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
+        _rigidbody2D.velocity = transform.up * GameSettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
     }
 }

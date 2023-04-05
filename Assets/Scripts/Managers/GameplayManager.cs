@@ -35,6 +35,8 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void UnsubscribeFromEvents()
     {
+        if (!EventsManager.Instance) return;
+
         EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
     }
 
@@ -57,6 +59,11 @@ public class GameplayManager : BaseManager<GameplayManager>
         EndGameplayState = new EndGameplayState(_gameplayStateMachine);
     }
 
+    public void SetCurrentLevel()
+    {
+        SpawnPlayer();
+    }
+
     public void StartGameplay()
     {
         _gameplayStateMachine.SetState(GameplayState);
@@ -77,15 +84,15 @@ public class GameplayManager : BaseManager<GameplayManager>
         _gameplayStateMachine.Clear();
     }
 
-    public void SpawnPlayer()
+    private void SpawnPlayer()
     {
         if (_playerInstance == null)
         {
             _playerInstance = Instantiate(playerPrefab, GameLauncher.Instance.GamePlane.transform);
         }
         _playerInstance.SetActive(true);
-        _playerInstance.transform.position = Vector3.zero;
-        _playerInstance.transform.rotation = Quaternion.Euler(Vector3.zero);//todo in settings/level config set default position and rotation
+        _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.PlayerStartPosition;
+        _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.PlayerStartRotation;
     }
 
     public void DespawnPlayer()

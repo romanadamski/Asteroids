@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7d5a75f0847954381407e019c9c4dc, type: 3}
-  m_Name: SettingsScriptableObject
+  m_Script: {fileID: 11500000, guid: 6e9d9ecfba8f88344bcf6e3f0ea0e615, type: 3}
+  m_Name: Level3
   m_EditorClassIdentifier: 
-  PlayerMovementSpeed: 10
-  PlayerRotationSpeed: 10
-  PlayerMovementPrecision: 10
-  PlayerStartLivesCount: 10
-  BaseBulletMovementSpeed: 11
-  BaseAsteroidMovementSpeed: 1
+  LevelNumber: 3
+  PlayerStartPosition: {x: 3, y: 0, z: 0}
+  PlayerStartRotation: {x: 0, y: 0, z: -0.70710677, w: 0.70710677}
+  PlayerStartLivesCount: 2

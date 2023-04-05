@@ -13,7 +13,7 @@ public class GameplayState : State
 
     protected override void OnEnter()
     {
-        GameplayManager.Instance.SpawnPlayer();
+        GameplayManager.Instance.SetCurrentLevel();
         if (_gameplayMenu || UIManager.Instance.TryGetMenuByType(out _gameplayMenu))
         {
             _gameplayMenu.Show();

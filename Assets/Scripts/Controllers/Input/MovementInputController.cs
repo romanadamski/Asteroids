@@ -41,7 +41,7 @@ public class MovementInputController : BaseInputController
 
     private float CalculateAxis(float axis)
     {
-        return axis * SettingsManager.Instance.Settings.PlayerMovementSpeed;
+        return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed;
     }
 
     private void StopMovement()
@@ -52,7 +52,7 @@ public class MovementInputController : BaseInputController
 
     private void MoveByArrows()
     {
-        _rigidbody2D.velocity = Vector2.Lerp(_rigidbody2D.velocity, MovementAxis, Time.deltaTime * SettingsManager.Instance.Settings.PlayerMovementPrecision);
+        _rigidbody2D.velocity = Vector2.Lerp(_rigidbody2D.velocity, MovementAxis, Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerMovementPrecision);
         ManageScreenEdges();
     }
 
@@ -73,7 +73,7 @@ public class MovementInputController : BaseInputController
             transform.rotation = Quaternion.Lerp(
                 transform.rotation,
                 Quaternion.AngleAxis(angle, Vector3.forward),
-                Time.deltaTime * SettingsManager.Instance.Settings.PlayerRotationSpeed);
+                Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerRotationSpeed);
         }
     }
 }

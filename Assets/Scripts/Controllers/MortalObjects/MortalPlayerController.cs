@@ -20,7 +20,7 @@ public class MortalPlayerController : BaseMortalObjectController
 
     private void OnEnable()
     {
-        _livesCount = SettingsManager.Instance.Settings.PlayerStartLivesCount;
+        _livesCount = LevelSettingsManager.Instance.CurrentLevel.PlayerStartLivesCount;
         EventsManager.Instance.OnPlayerSpawned(_livesCount);
     }
 }
