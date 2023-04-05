@@ -10,15 +10,11 @@ public class EndGameplayState : State
 
     protected override void OnEnter()
     {
+        GameplayManager.Instance.EndGameplay();
     }
 
     protected override void OnExit()
     {
-
-    }
-
-    protected override void OnUpdate()
-    {
-
+        GameManager.Instance.GoToMainMenu();
     }
 }

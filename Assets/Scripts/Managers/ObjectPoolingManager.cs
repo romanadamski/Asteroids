@@ -24,7 +24,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         }
     }
 
-    public BasePoolableController GetFromPool(string poolableType)/* where T : BasePoolableController*/
+    public BasePoolableController GetFromPool(string poolableType)
     {
         var pool = GetPoolByType(poolableType);
         if (pool == null)
@@ -34,7 +34,9 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         }
         if (pool.PooledObjects.Count > 0)
         {
-            return pool.PooledObjects.Dequeue();
+            var newObject = pool.PooledObjects.Dequeue();
+            pool.ObjectsOutsidePool.Add(newObject);
+            return newObject;
         }
         else
         {
@@ -42,6 +44,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
             {
                 pool.ObjectCount++;
                 var newObject = Instantiate(pool.PoolObjectPrefab, pool.ObjectsParent);
+                pool.ObjectsOutsidePool.Add(newObject);
                 return newObject;
             }
             else
@@ -51,11 +54,16 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         }
     }
 
+    public void ReturnAllToPool(string poolableType)
+    {
+        var pool = GetPoolByType(poolableType);
+        pool.ReturnAllToPool();
+    }
+
     public void ReturnToPool(BasePoolableController objectToReturn)
     {
-        objectToReturn.gameObject.SetActive(false);
         var pool = GetPoolByType(objectToReturn.PoolableType);
-        pool.PooledObjects.Enqueue(objectToReturn.GetComponent<BasePoolableController>());
+        pool.ReturnToPool(objectToReturn);
     }
 
     private Pool GetPoolByType(string poolableType)

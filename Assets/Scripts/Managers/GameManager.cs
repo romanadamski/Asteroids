@@ -13,15 +13,12 @@ public class GameManager : BaseManager<GameManager>
     private void Start()
     {
         InitStates();
-        SetFirstState(MainMenuState);
-
-        //todo where to implement actions on player death
-        EventsManager.Instance.PlayerDeath += OnPlayerDeath;
+        GoToMainMenu();
     }
 
-    private void SetFirstState(State state)
+    public void GoToMainMenu()
     {
-        gameStateMachine.SetState(state);
+        gameStateMachine.SetState(MainMenuState);
     }
 
     private void InitStates()
@@ -35,9 +32,5 @@ public class GameManager : BaseManager<GameManager>
     public void StartGameplay()
     {
         gameStateMachine.SetState(LevelState);
-    }
-
-    private void OnPlayerDeath(uint livesCount)
-    {
     }
 }

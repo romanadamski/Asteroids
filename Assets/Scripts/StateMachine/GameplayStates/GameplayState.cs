@@ -22,6 +22,9 @@ public class GameplayState : State
 
     protected override void OnExit()
     {
+        GameplayManager.Instance.DespawnPlayer();
+        GameplayManager.Instance.ReturnAllBullets();
+
         if (_gameplayMenu || UIManager.Instance.TryGetMenuByType(out _gameplayMenu))
         {
             _gameplayMenu.Hide();

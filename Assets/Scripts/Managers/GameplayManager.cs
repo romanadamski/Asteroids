@@ -7,7 +7,6 @@ public class GameplayManager : BaseManager<GameplayManager>
     [SerializeField]
     GameObject playerPrefab;
     GameObject _playerInstance;
-    public GameObject PlayerInstance => _playerInstance;
 
     #region States
     private StateMachine _gameplayStateMachine;
@@ -24,9 +23,33 @@ public class GameplayManager : BaseManager<GameplayManager>
         InitStates();
     }
 
+    private void Start()
+    {
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
+    }
+
+    private void PlayerLoseLife(uint lives)
+    {
+        if (lives == 0)
+        {
+            SetLoseGameplayState();
+        }
+    }
+
     private void InitStates()
     {
-        _gameplayStateMachine = new StateMachine();
+        _gameplayStateMachine = gameObject.AddComponent<StateMachine>();
+
         GameplayState = new GameplayState(_gameplayStateMachine);
         WinState = new WinState(_gameplayStateMachine);
         LoseState = new LoseState(_gameplayStateMachine);
@@ -39,6 +62,21 @@ public class GameplayManager : BaseManager<GameplayManager>
         _gameplayStateMachine.SetState(GameplayState);
     }
 
+    public void SetLoseGameplayState()
+    {
+        _gameplayStateMachine.SetState(LoseState);
+    }
+
+    public void SetEndGameplayState()
+    {
+        _gameplayStateMachine.SetState(EndGameplayState);
+    }
+
+    public void EndGameplay()
+    {
+        _gameplayStateMachine.Clear();
+    }
+
     public void SpawnPlayer()
     {
         if (_playerInstance == null)
@@ -46,6 +84,8 @@ public class GameplayManager : BaseManager<GameplayManager>
             _playerInstance = Instantiate(playerPrefab, GameLauncher.Instance.GamePlane.transform);
         }
         _playerInstance.SetActive(true);
+        _playerInstance.transform.position = Vector3.zero;
+        _playerInstance.transform.rotation = Quaternion.Euler(Vector3.zero);//todo in settings/level config set default position and rotation
     }
 
     public void DespawnPlayer()
@@ -53,5 +93,15 @@ public class GameplayManager : BaseManager<GameplayManager>
         if (_playerInstance == null) return;
         
         _playerInstance.SetActive(false);
+    }
+
+    public void ReturnAllBullets()
+    {
+        ObjectPoolingManager.Instance.ReturnAllToPool(typeof(CrossingEdgesBulletMovementController).Name);//todo take bullets from somewhere
+    }
+
+    private void OnDestroy()
+    {
+        UnsubscribeFromEvents();
     }
 }

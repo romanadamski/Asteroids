@@ -7,10 +7,16 @@ using UnityEngine;
 
 public class EventsManager : BaseManager<EventsManager>
 {
-    public event Action<uint> PlayerDeath;
+    public event Action<uint> PlayerLoseLife;
     public void OnPlayerLoseLife(uint livesCount)
     {
-        PlayerDeath?.Invoke(livesCount);
+        PlayerLoseLife?.Invoke(livesCount);
+    }
+
+    public event Action<uint> PlayerSpawned;
+    public void OnPlayerSpawned(uint livesCount)
+    {
+        PlayerSpawned?.Invoke(livesCount);
     }
     
     public event Action<uint> AsteroidShotted;

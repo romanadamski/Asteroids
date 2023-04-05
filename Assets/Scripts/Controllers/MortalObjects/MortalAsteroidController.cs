@@ -14,7 +14,7 @@ public class MortalAsteroidController : BaseMortalObjectController
 
     protected override void OnCollisionWithEnemy(Collision2D collision)
     {
-        _livesCount--;
+        DecrementLive();
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
         EventsManager.Instance.OnAsteroidShotted(_livesCount);
     }

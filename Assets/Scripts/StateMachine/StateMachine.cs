@@ -26,4 +26,13 @@ public class StateMachine : MonoBehaviour
             CurrentState.Update();
         }
     }
+
+    public void Clear()
+    {
+        if (CurrentState != null)
+        {
+            CurrentState.Exit();
+        }
+        CurrentState = null;
+    }
 }
