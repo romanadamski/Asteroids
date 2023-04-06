@@ -9,11 +9,15 @@ public class AsteroidMovementController : BaseMovementController
     private DateTime _outsideScreenStartTime;
     private bool _isOutsideScreenTimeSet;
 
+    [Tooltip("Time in seconds")]
     [SerializeField]
     private float _maxOutsideScreenTime;
 
     public override void OnOutsideScreen()
     {
+        //wait till object appears on screen
+        if (!_firstScreenApperance) return;
+
         if (!_isOutsideScreenTimeSet)
         {
             _outsideScreenStartTime = DateTime.Now;
@@ -22,7 +26,7 @@ public class AsteroidMovementController : BaseMovementController
 
         if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > _maxOutsideScreenTime)
         {
-            ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+            ReturnToPool();
         }
     }
 

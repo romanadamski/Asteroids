@@ -37,7 +37,6 @@ public class LevelSettingsScriptableObject : ScriptableObject
 
     [Header("Asteroids settings")]
     [SerializeField]
-    private uint asteroidsCount;
-    public uint AsteroidsCount => asteroidsCount;
-
+    private SerializableTuple<float, float> asteroidsReleasingFrequency;
+    public SerializableTuple<float, float> AsteroidsReleasingFrequency => asteroidsReleasingFrequency;
 }

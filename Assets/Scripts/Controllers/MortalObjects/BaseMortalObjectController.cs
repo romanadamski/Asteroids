@@ -14,25 +14,37 @@ public abstract class BaseMortalObjectController : MonoBehaviour
     private string[] _enemyObjectsTags;
     private BaseCollisionController _collideController;
 
-    protected abstract void OnCollisionWithEnemy(Collision2D collision);
+    protected bool _collideExit = true;
+    protected virtual void OnCollisionWithEnemyEnter(Collision2D collision) { }
+    protected virtual void OnCollisionWithEnemyExit(Collision2D collision) { }
     protected abstract string[] GetEnemies();
 
     private void Awake()
     {
         _enemyObjectsTags = GetEnemies();
         _collideController = GetComponent<BaseCollisionController>();
-        _collideController.CollisionEnter += OnCollision;
+        _collideController.CollisionEnter += CollisionEnter;
+        _collideController.CollisionExit += CollisionExit;
     }
 
-    private void OnCollision(Collision2D collision)
+    private void CollisionEnter(Collision2D collision)
     {
-        var message = $"{gameObject.name}: {transform.tag} collided with {collision.gameObject.name} {collision.transform.tag}";
+        if (!_collideExit) return;
+        Debug.Log($"Entering collision: {name}");
+
+        _collideExit = false;
+        
         if (_enemyObjectsTags.Contains(collision.transform.tag))
         {
-            OnCollisionWithEnemy(collision);
-            message += " ENEMY!";
+            OnCollisionWithEnemyEnter(collision);
         }
-        Debug.Log(message);
+    }
+
+    private void CollisionExit(Collision2D collision)
+    {
+        Debug.Log($"Exiting collision: {name}");
+        _collideExit = true;
+        OnCollisionWithEnemyExit(collision);
     }
 
     protected void DecrementLive()

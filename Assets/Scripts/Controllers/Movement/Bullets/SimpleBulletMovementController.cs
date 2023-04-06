@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class SimpleBulletMovementController : BaseBulletMovementController
 {
     public override void OnOutsideScreen()
     {
         ReturnToPool();
-        _isReleased = false;
     }
 }

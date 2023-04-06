@@ -11,38 +11,46 @@ public class GameplayMenu : BaseMenu
     [SerializeField]
     TextMeshProUGUI livesCounter;
     [SerializeField]
-    TextMeshProUGUI levelNumber;
+    TextMeshProUGUI levelNumberCounter;
+    [SerializeField]
+    TextMeshProUGUI scoreCounter;
 
     private void Awake()
     {
         SubscribeToEvents();
     }
 
-    private void SubscribeToEvents()
+    private void OnEnable()
     {
-        EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
-        EventsManager.Instance.PlayerSpawned += PlayerSpawned;
-        EventsManager.Instance.GameplayStarted += GameplayStarted;
+        SetScore(0);
     }
 
-    private void GameplayStarted(uint levelNumber)
+    private void SubscribeToEvents()
+    {
+        EventsManager.Instance.PlayerLoseLife += OnPlayerLoseLife;
+        EventsManager.Instance.PlayerSpawned += OnPlayerSpawned;
+        EventsManager.Instance.GameplayStarted += OnGameplayStarted;
+        EventsManager.Instance.ScoreUpdated += OnScoreUpdated;
+    }
+
+    private void OnGameplayStarted(uint levelNumber)
     {
         SetLevelNumber(levelNumber);
     }
 
-    private void SetLevelNumber(uint level)
-    {
-        levelNumber.text = level.ToString();
-    }
-
-    private void PlayerSpawned(uint lives)
+    private void OnPlayerSpawned(uint lives)
     {
         SetLivesCounter(lives);
     }
 
-    private void PlayerLoseLife(uint lives)
+    private void OnPlayerLoseLife(uint lives)
     {
         SetLivesCounter(lives);
+    }
+
+    private void OnScoreUpdated(uint score)
+    {
+        SetScore(score);
     }
 
     private void SetLivesCounter(uint lives)
@@ -50,13 +58,24 @@ public class GameplayMenu : BaseMenu
         livesCounter.text = lives.ToString();
     }
 
+    private void SetLevelNumber(uint levelNumber)
+    {
+        levelNumberCounter.text = levelNumber.ToString();
+    }
+
+    private void SetScore(uint score)
+    {
+        scoreCounter.text = score.ToString();
+    }
+
     private void UnsubscribeFromEvents()
     {
         if (!EventsManager.Instance) return;
 
-        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
-        EventsManager.Instance.PlayerSpawned -= PlayerSpawned;
-        EventsManager.Instance.GameplayStarted -= GameplayStarted;
+        EventsManager.Instance.PlayerLoseLife -= OnPlayerLoseLife;
+        EventsManager.Instance.PlayerSpawned -= OnPlayerSpawned;
+        EventsManager.Instance.GameplayStarted -= OnGameplayStarted;
+        EventsManager.Instance.ScoreUpdated -= OnScoreUpdated;
     }
 
     private void OnDestroy()

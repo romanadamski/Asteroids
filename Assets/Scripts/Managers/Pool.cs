@@ -15,7 +15,16 @@ public class Pool
 
     [HideInInspector]
     public int ObjectCount;
-    public string ObjectType => PoolObjectPrefab.GetComponent<BasePoolableController>().PoolableType;
+
+    /// <summary>
+    /// Type choosen in prefab from Poolable type dropdown
+    /// </summary>
+    public string PoolableNameType => PoolObjectPrefab.GetComponent<BasePoolableController>().PoolableType;
+
+    /// <summary>
+    /// Type choosen by attached Poolable component
+    /// </summary>
+    public string PoolableComponentType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType().Name;
 
     [HideInInspector]
     public List<BasePoolableController> ObjectsOutsidePool = new List<BasePoolableController>();

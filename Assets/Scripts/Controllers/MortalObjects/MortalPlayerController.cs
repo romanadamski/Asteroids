@@ -12,12 +12,12 @@ public class MortalPlayerController : BaseMortalObjectController
         return new string[] { GameObjectTagsConstants.ASTEROID, GameObjectTagsConstants.BULLET };
     }
 
-    protected override void OnCollisionWithEnemy(Collision2D collision)
+    protected override void OnCollisionWithEnemyEnter(Collision2D collision)
     {
         DecrementLive();
         EventsManager.Instance.OnPlayerLoseLife(_livesCount);
     }
-
+    
     private void OnEnable()
     {
         _livesCount = LevelSettingsManager.Instance.CurrentLevel.PlayerStartLivesCount;

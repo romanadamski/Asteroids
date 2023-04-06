@@ -20,6 +20,8 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     #endregion
 
+    private uint _currentScore;
+
     private void Awake()
     {
         InitStates();
@@ -28,26 +30,6 @@ public class GameplayManager : BaseManager<GameplayManager>
     private void Start()
     {
         SubscribeToEvents();
-    }
-
-    private void SubscribeToEvents()
-    {
-        EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
-    }
-
-    private void UnsubscribeFromEvents()
-    {
-        if (!EventsManager.Instance) return;
-
-        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
-    }
-
-    private void PlayerLoseLife(uint lives)
-    {
-        if (lives == 0)
-        {
-            SetLoseGameplayState();
-        }
     }
 
     private void InitStates()
@@ -61,11 +43,41 @@ public class GameplayManager : BaseManager<GameplayManager>
         EndGameplayState = new EndGameplayState(_gameplayStateMachine);
     }
 
+    private void SubscribeToEvents()
+    {
+        EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
+        EventsManager.Instance.AsteroidShotted += AsteroidShotted;
+    }
+
+    private void PlayerLoseLife(uint lives)
+    {
+        if (lives == 0)
+        {
+            OnPlayerDeath();
+        }
+    }
+
+    private void OnPlayerDeath()
+    {
+        SaveManager.Instance.SetHighscore(_currentScore);
+        SaveManager.Instance.Save();
+        SetLoseGameplayState();
+    }
+
+    private void AsteroidShotted()
+    {
+        _currentScore++;
+        EventsManager.Instance.OnScoreUpdated(_currentScore);
+        Debug.Log($"Current score {_currentScore}");
+    }
+
     public void SetCurrentLevel()
     {
+        _currentScore = 0;
         LevelSettingsManager.Instance.SetCurrentLevel();
         SpawnPlayer();
         SpawnAllPlayerObjects();
+        AsteroidsManager.Instance.StartReleasingAsteroidCoroutine();
 
         EventsManager.Instance.OnGameplayStarted(LevelSettingsManager.Instance.CurrentLevelNumber);
     }
@@ -115,6 +127,7 @@ public class GameplayManager : BaseManager<GameplayManager>
         ObjectPoolingManager.Instance.ReturnAllToPools();
         DespawnPlayer();
         DespawnAllPlayerObjects();
+        AsteroidsManager.Instance.StopReleasingAsteroidsCoroutine();
     }
 
     private void DespawnPlayer()
@@ -131,6 +144,14 @@ public class GameplayManager : BaseManager<GameplayManager>
             Destroy(playerObject);
         }
         _playerObjects.Clear();
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        if (!EventsManager.Instance) return;
+
+        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
+        EventsManager.Instance.AsteroidShotted -= AsteroidShotted;
     }
 
     private void OnDestroy()

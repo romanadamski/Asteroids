@@ -19,3 +19,6 @@ MonoBehaviour:
     objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
     objectPrefab: {fileID: 3873032853012233273, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
   playerObjects: []
+  asteroidsReleasingFrequency:
+    item1: 1
+    item2: 10

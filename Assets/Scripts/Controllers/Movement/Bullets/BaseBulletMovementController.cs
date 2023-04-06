@@ -10,14 +10,4 @@ public class BaseBulletMovementController : BaseMovementController
     {
         _rigidbody2D.velocity = transform.up * GameSettingsManager.Instance.Settings.BaseBulletMovementSpeed * _speedMultiplier;
     }
-
-    protected void ReturnToPool()
-    {
-        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
-    }
-
-    private void OnDisable()
-    {
-        _isReleased = false;
-    }
 }

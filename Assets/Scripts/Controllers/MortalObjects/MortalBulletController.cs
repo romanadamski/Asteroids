@@ -12,7 +12,7 @@ public class MortalBulletController : BaseMortalObjectController
         return new string[] { GameObjectTagsConstants.ASTEROID,GameObjectTagsConstants.PLAYER };
     }
 
-    protected override void OnCollisionWithEnemy(Collision2D collision)
+    protected override void OnCollisionWithEnemyEnter(Collision2D collision)
     {
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }

@@ -26,7 +26,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
 
     public BasePoolableController GetFromPool(string poolableType)
     {
-        var pool = GetPoolByType(poolableType);
+        var pool = GetPoolByPoolableNameType(poolableType);
         if (pool == null)
         {
             Debug.LogError($"There is no pool of {poolableType} type!");
@@ -71,18 +71,28 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
     /// <param name="poolableType">Type of poolable</param>
     public void ReturnAllToPool(string poolableType)
     {
-        var pool = GetPoolByType(poolableType);
+        var pool = GetPoolByPoolableNameType(poolableType);
         pool.ReturnAllToPool();
     }
 
     public void ReturnToPool(BasePoolableController objectToReturn)
     {
-        var pool = GetPoolByType(objectToReturn.PoolableType);
+        var pool = GetPoolByPoolableNameType(objectToReturn.PoolableType);
         pool.ReturnToPool(objectToReturn);
     }
 
-    private Pool GetPoolByType(string poolableType)
+    private Pool GetPoolByPoolableNameType(string poolableType)
     {
-        return pools.FirstOrDefault(x => x.ObjectType.Equals(poolableType));
+        return pools.FirstOrDefault(x => x.PoolableNameType.Equals(poolableType));
+    }
+
+    private Pool GetPoolByPoolableComponentType<T>() where T : BasePoolableController
+    {
+        return pools.FirstOrDefault(x => x.PoolableComponentType.Equals(typeof(T).Name));
+    }
+
+    public string[] GetAllPoolableNamesByPoolableComponentType<T>() where T : BasePoolableController
+    {
+        return GetPoolByPoolableComponentType<T>().PoolObjectPrefab.PoolableTypes;
     }
 }

@@ -11,9 +11,6 @@ public abstract class BaseMovementController : MonoBehaviour
     [SerializeField]
     protected float _speedMultiplier = 1;
 
-    [SerializeField]
-    protected bool _isReleased;
-
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
 
@@ -40,15 +37,20 @@ public abstract class BaseMovementController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public void Release()
     {
-        if (!_isReleased) return;
-
         MoveObject();
     }
 
-    public void Release()
+    protected void ReturnToPool()
     {
-        _isReleased = true;
+        StopMovement();
+        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+    }
+
+    private void StopMovement()
+    {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.angularVelocity = 0;
     }
 }

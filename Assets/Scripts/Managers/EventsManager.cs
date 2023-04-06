@@ -19,16 +19,23 @@ public class EventsManager : BaseManager<EventsManager>
         PlayerSpawned?.Invoke(livesCount);
     }
     
-    public event Action<uint> AsteroidShotted;
-    public void OnAsteroidShotted(uint livesCount)
+    public event Action AsteroidShotted;
+    public void OnAsteroidShotted()
     {
-        AsteroidShotted?.Invoke(livesCount);
+        AsteroidShotted?.Invoke();
     }
     
     public event Action<uint> GameplayStarted;
     public void OnGameplayStarted(uint levelNumber)
     {
         GameplayStarted?.Invoke(levelNumber);
+    }
+
+
+    public event Action<uint> ScoreUpdated;
+    public void OnScoreUpdated(uint score)
+    {
+        ScoreUpdated?.Invoke(score);
     }
 
 }
