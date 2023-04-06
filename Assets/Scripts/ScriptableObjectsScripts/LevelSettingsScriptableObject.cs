@@ -34,4 +34,10 @@ public class LevelSettingsScriptableObject : ScriptableObject
     [SerializeField]
     private List<PlayerObject> playerObjects;
     public List<PlayerObject> PlayerObjects => playerObjects;
+
+    [Header("Asteroids settings")]
+    [SerializeField]
+    private uint asteroidsCount;
+    public uint AsteroidsCount => asteroidsCount;
+
 }

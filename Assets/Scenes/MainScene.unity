@@ -313,6 +313,14 @@ PrefabInstance:
       propertyPath: pools.Array.data[2].ObjectsParent
       value: 
       objectReference: {fileID: 675815364}
+    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
+      propertyPath: pools.Array.data[3].ObjectsParent
+      value: 
+      objectReference: {fileID: 675815364}
+    - target: {fileID: 4496249073115706341, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
+      propertyPath: pools.Array.data[4].ObjectsParent
+      value: 
+      objectReference: {fileID: 675815364}
     - target: {fileID: 6139016675400060282, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -360,10 +368,6 @@ PrefabInstance:
     - target: {fileID: 6139016675400060285, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
       propertyPath: m_Name
       value: Managers
-      objectReference: {fileID: 0}
-    - target: {fileID: 8546369919303185555, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
-      propertyPath: currentLevelNumber
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}

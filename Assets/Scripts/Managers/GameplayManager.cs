@@ -9,6 +9,7 @@ public class GameplayManager : BaseManager<GameplayManager>
     private List<GameObject> _playerObjects = new List<GameObject>();
 
     #region States
+
     private StateMachine _gameplayStateMachine;
 
     public GameplayState GameplayState { get; private set; }
@@ -16,6 +17,7 @@ public class GameplayManager : BaseManager<GameplayManager>
     public LoseState LoseState { get; private set; }
     public DeathState DeathState { get; private set; }
     public EndGameplayState EndGameplayState { get; private set; }
+
     #endregion
 
     private void Awake()
@@ -110,7 +112,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void EndCurrentLevel()
     {
-        ObjectPoolingManager.Instance.ReturnAllToPool();
+        ObjectPoolingManager.Instance.ReturnAllToPools();
         DespawnPlayer();
         DespawnAllPlayerObjects();
     }

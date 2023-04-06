@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28a50e36b822b4ea5d7ae425c251b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 3873032853012233273, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
 --- !u!1 &6139016674016591978
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +252,7 @@ Transform:
   - {fileID: 7103210692294686111}
   - {fileID: 1071620680840393529}
   - {fileID: 883198784393871660}
+  - {fileID: 3712706775093848779}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,7 +303,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25f3f4728fd316e4c8d40801ff838f20, type: 2}
   - {fileID: 11400000, guid: ce9b74ebcb28ea341a0fb24eaa5b723c, type: 2}
   - {fileID: 11400000, guid: c936f9a8991dbb74e83593515e965d2c, type: 2}
-  currentLevelNumber: 1
+  currentLevelNumber: 3
 --- !u!1 &7036549252057731058
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +345,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 590fe529e755cd84fb41fc26985ae2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8758283977700359537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3712706775093848779}
+  - component: {fileID: 2990534052398179148}
+  m_Layer: 0
+  m_Name: AsteroidsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3712706775093848779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758283977700359537}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6139016675400060282}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2990534052398179148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758283977700359537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c3c62bbfd35e14fa59cb8607660909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3212587683951388854

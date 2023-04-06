@@ -55,9 +55,9 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
     }
 
     /// <summary>
-    /// Returns all object pool
+    /// Returns all objects to their pools
     /// </summary>
-    public void ReturnAllToPool()
+    public void ReturnAllToPools()
     {
         foreach (var pool in pools)
         {

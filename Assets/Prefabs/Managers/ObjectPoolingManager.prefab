@@ -49,13 +49,28 @@ MonoBehaviour:
     CanGrow: 0
     ObjectsParent: {fileID: 0}
     ObjectCount: 0
+    ObjectsOutsidePool: []
   - StartPoolCount: 30
     PoolObjectPrefab: {fileID: 7117399712587549171, guid: 2a44c843ffa3ab447af1889ec9192b98, type: 3}
     CanGrow: 0
     ObjectsParent: {fileID: 0}
     ObjectCount: 0
+    ObjectsOutsidePool: []
   - StartPoolCount: 30
     PoolObjectPrefab: {fileID: 1006996477057112103, guid: 4009f21067af50f4885f6731726e930b, type: 3}
     CanGrow: 0
     ObjectsParent: {fileID: 0}
     ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 30
+    PoolObjectPrefab: {fileID: 1006996477057112103, guid: ad76217d713ce8e4482bd7c814dff167, type: 3}
+    CanGrow: 0
+    ObjectsParent: {fileID: 0}
+    ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 30
+    PoolObjectPrefab: {fileID: 1006996477057112103, guid: 1520fc0db75a8df4ea8094c197552283, type: 3}
+    CanGrow: 0
+    ObjectsParent: {fileID: 0}
+    ObjectCount: 0
+    ObjectsOutsidePool: []

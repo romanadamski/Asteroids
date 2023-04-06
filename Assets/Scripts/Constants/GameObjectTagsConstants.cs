@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public static class GameObjectTags
+public static class GameObjectTagsConstants
 {
     public const string PLAYER = "Player";
     public const string BULLET= "Bullet";

@@ -10,7 +10,9 @@ public class AsteroidPoolableController : BasePoolableController
     {
         return new string[]
         {
-            typeof(AsteroidMovementController).Name
+            PoolableTypesConstants.ASTEROID_SMALL_POOLABLE,
+            PoolableTypesConstants.ASTEROID_MEDIUM_POOLABLE,
+            PoolableTypesConstants.ASTEROID_BIG_POOLABLE
         };
     }
 }

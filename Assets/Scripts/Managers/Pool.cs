@@ -17,6 +17,7 @@ public class Pool
     public int ObjectCount;
     public string ObjectType => PoolObjectPrefab.GetComponent<BasePoolableController>().PoolableType;
 
+    [HideInInspector]
     public List<BasePoolableController> ObjectsOutsidePool = new List<BasePoolableController>();
 
     public void ReturnAllToPool()

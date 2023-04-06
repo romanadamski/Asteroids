@@ -9,7 +9,7 @@ public class MortalBulletController : BaseMortalObjectController
 {
     protected override string[] GetEnemies()
     {
-        return new string[] { GameObjectTags.ASTEROID,GameObjectTags.PLAYER };
+        return new string[] { GameObjectTagsConstants.ASTEROID,GameObjectTagsConstants.PLAYER };
     }
 
     protected override void OnCollisionWithEnemy(Collision2D collision)

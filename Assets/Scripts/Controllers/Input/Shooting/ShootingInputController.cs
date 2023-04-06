@@ -61,7 +61,7 @@ public class ShootingInputController : BaseInputController
 
         List<Collider2D> results = new List<Collider2D>();
         if (bulletCollider.OverlapCollider(new ContactFilter2D().NoFilter(), results) > 0
-            && results.Any(x => x.gameObject.tag.Equals(GameObjectTags.PLAYER)))
+            && results.Any(x => x.gameObject.tag.Equals(GameObjectTagsConstants.PLAYER)))
         {
             return false;
         }

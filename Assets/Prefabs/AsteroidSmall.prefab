@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3606859666954047742}
   - component: {fileID: 8947749724186666943}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: AsteroidSmall
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3909010953527000373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.63, y: 2.6557019, z: 1.5936085}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d1c4892e30f1f149953a0c5418a7612, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e050a85e08cc16344befa2c369698b17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 3.65}
+    oldSize: {x: 1.13, y: 0.91}
     newSize: {x: 2.19, y: 3.55}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedTypeIndex: 0
-  PoolableType: AsteroidMovementController
+  PoolableType: AsteroidSmall
 --- !u!114 &7031475595846978511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cce72778027524ca8e4241403794e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _livesCount: 0
 --- !u!114 &3606859666954047742
 MonoBehaviour:
   m_ObjectHideFlags: 0
