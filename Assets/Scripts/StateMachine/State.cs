@@ -29,7 +29,6 @@ public abstract class State
 
     public void Enter()
     {
-        Debug.Log($"OnEnter: {_stateMachine.CurrentState.GetType().Name}".Color("green"));
         OnEnter();
     }
 
@@ -40,7 +39,6 @@ public abstract class State
 
     public void Exit()
     {
-        Debug.Log($"OnExit: {_stateMachine.CurrentState.GetType().Name}".Color("red"));
         OnExit();
     }
 }

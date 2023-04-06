@@ -13,12 +13,10 @@ public abstract class BaseInputController : MonoBehaviour
     private void OnEnable()
     {
         InputManager.Instance.AddInputController(this);
-        Debug.Log($"Added input: {GetType()}");
     }
 
     private void OnDisable()
     {
-        Debug.Log($"Removed input: {GetType()}");
         InputManager.Instance?.RemoveInputController(this);
     }
 }
