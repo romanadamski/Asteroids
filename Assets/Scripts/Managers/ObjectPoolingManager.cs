@@ -54,6 +54,21 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         }
     }
 
+    /// <summary>
+    /// Returns all object pool
+    /// </summary>
+    public void ReturnAllToPool()
+    {
+        foreach (var pool in pools)
+        {
+            pool.ReturnAllToPool();
+        }
+    }
+
+    /// <summary>
+    /// Returns all object of given type to pool
+    /// </summary>
+    /// <param name="poolableType">Type of poolable</param>
     public void ReturnAllToPool(string poolableType)
     {
         var pool = GetPoolByType(poolableType);

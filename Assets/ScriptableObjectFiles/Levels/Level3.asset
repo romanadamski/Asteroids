@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9d9ecfba8f88344bcf6e3f0ea0e615, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  LevelNumber: 3
-  PlayerStartPosition: {x: 3, y: 0, z: 0}
-  PlayerStartRotation: {x: 0, y: 0, z: -0.70710677, w: 0.70710677}
-  PlayerStartLivesCount: 2
+  levelNumber: 3
+  playerStartLivesCount: 5
+  mainPlayerObject:
+    objectStartPosition: {x: 0, y: 0, z: 0}
+    objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
+    objectPrefab: {fileID: 3873032853012233273, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+  playerObjects:
+  - objectStartPosition: {x: 6.4, y: -4.6, z: 0}
+    objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
+    objectPrefab: {fileID: 3873032853012233273, guid: 680dda8ae858d86448599cd2df750c39, type: 3}

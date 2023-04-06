@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7d5a75f0847954381407e019c9c4dc, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  PlayerMovementSpeed: 10
-  PlayerRotationSpeed: 10
-  PlayerMovementPrecision: 10
-  PlayerStartLivesCount: 10
-  BaseBulletMovementSpeed: 11
-  BaseAsteroidMovementSpeed: 1
+  playerMovementSpeed: 10
+  playerRotationSpeed: 10
+  playerMovementPrecision: 10
+  baseBulletMovementSpeed: 11
+  baseAsteroidMovementSpeed: 1

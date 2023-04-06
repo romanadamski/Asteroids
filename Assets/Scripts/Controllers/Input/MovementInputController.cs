@@ -9,6 +9,10 @@ public class MovementInputController : BaseInputController
     private readonly string HORIZONTAL_AXIS_NAME = "Horizontal";
     private readonly string VERTICAL_AXIS_NAME = "Vertical";
 
+    [SerializeField]
+    [Range(1, 10)]
+    private float speedMultiplier = 5;
+
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
     private float _xAxis;
@@ -41,7 +45,7 @@ public class MovementInputController : BaseInputController
 
     private float CalculateAxis(float axis)
     {
-        return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed;
+        return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed * (speedMultiplier / 5);
     }
 
     private void StopMovement()

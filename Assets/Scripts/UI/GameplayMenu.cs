@@ -10,6 +10,8 @@ public class GameplayMenu : BaseMenu
 {
     [SerializeField]
     TextMeshProUGUI livesCounter;
+    [SerializeField]
+    TextMeshProUGUI levelNumber;
 
     private void Awake()
     {
@@ -20,14 +22,17 @@ public class GameplayMenu : BaseMenu
     {
         EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
         EventsManager.Instance.PlayerSpawned += PlayerSpawned;
+        EventsManager.Instance.GameplayStarted += GameplayStarted;
     }
 
-    private void UnsubscribeFromEvents()
+    private void GameplayStarted(uint levelNumber)
     {
-        if (!EventsManager.Instance) return;
+        SetLevelNumber(levelNumber);
+    }
 
-        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
-        EventsManager.Instance.PlayerSpawned -= PlayerSpawned;
+    private void SetLevelNumber(uint level)
+    {
+        levelNumber.text = level.ToString();
     }
 
     private void PlayerSpawned(uint lives)
@@ -40,9 +45,18 @@ public class GameplayMenu : BaseMenu
         SetLivesCounter(lives);
     }
 
-    public void SetLivesCounter(uint lives)
+    private void SetLivesCounter(uint lives)
     {
         livesCounter.text = lives.ToString();
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        if (!EventsManager.Instance) return;
+
+        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
+        EventsManager.Instance.PlayerSpawned -= PlayerSpawned;
+        EventsManager.Instance.GameplayStarted -= GameplayStarted;
     }
 
     private void OnDestroy()

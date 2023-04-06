@@ -23,7 +23,7 @@ public class GameManager : BaseManager<GameManager>
 
     private void InitStates()
     {
-        gameStateMachine = new StateMachine();
+        gameStateMachine = gameObject.AddComponent<StateMachine>();
 
         MainMenuState = new MainMenuState(gameStateMachine);
         LevelState = new LevelState(gameStateMachine);

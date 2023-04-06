@@ -10,14 +10,15 @@ public abstract class BaseInputController : MonoBehaviour
     public abstract void OnUpdate();
     public abstract void OnFixedUpdate();
 
-    private void Start()
+    private void OnEnable()
     {
-        //todo adding inputs in states?
         InputManager.Instance.AddInputController(this);
+        Debug.Log($"Added input: {GetType()}");
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        Debug.Log($"Removed input: {GetType()}");
         InputManager.Instance?.RemoveInputController(this);
     }
 }

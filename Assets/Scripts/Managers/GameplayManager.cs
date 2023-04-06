@@ -1,12 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayManager : BaseManager<GameplayManager>
 {
-    [SerializeField]
-    GameObject playerPrefab;
-    GameObject _playerInstance;
+    private GameObject _playerInstance;
+    private List<GameObject> _playerObjects = new List<GameObject>();
 
     #region States
     private StateMachine _gameplayStateMachine;
@@ -61,7 +61,31 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void SetCurrentLevel()
     {
+        LevelSettingsManager.Instance.SetCurrentLevel();
         SpawnPlayer();
+        SpawnAllPlayerObjects();
+
+        EventsManager.Instance.OnGameplayStarted(LevelSettingsManager.Instance.CurrentLevelNumber);
+    }
+
+    private void SpawnPlayer()
+    {
+        _playerInstance = Instantiate(LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectPrefab, GameLauncher.Instance.GamePlane.transform);
+        _playerInstance.SetActive(true);
+        _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartPosition;
+        _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartRotation;
+    }
+
+    private void SpawnAllPlayerObjects()
+    {
+        foreach (var playerObject in LevelSettingsManager.Instance.CurrentLevel.PlayerObjects)
+        {
+            var playerObjectInstance = Instantiate(playerObject.ObjectPrefab, GameLauncher.Instance.GamePlane.transform);
+            playerObjectInstance.SetActive(true);
+            playerObjectInstance.transform.position = playerObject.ObjectStartPosition;
+            playerObjectInstance.transform.rotation = playerObject.ObjectStartRotation;
+            _playerObjects.Add(playerObjectInstance);
+        }
     }
 
     public void StartGameplay()
@@ -84,27 +108,27 @@ public class GameplayManager : BaseManager<GameplayManager>
         _gameplayStateMachine.Clear();
     }
 
-    private void SpawnPlayer()
+    public void EndCurrentLevel()
     {
-        if (_playerInstance == null)
-        {
-            _playerInstance = Instantiate(playerPrefab, GameLauncher.Instance.GamePlane.transform);
-        }
-        _playerInstance.SetActive(true);
-        _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.PlayerStartPosition;
-        _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.PlayerStartRotation;
+        ObjectPoolingManager.Instance.ReturnAllToPool();
+        DespawnPlayer();
+        DespawnAllPlayerObjects();
     }
 
-    public void DespawnPlayer()
+    private void DespawnPlayer()
     {
         if (_playerInstance == null) return;
-        
+
         _playerInstance.SetActive(false);
     }
 
-    public void ReturnAllBullets()
+    private void DespawnAllPlayerObjects()
     {
-        ObjectPoolingManager.Instance.ReturnAllToPool(typeof(CrossingEdgesBulletMovementController).Name);//todo take bullets from somewhere
+        foreach (var playerObject in _playerObjects)
+        {
+            Destroy(playerObject);
+        }
+        _playerObjects.Clear();
     }
 
     private void OnDestroy()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2265806192552167812}
   m_Layer: 0
-  m_Name: SingleRifle
+  m_Name: SingleRifleZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootKey: 32
+  shootKey: 122
+  bulletTypeName: SimpleBulletMovementController
+  selectedTypeIndex: 1
 --- !u!114 &4419774980842020425
 MonoBehaviour:
   m_ObjectHideFlags: 0

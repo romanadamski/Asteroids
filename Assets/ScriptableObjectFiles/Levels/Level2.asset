@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9d9ecfba8f88344bcf6e3f0ea0e615, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  LevelNumber: 2
-  PlayerStartPosition: {x: 0, y: 2, z: 0}
-  PlayerStartRotation: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
-  PlayerStartLivesCount: 5
+  levelNumber: 2
+  playerStartLivesCount: 8
+  mainPlayerObject:
+    objectStartPosition: {x: 0, y: 0, z: 0}
+    objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
+    objectPrefab: {fileID: 3873032853012233273, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+  playerObjects: []

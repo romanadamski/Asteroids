@@ -11,15 +11,11 @@ public class LevelSettingsManager : BaseManager<LevelSettingsManager>
 
     [SerializeField]
     private uint currentLevelNumber;
+    public uint CurrentLevelNumber => currentLevelNumber;
 
     public LevelSettingsScriptableObject CurrentLevel { get; private set; }
 
-    public void Init()
-    {
-        SetCurrentLevel();
-    }
-
-    private void SetCurrentLevel()
+    public void SetCurrentLevel()
     {
         CurrentLevel = GetLevelByNumber(currentLevelNumber);
     }

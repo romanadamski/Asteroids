@@ -6,13 +6,23 @@ using UnityEngine;
 public class GameSettingsScriptableObject : ScriptableObject
 {
     [Header("Player settings")]
-    public float PlayerMovementSpeed;
-    public float PlayerRotationSpeed;
-    public float PlayerMovementPrecision;
+    [SerializeField]
+    public float playerMovementSpeed;
+    public float PlayerMovementSpeed => playerMovementSpeed;
+    [SerializeField]
+    public float playerRotationSpeed;
+    public float PlayerRotationSpeed => playerRotationSpeed;
+    [SerializeField]
+    public float playerMovementPrecision;
+    public float PlayerMovementPrecision => playerMovementPrecision;
 
     [Header("Bullet settings")]
-    public float BaseBulletMovementSpeed;
-    
-    [Header("Bullet settings")]
-    public float BaseAsteroidMovementSpeed;
+    [SerializeField]
+    public float baseBulletMovementSpeed;
+    public float BaseBulletMovementSpeed => baseBulletMovementSpeed;
+
+    [Header("Asteroid settings")]
+    [SerializeField]
+    public float baseAsteroidMovementSpeed;
+    public float BaseAsteroidMovementSpeed => baseAsteroidMovementSpeed;
 }
