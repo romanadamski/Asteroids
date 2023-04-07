@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameSettings", menuName = "ScriptableObjects/Game Settings")]
@@ -9,9 +7,11 @@ public class GameSettingsScriptableObject : ScriptableObject
     [SerializeField]
     private float playerMovementSpeed;
     public float PlayerMovementSpeed => playerMovementSpeed;
+
     [SerializeField]
     private float playerRotationSpeed;
     public float PlayerRotationSpeed => playerRotationSpeed;
+
     [SerializeField]
     private float playerMovementPrecision;
     public float PlayerMovementPrecision => playerMovementPrecision;

@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class GameManager : BaseManager<GameManager>
 {
     #region States
-    StateMachine gameStateMachine;
+
+    private StateMachine gameStateMachine;
     public MainMenuState MainMenuState;
     public LevelState LevelState;
+
     #endregion
 
     private void Start()

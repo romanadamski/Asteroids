@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEditor;
-using UnityEditor.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class MovementInputController : BaseInputController

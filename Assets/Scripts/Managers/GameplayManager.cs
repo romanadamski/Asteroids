@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,12 +65,6 @@ public class GameplayManager : BaseManager<GameplayManager>
         IncrementScore();
     }
 
-    private void IncrementScore()
-    {
-        CurrentScore += GameSettingsManager.Instance.Settings.AsteroidShottedPoints;
-        EventsManager.Instance.OnScoreUpdated(CurrentScore);
-    }
-
     public void StartCurrentLevel()
     {
         ResetScore();
@@ -81,6 +73,12 @@ public class GameplayManager : BaseManager<GameplayManager>
         SpawnPlayer();
 
         EventsManager.Instance.OnLevelStarted(LevelSettingsManager.Instance.CurrentLevelNumber);
+    }
+
+    private void IncrementScore()
+    {
+        CurrentScore += GameSettingsManager.Instance.Settings.AsteroidShottedPoints;
+        EventsManager.Instance.OnScoreUpdated(CurrentScore);
     }
 
     private void ResetScore()

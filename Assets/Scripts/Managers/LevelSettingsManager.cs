@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,7 +19,7 @@ public class LevelSettingsManager : BaseManager<LevelSettingsManager>
         CurrentLevel = GetLevelByNumber(currentLevelNumber);
     }
 
-    public LevelSettingsScriptableObject GetLevelByNumber(uint levelNumber)
+    private LevelSettingsScriptableObject GetLevelByNumber(uint levelNumber)
     {
         return levelSettings.FirstOrDefault(x => x.LevelNumber.Equals(levelNumber));
     }

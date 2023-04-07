@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System.Linq;
 
 public class LoseMenu : BaseMenu
 {
@@ -14,9 +9,9 @@ public class LoseMenu : BaseMenu
     [SerializeField]
     private Button restartButton;
     [SerializeField]
-    TextMeshProUGUI currentScore;
+    private TextMeshProUGUI currentScore;
     [SerializeField]
-    TextMeshProUGUI highestScore;
+    private TextMeshProUGUI highestScore;
 
     private void Awake()
     {

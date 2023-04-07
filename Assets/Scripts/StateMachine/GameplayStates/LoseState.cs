@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class LoseState : State
 {
     private LoseMenu _loseMenu;
+
     public LoseState(StateMachine stateMachine) : base(stateMachine)
     {
     }

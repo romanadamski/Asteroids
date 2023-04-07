@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScreenEdgesHelper
 {
+    /// <summary>
+    /// Show object at opposite side of scrren after crossing screen edge
+    /// </summary>
+    /// <param name="objectTransform">Object which crossing screen's edge</param>
     public void HandleScreenEdgeCrossing(Transform objectTransform)
     {
         var screenPos = Camera.main.WorldToScreenPoint(objectTransform.position);

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(BaseCollisionController))]
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
-    protected uint _livesCount;
-    public uint LivesCount => _livesCount;
-
     private string[] _enemyObjectsTags;
     private BaseCollisionController _collideController;
 
@@ -18,6 +11,9 @@ public abstract class BaseMortalObjectController : MonoBehaviour
     protected virtual void OnCollisionWithEnemyEnter(Collision2D collision) { }
     protected virtual void OnCollisionWithEnemyExit(Collision2D collision) { }
     protected virtual string[] GetEnemies() { return new string[] { }; }
+
+    protected uint _livesCount;
+    public uint LivesCount => _livesCount;
 
     private void Awake()
     {

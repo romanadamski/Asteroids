@@ -1,25 +1,15 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(StartShootingPositionController))]
 public class ShootingInputController : BaseInputController
 {
-    private StartShootingPositionController _startShootingPosition;
-
     [SerializeField]
     private KeyCode shootKey = KeyCode.Space;
     [SerializeField]
     private string bulletTypeName;
     [SerializeField]
     private int selectedTypeIndex;
-
-    private void Awake()
-    {
-        _startShootingPosition = GetComponent<StartShootingPositionController>();
-    }
 
     public override void OnUpdate()
     {
@@ -32,8 +22,8 @@ public class ShootingInputController : BaseInputController
     private void ReleaseBullet()
     {
         var bullet = GetBulletFromPool();
-        bullet.transform.position = _startShootingPosition.transform.position;
-        bullet.transform.rotation = _startShootingPosition.transform.rotation;
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
         bullet.gameObject.SetActive(true);
 
         if (!CheckBulletBeginningPosition(bullet))
@@ -67,10 +57,5 @@ public class ShootingInputController : BaseInputController
         }
 
         return true;
-    }
-
-    public override void OnFixedUpdate()
-    {
-        
     }
 }

@@ -1,38 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    public State CurrentState;
+    private State _currentState;
 
     public void SetState(State state)
     {
-        if (CurrentState != null)
+        if (_currentState != null)
         {
-            CurrentState.Exit();
+            _currentState.Exit();
         }
-        CurrentState = state;
+
+        _currentState = state;
+
         state.Enter();
     }
 
     private void Update()
     {
-        if (CurrentState != null)
+        if (_currentState != null)
         {
-            CurrentState.Update();
+            _currentState.Update();
         }
     }
 
     public void Clear()
     {
-        if (CurrentState != null)
+        if (_currentState != null)
         {
-            CurrentState.Exit();
+            _currentState.Exit();
         }
-        CurrentState = null;
+        _currentState = null;
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +8,11 @@ public struct PlayerObject
     [SerializeField]
     private Vector3 objectStartPosition;
     public Vector3 ObjectStartPosition => objectStartPosition;
+
     [SerializeField]
     private Quaternion objectStartRotation;
     public Quaternion ObjectStartRotation => objectStartRotation;
+
     [SerializeField]
     GameObject objectPrefab;
     public GameObject ObjectPrefab => objectPrefab;
@@ -28,9 +29,11 @@ public class LevelSettingsScriptableObject : ScriptableObject
     [SerializeField]
     private uint playerStartLivesCount;
     public uint PlayerStartLivesCount => playerStartLivesCount;
+
     [SerializeField]
     private PlayerObject mainPlayerObject;
     public PlayerObject MainPlayerObject => mainPlayerObject;
+
     [SerializeField]
     private List<PlayerObject> playerObjects;
     public List<PlayerObject> PlayerObjects => playerObjects;

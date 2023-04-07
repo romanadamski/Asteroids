@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 public class EventsManager : BaseManager<EventsManager>
 {
@@ -30,7 +25,6 @@ public class EventsManager : BaseManager<EventsManager>
     {
         LevelStarted?.Invoke(levelNumber);
     }
-
 
     public event Action<uint> ScoreUpdated;
     public void OnScoreUpdated(uint score)

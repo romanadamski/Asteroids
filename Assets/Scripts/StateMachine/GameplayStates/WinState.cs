@@ -1,12 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class WinState : State
 {
-    public WinState(StateMachine stateMachine) : base(stateMachine)
-    {
-    }
+    public WinState(StateMachine stateMachine) : base(stateMachine) { }
 
     protected override void OnEnter()
     {

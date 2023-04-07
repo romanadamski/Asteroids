@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class GameplayState : State
 {
     private GameplayMenu _gameplayMenu;
 
-    public GameplayState(StateMachine stateMachine) : base(stateMachine)
-    {
-
-    }
+    public GameplayState(StateMachine stateMachine) : base(stateMachine) { }
 
     protected override void OnEnter()
     {

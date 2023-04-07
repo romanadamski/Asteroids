@@ -1,14 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class MainMenuState : State
 {
     private MainMenu _mainMenu;
 
-    public MainMenuState(StateMachine stateMachine) : base(stateMachine)
-    {
-    }
+    public MainMenuState(StateMachine stateMachine) : base(stateMachine) { }
 
     protected override void OnEnter()
     {
@@ -24,10 +18,5 @@ public class MainMenuState : State
         {
             _mainMenu.Hide();
         }
-    }
-
-    protected override void OnUpdate()
-    {
-
     }
 }

@@ -1,19 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 public class MainMenu : BaseMenu
 {
     [SerializeField]
-    Button playButton;
+    private Button playButton;
     [SerializeField]
-    TextMeshProUGUI highscores;
+    private TextMeshProUGUI highscores;
 
-    void Awake()
+    private void Awake()
     {
         playButton.onClick.AddListener(OnPlayClick);
     }

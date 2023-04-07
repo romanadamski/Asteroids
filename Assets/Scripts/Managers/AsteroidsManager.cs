@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class AsteroidsManager : BaseManager<AsteroidsManager>
@@ -73,7 +72,7 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
     /// <summary>
     /// Enable flag for creating new objects in coroutine (coroutine must be started also)
     /// </summary>
-    public void StartNewObjectsReleasing()
+    private void StartNewObjectsReleasing()
     {
         _isReleasingEnabled = true;
     }
@@ -81,7 +80,7 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
     /// <summary>
     /// Disable flag for creating new objects in coroutine (regardless if coroutine is started)
     /// </summary>
-    public void StopNewObjectsReleasing()
+    private void StopNewObjectsReleasing()
     {
         _isReleasingEnabled = false;
     }

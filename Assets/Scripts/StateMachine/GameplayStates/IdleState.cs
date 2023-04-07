@@ -1,14 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class IdleState : State
 {
     private IdleMenu _idleMenu;
 
-    public IdleState(StateMachine stateMachine) : base(stateMachine)
-    {
-    }
+    public IdleState(StateMachine stateMachine) : base(stateMachine) { }
 
     protected override void OnEnter()
     {

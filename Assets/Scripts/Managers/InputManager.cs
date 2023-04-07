@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class InputManager : BaseManager<InputManager>
 {
-    List<BaseInputController> _inputControllers = new List<BaseInputController>();
+    private List<BaseInputController> _inputControllers = new List<BaseInputController>();
 
     private void Update()
     {

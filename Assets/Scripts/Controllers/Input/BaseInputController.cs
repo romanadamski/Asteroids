@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class BaseInputController : MonoBehaviour
 {
-    public abstract void OnUpdate();
-    public abstract void OnFixedUpdate();
+    public virtual void OnUpdate() { }
+    public virtual void OnFixedUpdate() { }
 
     private void OnEnable()
     {

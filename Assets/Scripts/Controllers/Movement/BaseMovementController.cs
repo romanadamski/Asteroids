@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public abstract class BaseMovementController : MonoBehaviour
@@ -15,8 +10,8 @@ public abstract class BaseMovementController : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
 
     protected abstract void MoveObject();
-    public virtual void OnOutsideScreen() { }
-    public virtual void OnInsideScreen() { }
+    protected virtual void OnOutsideScreen() { }
+    protected virtual void OnInsideScreen() { }
 
     private void Awake()
     {
@@ -42,7 +37,7 @@ public abstract class BaseMovementController : MonoBehaviour
         MoveObject();
     }
 
-    protected void ReturnToPool()
+    protected void DeactivaleMovingObject()
     {
         StopMovement();
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());

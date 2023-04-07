@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidMovementController : BaseMovementController
@@ -11,9 +9,9 @@ public class AsteroidMovementController : BaseMovementController
 
     [Tooltip("Time in seconds")]
     [SerializeField]
-    private float _maxOutsideScreenTime;
+    private float _maxOutsideScreenTime = 5;
 
-    public override void OnOutsideScreen()
+    protected override void OnOutsideScreen()
     {
         //wait till object appears on screen
         if (!_firstScreenApperance) return;
@@ -26,11 +24,11 @@ public class AsteroidMovementController : BaseMovementController
 
         if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > _maxOutsideScreenTime)
         {
-            ReturnToPool();
+            DeactivaleMovingObject();
         }
     }
 
-    public override void OnInsideScreen()
+    protected override void OnInsideScreen()
     {
         if (!_firstScreenApperance)
         {
