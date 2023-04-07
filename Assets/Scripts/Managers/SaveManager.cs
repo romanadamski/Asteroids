@@ -32,6 +32,11 @@ public class SaveManager : BaseManager<SaveManager>
         return saveData.Highscore.OrderByDescending(x => x).ToList();
     }
 
+    public uint GetHighestScore()
+    {
+        return GetHighscore().First();
+    }
+
     public void SetHighscore(uint score)
     {
         saveData.Highscore.Add(score);

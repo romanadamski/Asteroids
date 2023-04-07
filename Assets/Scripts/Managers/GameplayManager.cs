@@ -69,7 +69,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void IncrementScore()
     {
-        CurrentScore++;
+        CurrentScore += GameSettingsManager.Instance.Settings.AsteroidShottedPoints;
         EventsManager.Instance.OnScoreUpdated(CurrentScore);
     }
 

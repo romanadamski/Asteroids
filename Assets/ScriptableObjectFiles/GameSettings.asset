@@ -17,3 +17,5 @@ MonoBehaviour:
   playerMovementPrecision: 10
   baseBulletMovementSpeed: 11
   baseAsteroidMovementSpeed: 1
+  _idleStateTime: 1.5
+  _asteroidShottedPoints: 3

@@ -30,4 +30,8 @@ public class GameSettingsScriptableObject : ScriptableObject
     [SerializeField]
     private float _idleStateTime;
     public float IdleStateTime => _idleStateTime;
+
+    [SerializeField]
+    private uint _asteroidShottedPoints;
+    public uint AsteroidShottedPoints => _asteroidShottedPoints;
 }
