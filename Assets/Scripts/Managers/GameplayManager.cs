@@ -60,6 +60,14 @@ public class GameplayManager : BaseManager<GameplayManager>
         SaveManager.Instance.Save();
     }
 
+    public void ClearGameplay()
+    {
+        ObjectPoolingManager.Instance.ReturnAllToPools();
+        DeactivatePlayer();
+        DestroyAllPlayerObjects();
+        AsteroidsManager.Instance.StopReleasingAsteroidsCoroutine();
+    }
+
     private void AsteroidShotted()
     {
         IncrementScore();
@@ -132,6 +140,8 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void ClearGameplayStateMachine()
     {
+        ClearGameplay();
+        DestroyPlayer();
         _gameplayStateMachine.Clear();
     }
 

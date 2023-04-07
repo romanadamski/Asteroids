@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class GameplayMenu : BaseMenu
 {
@@ -9,10 +11,13 @@ public class GameplayMenu : BaseMenu
     private TextMeshProUGUI levelNumberCounter;
     [SerializeField]
     private TextMeshProUGUI scoreCounter;
+    [SerializeField]
+    private Button menuButton;
 
     private void Awake()
     {
         SubscribeToEvents();
+        menuButton.onClick.AddListener(OnGoToMainMenuClick);
     }
 
     private void SubscribeToEvents()
@@ -21,6 +26,11 @@ public class GameplayMenu : BaseMenu
         EventsManager.Instance.PlayerSpawned += OnPlayerSpawned;
         EventsManager.Instance.LevelStarted += OnGameplayStarted;
         EventsManager.Instance.ScoreUpdated += OnScoreUpdated;
+    }
+
+    private void OnGoToMainMenuClick()
+    {
+        GameplayManager.Instance.SetEndGameplayState();
     }
 
     private void OnGameplayStarted(uint levelNumber)

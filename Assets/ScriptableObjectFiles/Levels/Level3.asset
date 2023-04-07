@@ -24,4 +24,4 @@ MonoBehaviour:
     objectPrefab: {fileID: 3873032853012233273, guid: 680dda8ae858d86448599cd2df750c39, type: 3}
   asteroidsReleasingFrequency:
     item1: 1
-    item2: 10
+    item2: 2

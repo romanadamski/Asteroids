@@ -4,10 +4,7 @@ public class DeathState : State
 
     protected override void OnEnter()
     {
-        ObjectPoolingManager.Instance.ReturnAllToPools();
-        GameplayManager.Instance.DeactivatePlayer();
-        GameplayManager.Instance.DestroyAllPlayerObjects();
-        AsteroidsManager.Instance.StopReleasingAsteroidsCoroutine();
+        GameplayManager.Instance.ClearGameplay();
 
         if (GameplayManager.Instance.PlayerLivesCount == 0)
         {

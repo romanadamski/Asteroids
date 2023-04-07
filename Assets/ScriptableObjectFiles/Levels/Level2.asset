@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   levelNumber: 2
-  playerStartLivesCount: 8
+  playerStartLivesCount: 7
   mainPlayerObject:
     objectStartPosition: {x: 0, y: 0, z: 0}
     objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
-    objectPrefab: {fileID: 3873032853012233273, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
+    objectPrefab: {fileID: 3873032853012233273, guid: c1c8da319f8d13d4698c67e97dbd3fb7, type: 3}
   playerObjects: []
   asteroidsReleasingFrequency:
     item1: 1
-    item2: 10
+    item2: 3
