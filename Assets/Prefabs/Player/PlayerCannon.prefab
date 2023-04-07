@@ -123,7 +123,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.19, y: 3.55}
+    oldSize: {x: 2.19, y: 2}
     newSize: {x: 2.19, y: 3.55}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -204,6 +204,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2265806192552167812, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265806192552167812, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265806192552167812, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -247,7 +255,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SingleRifleZ
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4419774980842020425, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
 --- !u!4 &5167305583573099130 stripped
 Transform:

@@ -21,6 +21,7 @@ public class DeathState : State
 
     private void OnPlayerLose()
     {
+        GameplayManager.Instance.DestroyPlayer();
         GameplayManager.Instance.SaveScore();
         _stateMachine.SetState(GameplayManager.Instance.LoseState);
     }

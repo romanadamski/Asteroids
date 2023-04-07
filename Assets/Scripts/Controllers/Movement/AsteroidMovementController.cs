@@ -1,15 +1,79 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(BaseCollisionController))]
 public class AsteroidMovementController : BaseMovementController
 {
     private bool _firstScreenApperance;
     private DateTime _outsideScreenStartTime;
     private bool _isOutsideScreenTimeSet;
+    private BaseCollisionController _collisionController;
+    private Coroutine _rotationCoroutine;
 
     [Tooltip("Time in seconds")]
     [SerializeField]
-    private float _maxOutsideScreenTime = 5;
+    private float maxOutsideScreenTime = 5;
+
+    private void Start()
+    {
+        _collisionController = GetComponent<BaseCollisionController>();
+        _collisionController.CollisionEnter += CollisionEnter;
+    }
+
+    private void CollisionEnter(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals(GameObjectTagsConstants.ASTEROID))
+        {
+            RotateTowardsVelocity();
+        }
+    }
+
+    private void RotateTowardsVelocity(bool smooth = true)
+    {
+        if (smooth)
+        {
+            StopRotationCoroutine();
+            if (gameObject.activeSelf)
+            {
+                _rotationCoroutine = StartCoroutine(SmoothRotateTowardsVelocity());
+            }
+
+        }
+        else
+        {
+            transform.rotation = GetVelocityRotation();
+        }
+    }
+
+    private IEnumerator SmoothRotateTowardsVelocity()
+    {
+        var targetAngle = GetVelocityRotation();
+        while (transform.rotation != targetAngle)
+        {
+            transform.rotation = Quaternion.Lerp(
+                            transform.rotation,
+                            targetAngle,
+                            Time.deltaTime);
+
+            yield return null;
+        }
+    }
+
+    private void StopRotationCoroutine()
+    {
+        if (_rotationCoroutine != null)
+        {
+            StopCoroutine(_rotationCoroutine);
+            _rotationCoroutine = null;
+        }
+    }
+
+    private Quaternion GetVelocityRotation()
+    {
+        float angle = (Mathf.Atan2(-_rigidbody2D.velocity.x, _rigidbody2D.velocity.y) * Mathf.Rad2Deg) - 90;
+        return Quaternion.AngleAxis(angle, Vector3.forward);
+    }
 
     protected override void OnOutsideScreen()
     {
@@ -22,9 +86,11 @@ public class AsteroidMovementController : BaseMovementController
             _isOutsideScreenTimeSet = true;
         }
 
-        if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > _maxOutsideScreenTime)
+        if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > maxOutsideScreenTime)
         {
-            DeactivaleMovingObject();
+            DeactivateMovingObject();
+            _firstScreenApperance = false;
+            _isOutsideScreenTimeSet = false;
         }
     }
 
@@ -36,9 +102,9 @@ public class AsteroidMovementController : BaseMovementController
         }
     }
 
-    protected override void MoveObject()
+    protected override void MoveObject(Vector3 direction)
     {
-        //todo moving asteroid
-        _rigidbody2D.velocity = transform.up * GameSettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
+        _rigidbody2D.velocity = direction * GameSettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
+        RotateTowardsVelocity(smooth: false);
     }
 }

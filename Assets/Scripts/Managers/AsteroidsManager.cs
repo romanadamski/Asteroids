@@ -6,6 +6,8 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
 {
     private Coroutine _releasingAsteroidsCoroutine;
     private List<GameObject> _asteroids { get; } = new List<GameObject>();
+
+    [SerializeField]
     private bool _isReleasingEnabled = true;
 
     public void StartReleasingAsteroidCoroutine()
@@ -14,16 +16,20 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
         _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());
     }
 
+    //todo releasing asteroid
     private IEnumerator ReleaseAsteroids()
     {
         yield return new WaitUntil(() => _isReleasingEnabled);
+
         ReleaseRandomAsteroid();
-        
+
         var frequency = Random.Range(
             LevelSettingsManager.Instance.CurrentLevel.AsteroidsReleasingFrequency.Item1,
             LevelSettingsManager.Instance.CurrentLevel.AsteroidsReleasingFrequency.Item2);
 	    
         yield return new WaitForSecondsRealtime(frequency);
+
+        //releasing in recursion
         _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());
     }
 
@@ -31,15 +37,22 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
     {
         var randomAsteroid = GetRandomAsteroid();
         ReleaseAsteroid(randomAsteroid);
+        var randomAsteroid2 = GetRandomAsteroid();
+        ReleaseAsteroid(randomAsteroid2);
+
+        randomAsteroid.transform.position = new Vector2(2.5f, 2);
+        randomAsteroid2.transform.position = new Vector2(0, -2);
+        randomAsteroid.GetComponent<AsteroidMovementController>().Release(-randomAsteroid.transform.right);
+        randomAsteroid2.GetComponent<AsteroidMovementController>().Release(randomAsteroid2.transform.up);
     }
 
     public void ReleaseAsteroid(GameObject asteroid)
     {
         asteroid.gameObject.SetActive(true);
         asteroid.transform.position = Vector3.zero;
-        asteroid.GetComponent<AsteroidMovementController>().Release();
+        //asteroid.GetComponent<AsteroidMovementController>().Release();
 
-        _asteroids.Add(asteroid);
+        //_asteroids.Add(asteroid);
     }
 
     public void StopReleasingAsteroidsCoroutine()
@@ -53,35 +66,5 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
         var allAsteroidTypes = ObjectPoolingManager.Instance.GetAllPoolableNamesByPoolableComponentType<AsteroidPoolableController>();
         var randomAsteroidType = allAsteroidTypes[Random.Range(0, allAsteroidTypes.Length)];
         return ObjectPoolingManager.Instance.GetFromPool(randomAsteroidType).gameObject;
-    }
-
-    public void ToggleReleasing()
-    {
-        if (_isReleasingEnabled)
-        {
-            StopNewObjectsReleasing();
-            StopReleasingAsteroidsCoroutine();
-        }
-        else
-        {
-            StartNewObjectsReleasing();
-            StartReleasingAsteroidCoroutine();
-        }
-    }
-
-    /// <summary>
-    /// Enable flag for creating new objects in coroutine (coroutine must be started also)
-    /// </summary>
-    private void StartNewObjectsReleasing()
-    {
-        _isReleasingEnabled = true;
-    }
-
-    /// <summary>
-    /// Disable flag for creating new objects in coroutine (regardless if coroutine is started)
-    /// </summary>
-    private void StopNewObjectsReleasing()
-    {
-        _isReleasingEnabled = false;
     }
 }

@@ -9,7 +9,7 @@ public abstract class BaseMovementController : MonoBehaviour
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
 
-    protected abstract void MoveObject();
+    protected abstract void MoveObject(Vector3 direction);
     protected virtual void OnOutsideScreen() { }
     protected virtual void OnInsideScreen() { }
 
@@ -32,12 +32,12 @@ public abstract class BaseMovementController : MonoBehaviour
         }
     }
 
-    public void Release()
+    public void Release(Vector3 direction)
     {
-        MoveObject();
+        MoveObject(direction);
     }
 
-    protected void DeactivaleMovingObject()
+    protected void DeactivateMovingObject()
     {
         StopMovement();
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());

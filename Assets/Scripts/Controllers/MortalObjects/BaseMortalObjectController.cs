@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
     private string[] _enemyObjectsTags;
-    private BaseCollisionController _collideController;
+    private BaseCollisionController _collisionController;
 
     protected bool _enemyCollideExited = true;
     protected virtual void OnCollisionWithEnemyEnter(Collision2D collision) { }
@@ -18,9 +18,9 @@ public abstract class BaseMortalObjectController : MonoBehaviour
     private void Awake()
     {
         _enemyObjectsTags = GetEnemies();
-        _collideController = GetComponent<BaseCollisionController>();
-        _collideController.CollisionEnter += CollisionEnter;
-        _collideController.CollisionExit += CollisionExit;
+        _collisionController = GetComponent<BaseCollisionController>();
+        _collisionController.CollisionEnter += CollisionEnter;
+        _collisionController.CollisionExit += CollisionExit;
     }
 
     private void CollisionEnter(Collision2D collision)

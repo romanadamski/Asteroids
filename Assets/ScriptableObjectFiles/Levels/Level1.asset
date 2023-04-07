@@ -15,7 +15,7 @@ MonoBehaviour:
   levelNumber: 1
   playerStartLivesCount: 10
   mainPlayerObject:
-    objectStartPosition: {x: 2, y: 2, z: 0}
+    objectStartPosition: {x: 5, y: 3, z: 0}
     objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
     objectPrefab: {fileID: 3873032853012233273, guid: efa669ced34c1a441b38a6c6a6a04845, type: 3}
   playerObjects: []

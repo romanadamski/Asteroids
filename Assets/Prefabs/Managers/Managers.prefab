@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c3c62bbfd35e14fa59cb8607660909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isReleasingEnabled: 1
 --- !u!1001 &3212587683951388854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -441,6 +442,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6139016675400060282}
     m_Modifications:
+    - target: {fileID: 1364737813463571283, guid: b3e8dee8042abfd4386b4965efa644fb, type: 3}
+      propertyPath: pools.Array.data[0].CanGrow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364737813463571283, guid: b3e8dee8042abfd4386b4965efa644fb, type: 3}
+      propertyPath: pools.Array.data[1].CanGrow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364737813463571283, guid: b3e8dee8042abfd4386b4965efa644fb, type: 3}
+      propertyPath: pools.Array.data[2].CanGrow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364737813463571283, guid: b3e8dee8042abfd4386b4965efa644fb, type: 3}
+      propertyPath: pools.Array.data[3].CanGrow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364737813463571283, guid: b3e8dee8042abfd4386b4965efa644fb, type: 3}
+      propertyPath: pools.Array.data[4].CanGrow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1364737813463571283, guid: b3e8dee8042abfd4386b4965efa644fb, type: 3}
       propertyPath: pools.Array.data[0].PoolObjectPrefab
       value: 

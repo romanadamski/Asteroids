@@ -1,7 +1,9 @@
-﻿public class BaseBulletMovementController : BaseMovementController
+﻿using UnityEngine;
+
+public class BaseBulletMovementController : BaseMovementController
 {
-    protected override void MoveObject()
+    protected override void MoveObject(Vector3 direction)
     {
-        _rigidbody2D.velocity = transform.up * GameSettingsManager.Instance.Settings.BaseBulletMovementSpeed * _speedMultiplier;
+        _rigidbody2D.velocity = direction * GameSettingsManager.Instance.Settings.BaseBulletMovementSpeed * _speedMultiplier;
     }
 }

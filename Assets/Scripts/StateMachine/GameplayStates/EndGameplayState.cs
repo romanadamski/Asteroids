@@ -4,7 +4,6 @@ public class EndGameplayState : State
 
     protected override void OnEnter()
     {
-        GameplayManager.Instance.DestroyPlayer();
         GameplayManager.Instance.ClearGameplayStateMachine();
     }
 

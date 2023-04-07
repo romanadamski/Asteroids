@@ -101,6 +101,8 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void ActivatePlayer()
     {
+        if (!_playerInstance) return;
+
         _playerInstance.gameObject.SetActive(true);
         _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartPosition;
         _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartRotation;

@@ -33,7 +33,7 @@ public class ShootingInputController : BaseInputController
             return;
         }
 
-        bullet.Release();
+        bullet.Release(transform.up);
     }
 
     private BaseBulletMovementController GetBulletFromPool()

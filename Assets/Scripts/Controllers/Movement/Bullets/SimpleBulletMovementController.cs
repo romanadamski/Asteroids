@@ -2,6 +2,6 @@
 {
     protected override void OnOutsideScreen()
     {
-        DeactivaleMovingObject();
+        DeactivateMovingObject();
     }
 }
