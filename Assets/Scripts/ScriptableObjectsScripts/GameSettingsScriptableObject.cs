@@ -7,22 +7,27 @@ public class GameSettingsScriptableObject : ScriptableObject
 {
     [Header("Player settings")]
     [SerializeField]
-    public float playerMovementSpeed;
+    private float playerMovementSpeed;
     public float PlayerMovementSpeed => playerMovementSpeed;
     [SerializeField]
-    public float playerRotationSpeed;
+    private float playerRotationSpeed;
     public float PlayerRotationSpeed => playerRotationSpeed;
     [SerializeField]
-    public float playerMovementPrecision;
+    private float playerMovementPrecision;
     public float PlayerMovementPrecision => playerMovementPrecision;
 
     [Header("Bullet settings")]
     [SerializeField]
-    public float baseBulletMovementSpeed;
+    private float baseBulletMovementSpeed;
     public float BaseBulletMovementSpeed => baseBulletMovementSpeed;
 
     [Header("Asteroid settings")]
     [SerializeField]
-    public float baseAsteroidMovementSpeed;
+    private float baseAsteroidMovementSpeed;
     public float BaseAsteroidMovementSpeed => baseAsteroidMovementSpeed;
+
+    [Header("Game settings")]
+    [SerializeField]
+    private float _idleStateTime;
+    public float IdleStateTime => _idleStateTime;
 }

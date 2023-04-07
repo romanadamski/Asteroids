@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameplayManager : BaseManager<GameplayManager>
 {
-    private GameObject _playerInstance;
+    private MortalPlayerController _playerInstance;
     private List<GameObject> _playerObjects = new List<GameObject>();
 
     #region States
@@ -16,11 +16,13 @@ public class GameplayManager : BaseManager<GameplayManager>
     public WinState WinState { get; private set; }
     public LoseState LoseState { get; private set; }
     public DeathState DeathState { get; private set; }
+    public IdleState IdleState { get; private set; }
     public EndGameplayState EndGameplayState { get; private set; }
 
     #endregion
 
-    private uint _currentScore;
+    public uint CurrentScore { get; private set; }
+    public uint PlayerLivesCount => _playerInstance.LivesCount;
 
     private void Awake()
     {
@@ -40,52 +42,68 @@ public class GameplayManager : BaseManager<GameplayManager>
         WinState = new WinState(_gameplayStateMachine);
         LoseState = new LoseState(_gameplayStateMachine);
         DeathState = new DeathState(_gameplayStateMachine);
+        IdleState = new IdleState(_gameplayStateMachine);
         EndGameplayState = new EndGameplayState(_gameplayStateMachine);
     }
 
     private void SubscribeToEvents()
     {
-        EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
         EventsManager.Instance.AsteroidShotted += AsteroidShotted;
     }
 
-    private void PlayerLoseLife(uint lives)
+    public void SetDeathState()
     {
-        if (lives == 0)
-        {
-            OnPlayerDeath();
-        }
+        _gameplayStateMachine.SetState(DeathState);
     }
 
-    private void OnPlayerDeath()
+    public void SaveScore()
     {
-        SaveManager.Instance.SetHighscore(_currentScore);
+        SaveManager.Instance.SetHighscore(CurrentScore);
         SaveManager.Instance.Save();
-        SetLoseGameplayState();
     }
 
     private void AsteroidShotted()
     {
-        _currentScore++;
-        EventsManager.Instance.OnScoreUpdated(_currentScore);
-        Debug.Log($"Current score {_currentScore}");
+        IncrementScore();
     }
 
-    public void SetCurrentLevel()
+    private void IncrementScore()
     {
-        _currentScore = 0;
+        CurrentScore++;
+        EventsManager.Instance.OnScoreUpdated(CurrentScore);
+    }
+
+    public void StartCurrentLevel()
+    {
+        ResetScore();
         LevelSettingsManager.Instance.SetCurrentLevel();
+
         SpawnPlayer();
+
+        EventsManager.Instance.OnLevelStarted(LevelSettingsManager.Instance.CurrentLevelNumber);
+    }
+
+    private void ResetScore()
+    {
+        CurrentScore = 0;
+        EventsManager.Instance.OnScoreUpdated(CurrentScore);
+    }
+
+    public void StartGameplay()
+    {
+        ActivatePlayer();
         SpawnAllPlayerObjects();
         AsteroidsManager.Instance.StartReleasingAsteroidCoroutine();
-
-        EventsManager.Instance.OnGameplayStarted(LevelSettingsManager.Instance.CurrentLevelNumber);
     }
 
     private void SpawnPlayer()
     {
-        _playerInstance = Instantiate(LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectPrefab, GameLauncher.Instance.GamePlane.transform);
-        _playerInstance.SetActive(true);
+        _playerInstance = Instantiate(LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectPrefab, GameLauncher.Instance.GamePlane.transform).GetComponent<MortalPlayerController>();
+    }
+
+    private void ActivatePlayer()
+    {
+        _playerInstance.gameObject.SetActive(true);
         _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartPosition;
         _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartRotation;
     }
@@ -102,14 +120,9 @@ public class GameplayManager : BaseManager<GameplayManager>
         }
     }
 
-    public void StartGameplay()
+    public void SetGameplayState()
     {
         _gameplayStateMachine.SetState(GameplayState);
-    }
-
-    public void SetLoseGameplayState()
-    {
-        _gameplayStateMachine.SetState(LoseState);
     }
 
     public void SetEndGameplayState()
@@ -117,27 +130,26 @@ public class GameplayManager : BaseManager<GameplayManager>
         _gameplayStateMachine.SetState(EndGameplayState);
     }
 
-    public void EndGameplay()
+    public void ClearGameplayStateMachine()
     {
         _gameplayStateMachine.Clear();
     }
 
-    public void EndCurrentLevel()
-    {
-        ObjectPoolingManager.Instance.ReturnAllToPools();
-        DespawnPlayer();
-        DespawnAllPlayerObjects();
-        AsteroidsManager.Instance.StopReleasingAsteroidsCoroutine();
-    }
-
-    private void DespawnPlayer()
+    public void DeactivatePlayer()
     {
         if (_playerInstance == null) return;
 
-        _playerInstance.SetActive(false);
+        _playerInstance.gameObject.SetActive(false);
     }
 
-    private void DespawnAllPlayerObjects()
+    public void DestroyPlayer()
+    {
+        if (_playerInstance == null) return;
+
+        Destroy(_playerInstance.gameObject);
+    }
+
+    public void DestroyAllPlayerObjects()
     {
         foreach (var playerObject in _playerObjects)
         {
@@ -150,7 +162,6 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         if (!EventsManager.Instance) return;
 
-        EventsManager.Instance.PlayerLoseLife -= PlayerLoseLife;
         EventsManager.Instance.AsteroidShotted -= AsteroidShotted;
     }
 

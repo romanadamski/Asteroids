@@ -9,27 +9,22 @@ using TMPro;
 public class GameplayMenu : BaseMenu
 {
     [SerializeField]
-    TextMeshProUGUI livesCounter;
+    private TextMeshProUGUI livesCounter;
     [SerializeField]
-    TextMeshProUGUI levelNumberCounter;
+    private TextMeshProUGUI levelNumberCounter;
     [SerializeField]
-    TextMeshProUGUI scoreCounter;
+    private TextMeshProUGUI scoreCounter;
 
     private void Awake()
     {
         SubscribeToEvents();
     }
 
-    private void OnEnable()
-    {
-        SetScore(0);
-    }
-
     private void SubscribeToEvents()
     {
         EventsManager.Instance.PlayerLoseLife += OnPlayerLoseLife;
         EventsManager.Instance.PlayerSpawned += OnPlayerSpawned;
-        EventsManager.Instance.GameplayStarted += OnGameplayStarted;
+        EventsManager.Instance.LevelStarted += OnGameplayStarted;
         EventsManager.Instance.ScoreUpdated += OnScoreUpdated;
     }
 
@@ -74,7 +69,7 @@ public class GameplayMenu : BaseMenu
 
         EventsManager.Instance.PlayerLoseLife -= OnPlayerLoseLife;
         EventsManager.Instance.PlayerSpawned -= OnPlayerSpawned;
-        EventsManager.Instance.GameplayStarted -= OnGameplayStarted;
+        EventsManager.Instance.LevelStarted -= OnGameplayStarted;
         EventsManager.Instance.ScoreUpdated -= OnScoreUpdated;
     }
 

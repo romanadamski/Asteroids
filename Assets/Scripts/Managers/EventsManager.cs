@@ -25,10 +25,10 @@ public class EventsManager : BaseManager<EventsManager>
         AsteroidShotted?.Invoke();
     }
     
-    public event Action<uint> GameplayStarted;
-    public void OnGameplayStarted(uint levelNumber)
+    public event Action<uint> LevelStarted;
+    public void OnLevelStarted(uint levelNumber)
     {
-        GameplayStarted?.Invoke(levelNumber);
+        LevelStarted?.Invoke(levelNumber);
     }
 
 

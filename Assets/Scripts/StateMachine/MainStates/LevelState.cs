@@ -10,16 +10,7 @@ public class LevelState : State
 
     protected override void OnEnter()
     {
-        GameplayManager.Instance.StartGameplay();
-    }
-
-    protected override void OnExit()
-    {
-
-    }
-
-    protected override void OnUpdate()
-    {
-
+        GameplayManager.Instance.StartCurrentLevel();
+        GameplayManager.Instance.SetGameplayState();
     }
 }

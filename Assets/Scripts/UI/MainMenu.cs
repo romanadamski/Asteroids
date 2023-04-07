@@ -26,7 +26,7 @@ public class MainMenu : BaseMenu
 
     private void OnPlayClick()
     {
-        GameManager.Instance.StartGameplay();
+        GameManager.Instance.SetLevelState();
     }
 
     private void SetHighscores()

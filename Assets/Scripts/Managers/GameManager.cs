@@ -29,7 +29,7 @@ public class GameManager : BaseManager<GameManager>
         LevelState = new LevelState(gameStateMachine);
     }
 
-    public void StartGameplay()
+    public void SetLevelState()
     {
         gameStateMachine.SetState(LevelState);
     }

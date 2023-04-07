@@ -288,8 +288,12 @@ PrefabInstance:
       value: SingleRifle
       objectReference: {fileID: 0}
     - target: {fileID: 7301702373490885429, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
+      propertyPath: shootKey
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301702373490885429, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}
       propertyPath: bulletTypeName
-      value: CrossingEdgesBulletMovementController
+      value: SimpleBulletMovementController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a55735dd3f17e242bc30876b536fb8e, type: 3}

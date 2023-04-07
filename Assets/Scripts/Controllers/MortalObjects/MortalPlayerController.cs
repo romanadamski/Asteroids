@@ -15,10 +15,11 @@ public class MortalPlayerController : BaseMortalObjectController
     protected override void OnCollisionWithEnemyEnter(Collision2D collision)
     {
         DecrementLive();
+        GameplayManager.Instance.SetDeathState();
         EventsManager.Instance.OnPlayerLoseLife(_livesCount);
     }
-    
-    private void OnEnable()
+
+    private void Start()
     {
         _livesCount = LevelSettingsManager.Instance.CurrentLevel.PlayerStartLivesCount;
         EventsManager.Instance.OnPlayerSpawned(_livesCount);

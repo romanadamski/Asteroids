@@ -10,16 +10,24 @@ public class DeathState : State
 
     protected override void OnEnter()
     {
+        ObjectPoolingManager.Instance.ReturnAllToPools();
+        GameplayManager.Instance.DeactivatePlayer();
+        GameplayManager.Instance.DestroyAllPlayerObjects();
+        AsteroidsManager.Instance.StopReleasingAsteroidsCoroutine();
 
+        if (GameplayManager.Instance.PlayerLivesCount == 0)
+        {
+            OnPlayerLose();
+        }
+        else
+        {
+            _stateMachine.SetState(GameplayManager.Instance.IdleState);
+        }
     }
 
-    protected override void OnExit()
+    private void OnPlayerLose()
     {
-
-    }
-
-    protected override void OnUpdate()
-    {
-
+        GameplayManager.Instance.SaveScore();
+        _stateMachine.SetState(GameplayManager.Instance.LoseState);
     }
 }

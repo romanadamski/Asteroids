@@ -10,7 +10,8 @@ public class EndGameplayState : State
 
     protected override void OnEnter()
     {
-        GameplayManager.Instance.EndGameplay();
+        GameplayManager.Instance.DestroyPlayer();
+        GameplayManager.Instance.ClearGameplayStateMachine();
     }
 
     protected override void OnExit()

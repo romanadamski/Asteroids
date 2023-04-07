@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class LoseMenu : BaseMenu
 {
     [SerializeField]
-    Button goToMainMenuButton;
+    private Button goToMainMenuButton;
 
-    void Awake()
+    private void Awake()
     {
         goToMainMenuButton.onClick.AddListener(OnGoToMainMenuClick);
     }

@@ -14,10 +14,10 @@ public abstract class BaseMortalObjectController : MonoBehaviour
     private string[] _enemyObjectsTags;
     private BaseCollisionController _collideController;
 
-    protected bool _collideExit = true;
+    protected bool _enemyCollideExited = true;
     protected virtual void OnCollisionWithEnemyEnter(Collision2D collision) { }
     protected virtual void OnCollisionWithEnemyExit(Collision2D collision) { }
-    protected abstract string[] GetEnemies();
+    protected virtual string[] GetEnemies() { return new string[] { }; }
 
     private void Awake()
     {
@@ -29,22 +29,20 @@ public abstract class BaseMortalObjectController : MonoBehaviour
 
     private void CollisionEnter(Collision2D collision)
     {
-        if (!_collideExit) return;
-        Debug.Log($"Entering collision: {name}");
-
-        _collideExit = false;
-        
-        if (_enemyObjectsTags.Contains(collision.transform.tag))
+        if (_enemyCollideExited && _enemyObjectsTags.Contains(collision.transform.tag))
         {
+            _enemyCollideExited = false;
             OnCollisionWithEnemyEnter(collision);
         }
     }
 
     private void CollisionExit(Collision2D collision)
     {
-        Debug.Log($"Exiting collision: {name}");
-        _collideExit = true;
-        OnCollisionWithEnemyExit(collision);
+        if (_enemyObjectsTags.Contains(collision.transform.tag))
+        {
+            _enemyCollideExited = true;
+            OnCollisionWithEnemyExit(collision);
+        }
     }
 
     protected void DecrementLive()
