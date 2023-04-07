@@ -3,13 +3,10 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public abstract class BaseMovementController : MonoBehaviour
 {
-    [SerializeField]
-    protected float _speedMultiplier = 1;
-
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
 
-    protected abstract void MoveObject(Vector3 direction);
+    protected abstract void MoveObject(Vector3 direction, float speedMultiplier);
     protected virtual void OnOutsideScreen() { }
     protected virtual void OnInsideScreen() { }
 
@@ -32,9 +29,9 @@ public abstract class BaseMovementController : MonoBehaviour
         }
     }
 
-    public void Release(Vector3 direction)
+    public void Release(Vector3 direction, float speedMultiplier = 1)
     {
-        MoveObject(direction);
+        MoveObject(direction, speedMultiplier);
     }
 
     protected void DeactivateMovingObject()

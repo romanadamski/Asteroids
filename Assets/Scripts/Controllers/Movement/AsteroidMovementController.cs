@@ -102,9 +102,9 @@ public class AsteroidMovementController : BaseMovementController
         }
     }
 
-    protected override void MoveObject(Vector3 direction)
+    protected override void MoveObject(Vector3 direction, float speedMultiplier)
     {
-        _rigidbody2D.velocity = direction * GameSettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * _speedMultiplier;
+        _rigidbody2D.velocity = direction * GameSettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * speedMultiplier;
         RotateTowardsVelocity(smooth: false);
     }
 }

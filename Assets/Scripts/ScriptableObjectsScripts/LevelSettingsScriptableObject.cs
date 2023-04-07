@@ -42,4 +42,8 @@ public class LevelSettingsScriptableObject : ScriptableObject
     [SerializeField]
     private SerializableTuple<float, float> asteroidsReleasingFrequency;
     public SerializableTuple<float, float> AsteroidsReleasingFrequency => asteroidsReleasingFrequency;
+
+    [SerializeField]
+    private SerializableTuple<float, float> asteroidsSpeedRange;
+    public SerializableTuple<float, float> AsteroidsSpeedRange => asteroidsSpeedRange;
 }

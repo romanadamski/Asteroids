@@ -5,10 +5,15 @@ using UnityEngine;
 public class AsteroidsManager : BaseManager<AsteroidsManager>
 {
     private Coroutine _releasingAsteroidsCoroutine;
-    private List<GameObject> _asteroids { get; } = new List<GameObject>();
+    private AsteroidsRandomizeHelper _asteroidsRandomizeHelper;
 
     [SerializeField]
     private bool _isReleasingEnabled = true;
+
+    private void Start()
+    {
+        _asteroidsRandomizeHelper = new AsteroidsRandomizeHelper();
+    }
 
     public void StartReleasingAsteroidCoroutine()
     {
@@ -23,11 +28,7 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
 
         ReleaseRandomAsteroid();
 
-        var frequency = Random.Range(
-            LevelSettingsManager.Instance.CurrentLevel.AsteroidsReleasingFrequency.Item1,
-            LevelSettingsManager.Instance.CurrentLevel.AsteroidsReleasingFrequency.Item2);
-	    
-        yield return new WaitForSecondsRealtime(frequency);
+        yield return new WaitForSecondsRealtime(_asteroidsRandomizeHelper.GetRandomAsteroidFrequency());
 
         //releasing in recursion
         _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());
@@ -42,8 +43,8 @@ public class AsteroidsManager : BaseManager<AsteroidsManager>
 
         randomAsteroid.transform.position = new Vector2(2.5f, 2);
         randomAsteroid2.transform.position = new Vector2(0, -2);
-        randomAsteroid.GetComponent<AsteroidMovementController>().Release(-randomAsteroid.transform.right);
-        randomAsteroid2.GetComponent<AsteroidMovementController>().Release(randomAsteroid2.transform.up);
+        randomAsteroid.GetComponent<AsteroidMovementController>().Release(_asteroidsRandomizeHelper.GetRandomAsteroidDirection(), _asteroidsRandomizeHelper.GetRandomAsteroidSpeed());
+        randomAsteroid2.GetComponent<AsteroidMovementController>().Release(_asteroidsRandomizeHelper.GetRandomAsteroidDirection(), _asteroidsRandomizeHelper.GetRandomAsteroidSpeed());
     }
 
     public void ReleaseAsteroid(GameObject asteroid)
