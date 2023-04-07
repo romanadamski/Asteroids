@@ -14,13 +14,12 @@ public class MortalAsteroidController : BaseMortalObjectController
 
     protected override void OnCollisionWithEnemyEnter(Collision2D collision)
     {
-        DecrementLive();
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
 
         for (int i = 0; i < pieceCount; i++)
         {
             var asteroid = ObjectPoolingManager.Instance.GetFromPool(pieceType);
-            AsteroidsManager.Instance.ReleaseAsteroid(asteroid.gameObject);
+            AsteroidReleasingsManager.Instance.ReleaseAsteroid(asteroid.gameObject);
         }
 
         EventsManager.Instance.OnAsteroidShotted();

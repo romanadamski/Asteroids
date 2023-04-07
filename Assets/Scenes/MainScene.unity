@@ -369,10 +369,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 8546369919303185555, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
-      propertyPath: currentLevelNumber
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 812748cab56846c428a90c7c2aae1dcb, type: 3}
 --- !u!1 &1349856886

@@ -25,3 +25,6 @@ MonoBehaviour:
   asteroidsReleasingFrequency:
     item1: 1
     item2: 2
+  asteroidsSpeedRange:
+    item1: 1
+    item2: 6

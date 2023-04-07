@@ -32,4 +32,9 @@ public class EventsManager : BaseManager<EventsManager>
         ScoreUpdated?.Invoke(score);
     }
 
+    public event Action BulletFired;
+    public void OnBulletFired()
+    {
+        BulletFired?.Invoke();
+    }
 }

@@ -21,4 +21,7 @@ MonoBehaviour:
   playerObjects: []
   asteroidsReleasingFrequency:
     item1: 1
-    item2: 5
+    item2: 4
+  asteroidsSpeedRange:
+    item1: 1
+    item2: 2
