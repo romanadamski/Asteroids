@@ -89,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletShotClip: {fileID: 8300000, guid: d878887376756444bbd1f1b26636a0a3, type: 3}
   asteroidExplosionClip: {fileID: 8300000, guid: 40b875f88bed3a04c80b63b9c90fb2a9, type: 3}
+  crashClip: {fileID: 8300000, guid: 6559f63a67f6c64488affcada9590140, type: 3}
 --- !u!82 &7485334270544142573
 AudioSource:
   m_ObjectHideFlags: 0
