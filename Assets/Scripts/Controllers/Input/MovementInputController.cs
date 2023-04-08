@@ -27,6 +27,10 @@ public class MovementInputController : BaseInputController
     {
         _xAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);
         _yAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
+        if (disabled)
+        {
+            //Debug.Log($"_xAxis {Input.GetAxis(HORIZONTAL_AXIS_NAME)} _yAxis {Input.GetAxis(VERTICAL_AXIS_NAME)}");
+        }
     }
 
     public override void OnFixedUpdate()
@@ -40,7 +44,7 @@ public class MovementInputController : BaseInputController
         return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed * (speedMultiplier / 5);
     }
 
-    //todo why after disable and enable only x axis is taken if i do not release keys?
+    //todo why after disable and enable only one axis is taken if i do not release keys?
     private void StopMovement()
     {
         _rigidbody2D.velocity = Vector2.zero;
@@ -74,11 +78,11 @@ public class MovementInputController : BaseInputController
                 Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerRotationSpeed);
         }
     }
-
+    bool disabled;
     protected override void OnDisable()
     {
         base.OnDisable();
-
+        disabled = true;
         StopMovement();
     }
 }
