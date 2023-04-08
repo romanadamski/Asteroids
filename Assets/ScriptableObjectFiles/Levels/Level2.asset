@@ -20,8 +20,8 @@ MonoBehaviour:
     objectPrefab: {fileID: 3873032853012233273, guid: c1c8da319f8d13d4698c67e97dbd3fb7, type: 3}
   playerObjects: []
   asteroidsReleasingFrequency:
-    item1: 1
-    item2: 3
+    item1: 0.5
+    item2: 1.5
   asteroidsSpeedRange:
     item1: 1
-    item2: 4
+    item2: 5

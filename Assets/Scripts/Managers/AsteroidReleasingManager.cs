@@ -27,7 +27,7 @@ public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 
         ReleaseRandomAsteroid();
 
-        yield return new WaitForSecondsRealtime(_asteroidsRandomizeHelper.GetRandomAsteroidFrequency());
+        yield return new WaitForSeconds(_asteroidsRandomizeHelper.GetRandomAsteroidFrequency());
 
         //releasing in recursion
         _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());

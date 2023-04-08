@@ -4,8 +4,6 @@ public class DeathState : State
 
     protected override void OnEnter()
     {
-        GameplayManager.Instance.ClearGameplay();
-
         if (GameplayManager.Instance.PlayerLivesCount == 0)
         {
             OnPlayerLose();
@@ -18,6 +16,8 @@ public class DeathState : State
 
     private void OnPlayerLose()
     {
+        GameplayManager.Instance.ClearGameplay();
+
         GameplayManager.Instance.DestroyPlayer();
         GameplayManager.Instance.SaveScore();
         _stateMachine.SetState(GameplayManager.Instance.LoseState);

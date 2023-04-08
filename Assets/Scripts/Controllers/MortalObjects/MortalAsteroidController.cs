@@ -23,8 +23,10 @@ public class MortalAsteroidController : BaseMortalObjectController
         {
             var asteroid = ObjectPoolingManager.Instance.GetFromPool(pieceType);
             
-            asteroid.transform.position = new Vector2(Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
+            var randomPosition = new Vector2(
+                Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
                 Random.Range(transform.position.y - POSITION_RANDOMIZE_RANGE, transform.position.y + POSITION_RANDOMIZE_RANGE));
+            asteroid.transform.position = randomPosition;
 
             AsteroidReleasingManager.Instance.ReleaseAsteroid(asteroid.gameObject);
         }

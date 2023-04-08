@@ -14,6 +14,7 @@ public class IdleState : State
         {
             _idleMenu.Show();
         }
+        GameplayManager.Instance.PauseGameplay();
 
         StopIdleCoroutine();
         _idleCoroutine = GameplayManager.Instance.StartCoroutine(IdleCoroutine());
@@ -21,7 +22,8 @@ public class IdleState : State
 
     private IEnumerator IdleCoroutine()
     {
-        yield return new WaitForSeconds(GameSettingsManager.Instance.Settings.IdleStateTime);
+        yield return new WaitForSecondsRealtime(GameSettingsManager.Instance.Settings.IdleStateTime);
+        GameplayManager.Instance.ResumeGameplay();
         GameplayManager.Instance.SetGameplayState();
     }
 
@@ -37,6 +39,8 @@ public class IdleState : State
     protected override void OnExit()
     {
         StopIdleCoroutine();
+        GameplayManager.Instance.ClearGameplay();
+
         if (_idleMenu || UIManager.Instance.TryGetMenuByType(out _idleMenu))
         {
             _idleMenu.Hide();

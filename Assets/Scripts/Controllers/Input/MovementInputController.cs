@@ -25,11 +25,6 @@ public class MovementInputController : BaseInputController
 
     public override void OnUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            StopMovement();
-        }
-
         _xAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);
         _yAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
     }
@@ -45,10 +40,12 @@ public class MovementInputController : BaseInputController
         return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed * (speedMultiplier / 5);
     }
 
+    //todo why after disable and enable only x axis is taken if i do not release keys?
     private void StopMovement()
     {
         _rigidbody2D.velocity = Vector2.zero;
-        _rigidbody2D.angularVelocity= 0;
+        _rigidbody2D.angularVelocity = 0;
+        Input.ResetInputAxes();
     }
 
     private void MoveByArrows()
@@ -76,5 +73,12 @@ public class MovementInputController : BaseInputController
                 Quaternion.AngleAxis(angle, Vector3.forward),
                 Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerRotationSpeed);
         }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        StopMovement();
     }
 }

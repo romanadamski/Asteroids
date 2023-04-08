@@ -33,7 +33,10 @@ public class SaveManager : BaseManager<SaveManager>
 
     public uint GetHighestScore()
     {
-        return GetHighscore().First();
+        var highscore = GetHighscore();
+        return highscore.Count > 0
+            ? highscore.First()
+            : 0;
     }
 
     public void SetHighscore(uint score)

@@ -56,8 +56,11 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void SaveScore()
     {
-        SaveManager.Instance.SetHighscore(CurrentScore);
-        SaveManager.Instance.Save();
+        if (CurrentScore > 0)
+        {
+            SaveManager.Instance.SetHighscore(CurrentScore);
+            SaveManager.Instance.Save();
+        }
     }
 
     public void ClearGameplay()
@@ -166,6 +169,18 @@ public class GameplayManager : BaseManager<GameplayManager>
             Destroy(playerObject);
         }
         _playerObjects.Clear();
+    }
+
+    public void PauseGameplay()
+    {
+        InputManager.Instance.ToggleInput(false);
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGameplay()
+    {
+        InputManager.Instance.ToggleInput(true);
+        Time.timeScale = 1;
     }
 
     private void UnsubscribeFromEvents()

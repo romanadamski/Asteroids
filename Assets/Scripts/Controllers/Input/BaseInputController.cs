@@ -10,7 +10,7 @@ public abstract class BaseInputController : MonoBehaviour
         InputManager.Instance.AddInputController(this);
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         InputManager.Instance?.RemoveInputController(this);
     }
