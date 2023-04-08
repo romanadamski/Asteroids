@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidReleasingsManager : BaseManager<AsteroidReleasingsManager>
+public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 {
     private Coroutine _releasingAsteroidsCoroutine;
     private AsteroidsRandomizeHelper _asteroidsRandomizeHelper;
@@ -21,7 +21,6 @@ public class AsteroidReleasingsManager : BaseManager<AsteroidReleasingsManager>
         _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());
     }
 
-    //todo releasing asteroid
     private IEnumerator ReleaseAsteroids()
     {
         yield return new WaitUntil(() => _isReleasingEnabled);
@@ -37,23 +36,17 @@ public class AsteroidReleasingsManager : BaseManager<AsteroidReleasingsManager>
     private void ReleaseRandomAsteroid()
     {
         var randomAsteroid = GetRandomAsteroid();
+        randomAsteroid.transform.position = _asteroidsRandomizeHelper.GetRandomAsteroidPositionOutsideScreen();
         ReleaseAsteroid(randomAsteroid);
-        var randomAsteroid2 = GetRandomAsteroid();
-        ReleaseAsteroid(randomAsteroid2);
-
-        randomAsteroid.transform.position = new Vector2(2.5f, 2);
-        randomAsteroid2.transform.position = new Vector2(0, -2);
-        randomAsteroid.GetComponent<AsteroidMovementController>().Release(_asteroidsRandomizeHelper.GetRandomAsteroidDirection(), _asteroidsRandomizeHelper.GetRandomAsteroidSpeed());
-        randomAsteroid2.GetComponent<AsteroidMovementController>().Release(_asteroidsRandomizeHelper.GetRandomAsteroidDirection(), _asteroidsRandomizeHelper.GetRandomAsteroidSpeed());
     }
 
     public void ReleaseAsteroid(GameObject asteroid)
     {
         asteroid.gameObject.SetActive(true);
-        asteroid.transform.position = Vector3.zero;
-        //asteroid.GetComponent<AsteroidMovementController>().Release();
 
-        //_asteroids.Add(asteroid);
+        asteroid.GetComponent<AsteroidMovementController>().
+            Release(_asteroidsRandomizeHelper.GetRandomAsteroidDirectionDependsOnPosition(asteroid.transform),
+            _asteroidsRandomizeHelper.GetRandomAsteroidSpeed());
     }
 
     public void StopReleasingAsteroidsCoroutine()

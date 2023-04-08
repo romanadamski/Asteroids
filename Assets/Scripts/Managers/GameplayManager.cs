@@ -65,7 +65,7 @@ public class GameplayManager : BaseManager<GameplayManager>
         ObjectPoolingManager.Instance.ReturnAllToPools();
         DeactivatePlayer();
         DestroyAllPlayerObjects();
-        AsteroidReleasingsManager.Instance.StopReleasingAsteroidsCoroutine();
+        AsteroidReleasingManager.Instance.StopReleasingAsteroidsCoroutine();
     }
 
     private void AsteroidShotted()
@@ -99,7 +99,7 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         ActivatePlayer();
         SpawnAllPlayerObjects();
-        AsteroidReleasingsManager.Instance.StartReleasingAsteroidCoroutine();
+        AsteroidReleasingManager.Instance.StartReleasingAsteroidCoroutine();
     }
 
     private void SpawnPlayer()

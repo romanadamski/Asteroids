@@ -13,4 +13,9 @@ public class ScreenManager : BaseManager<ScreenManager>
     {
         _screenEdgesHelper.HandleScreenEdgeCrossing(transform);
     }
+
+    public ScreenDirectionEnum GetObjectPositionRelativeToScreen(Transform transform)
+    {
+        return _screenEdgesHelper.GetObjectPositionRelativeToScreen(transform);
+    }
 }
