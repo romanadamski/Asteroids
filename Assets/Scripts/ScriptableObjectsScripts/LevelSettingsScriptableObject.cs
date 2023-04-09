@@ -27,6 +27,9 @@ public class LevelSettingsScriptableObject : ScriptableObject
 
     [Header("Player settings")]
     [SerializeField]
+    private bool activatePlayer = true;
+    public bool ActivatePlayer => activatePlayer;
+    [SerializeField]
     private uint playerStartLivesCount;
     public uint PlayerStartLivesCount => playerStartLivesCount;
 

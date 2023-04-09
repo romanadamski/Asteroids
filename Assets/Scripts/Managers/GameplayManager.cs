@@ -114,6 +114,12 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         if (!_playerInstance) return;
 
+        if (!LevelSettingsManager.Instance.CurrentLevel.ActivatePlayer)
+        {
+            _playerInstance.gameObject.SetActive(false);
+            return;
+        }
+
         _playerInstance.gameObject.SetActive(true);
         _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartPosition;
         _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartRotation;

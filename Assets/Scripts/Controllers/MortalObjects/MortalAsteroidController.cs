@@ -5,7 +5,7 @@ public class MortalAsteroidController : BaseMortalObjectController
     private const float POSITION_RANDOMIZE_RANGE = 0.8f;
 
     [SerializeField]
-    private SerializableTuple<int, int> pieceCount;
+    private SerializableTuple<int, int> pieceCountRange;
     [SerializeField]
     private string pieceType;
 
@@ -17,7 +17,7 @@ public class MortalAsteroidController : BaseMortalObjectController
     protected override void OnCollisionWithEnemyEnter(Collision2D collision)
     {
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
-        var randomPieceCount = Random.Range(pieceCount.Item1, pieceCount.Item2 + 1);
+        var randomPieceCount = Random.Range(pieceCountRange.Item1, pieceCountRange.Item2 + 1);
 
         for (int i = 0; i < randomPieceCount; i++)
         {

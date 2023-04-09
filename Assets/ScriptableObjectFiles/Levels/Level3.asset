@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   levelNumber: 3
+  activatePlayer: 0
   playerStartLivesCount: 5
   mainPlayerObject:
     objectStartPosition: {x: 0, y: 0, z: 0}

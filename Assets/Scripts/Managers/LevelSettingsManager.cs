@@ -8,15 +8,18 @@ public class LevelSettingsManager : BaseManager<LevelSettingsManager>
     private List<LevelSettingsScriptableObject> levelSettings;
     public List<LevelSettingsScriptableObject> LevelSettings => levelSettings;
 
-    [SerializeField]
-    private uint currentLevelNumber;
-    public uint CurrentLevelNumber => currentLevelNumber;
+    public uint CurrentLevelNumber { get; private set; }
 
     public LevelSettingsScriptableObject CurrentLevel { get; private set; }
 
     public void SetCurrentLevel()
     {
-        CurrentLevel = GetLevelByNumber(currentLevelNumber);
+        CurrentLevel = GetLevelByNumber(CurrentLevelNumber);
+    }
+
+    public void SetLevelNumber(uint levelNumber)
+    {
+        CurrentLevelNumber = levelNumber;
     }
 
     private LevelSettingsScriptableObject GetLevelByNumber(uint levelNumber)

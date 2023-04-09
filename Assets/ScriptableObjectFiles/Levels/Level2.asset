@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   levelNumber: 2
+  activatePlayer: 1
   playerStartLivesCount: 7
   mainPlayerObject:
     objectStartPosition: {x: 0, y: 0, z: 0}
@@ -20,8 +21,8 @@ MonoBehaviour:
     objectPrefab: {fileID: 3873032853012233273, guid: c1c8da319f8d13d4698c67e97dbd3fb7, type: 3}
   playerObjects: []
   asteroidsReleasingFrequency:
-    item1: 0.5
-    item2: 1.5
+    item1: 0.1
+    item2: 2
   asteroidsSpeedRange:
     item1: 1
-    item2: 5
+    item2: 4

@@ -8,26 +8,11 @@ public class AsteroidMovementController : BaseMovementController
     private bool _firstScreenApperance;
     private DateTime _outsideScreenStartTime;
     private bool _isOutsideScreenTimeSet;
-    private BaseCollisionController _collisionController;
     private Coroutine _rotationCoroutine;
 
     [Tooltip("Time in seconds")]
     [SerializeField]
     private float maxOutsideScreenTime = 5;
-
-    private void Start()
-    {
-        _collisionController = GetComponent<BaseCollisionController>();
-        _collisionController.CollisionEnter += CollisionEnter;
-    }
-
-    private void CollisionEnter(Collision2D collision)
-    {
-        if (collision.gameObject.tag.Equals(GameObjectTagsConstants.ASTEROID))
-        {
-            RotateTowardsVelocity();
-        }
-    }
 
     private void RotateTowardsVelocity(bool smooth = true)
     {
