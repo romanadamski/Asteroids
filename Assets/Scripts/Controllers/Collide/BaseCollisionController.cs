@@ -9,6 +9,8 @@ public class BaseCollisionController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!gameObject.activeSelf) return;
+        
         OnCollideStart(collision);
     }
 

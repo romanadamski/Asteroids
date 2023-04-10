@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   playerMovementSpeed: 10
-  playerRotationSpeed: 10
+  playerRotationSpeed: 100
   playerMovementPrecision: 10
   baseBulletMovementSpeed: 11
   baseAsteroidMovementSpeed: 1
   _idleStateTime: 1.5
-  _asteroidShottedPoints: 3
+  _asteroidShottedPoints: 1

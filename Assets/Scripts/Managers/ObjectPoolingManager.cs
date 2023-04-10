@@ -15,7 +15,8 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
             {
                 var newObject = Instantiate(pool.PoolObjectPrefab.gameObject, pool.ObjectsParent);
                 newObject.gameObject.SetActive(false);
-                pool.PooledObjects.Enqueue(newObject.GetComponent<BasePoolableController>());
+                newObject.name = newObject.name.Replace("(Clone)", $"{newObject.GetInstanceID()}");
+                pool.PooledObjects.Enqueue(newObject);
                 pool.ObjectCount++;
             }
         }
@@ -33,7 +34,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         {
             var newObject = pool.PooledObjects.Dequeue();
             pool.ObjectsOutsidePool.Add(newObject);
-            return newObject;
+            return newObject.GetComponent<BasePoolableController>();
         }
         else
         {
@@ -41,7 +42,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
             {
                 pool.ObjectCount++;
                 var newObject = Instantiate(pool.PoolObjectPrefab, pool.ObjectsParent);
-                pool.ObjectsOutsidePool.Add(newObject);
+                pool.ObjectsOutsidePool.Add(newObject.gameObject);
                 return newObject;
             }
             else
@@ -75,7 +76,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
     public void ReturnToPool(BasePoolableController objectToReturn)
     {
         var pool = GetPoolByPoolableNameType(objectToReturn.PoolableType);
-        pool.ReturnToPool(objectToReturn);
+        pool.ReturnToPool(objectToReturn.gameObject);
     }
 
     private Pool GetPoolByPoolableNameType(string poolableType)

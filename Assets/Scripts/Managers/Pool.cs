@@ -9,7 +9,7 @@ public class Pool
     public int StartPoolCount;
     public BasePoolableController PoolObjectPrefab;
     public bool CanGrow;
-    public Queue<BasePoolableController> PooledObjects = new Queue<BasePoolableController>();
+    public Queue<GameObject> PooledObjects = new Queue<GameObject>();
     public Transform ObjectsParent;
 
     [HideInInspector]
@@ -26,7 +26,7 @@ public class Pool
     public string PoolableComponentType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType().Name;
 
     [HideInInspector]
-    public List<BasePoolableController> ObjectsOutsidePool = new List<BasePoolableController>();
+    public List<GameObject> ObjectsOutsidePool = new List<GameObject>();
 
     public void ReturnAllToPool()
     {
@@ -34,12 +34,15 @@ public class Pool
         {
             ReturnToPool(poolObject);
         }
+        ObjectsOutsidePool.Clear();
     }
 
-    public void ReturnToPool(BasePoolableController objectToReturn)
+    public void ReturnToPool(GameObject objectToReturn)
     {
-        objectToReturn.gameObject.SetActive(false);
-        PooledObjects.Enqueue(objectToReturn);
-        ObjectsOutsidePool.Remove(objectToReturn);
+        if (!PooledObjects.Contains(objectToReturn.gameObject))
+        {
+            objectToReturn.gameObject.SetActive(false);
+            PooledObjects.Enqueue(objectToReturn.gameObject);
+        }
     }
 }

@@ -25,18 +25,18 @@ public class PlayModeController : EditorWindow
         EditorApplication.ExecuteMenuItem("Edit/Play");
     }
 
-    [MenuItem("HotKey/Reset prefs and run _F4")]
-    public static void ResetPrefsAndPlay()
-    {
-        if (!EditorApplication.isPlaying)
-        {
-            PlayWithResetPrefs();
-        }
-        else
-        {
-            EditorCoroutineUtility.StartCoroutineOwnerless(YieldResetPrefsAndPlay());
-        }
-    }
+    //[MenuItem("HotKey/Reset prefs and run _F4")]
+    //public static void ResetPrefsAndPlay()
+    //{
+    //    if (!EditorApplication.isPlaying)
+    //    {
+    //        PlayWithResetPrefs();
+    //    }
+    //    else
+    //    {
+    //        EditorCoroutineUtility.StartCoroutineOwnerless(YieldResetPrefsAndPlay());
+    //    }
+    //}
 
     private static void PlayWithResetPrefs()
     {

@@ -13,7 +13,7 @@ public class ShootingInputController : BaseInputController
 
     public override void OnUpdate()
     {
-        if (Input.GetKeyDown(shootKey))
+        if (Input.GetAxis("Fire1") > 0)
         {
             ReleaseBullet();
             EventsManager.Instance.OnBulletFired();
@@ -44,8 +44,16 @@ public class ShootingInputController : BaseInputController
 
     private bool CheckBulletBeginningPosition(BaseBulletMovementController bullet)
     {
+        //bullets without collider cannot cause collision
         Collider2D bulletCollider = bullet.GetComponent<Collider2D>();
         if (!bulletCollider)
+        {
+            return true;
+        }
+
+        //if firing object is moving, do not check collision
+        var parentRigidbody = GetComponentInParent<Rigidbody2D>();
+        if (parentRigidbody != null && parentRigidbody.velocity.magnitude > 0)
         {
             return true;
         }

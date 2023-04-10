@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceCountRange:
-    item1: 0
-    item2: 0
+    item1: 1
+    item2: 4
   pieceType: AsteroidSmall
 --- !u!114 &3606859666954047742
 MonoBehaviour:

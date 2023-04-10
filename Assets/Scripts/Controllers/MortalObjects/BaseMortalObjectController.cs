@@ -12,8 +12,7 @@ public abstract class BaseMortalObjectController : MonoBehaviour
     protected virtual void OnCollisionWithEnemyExit(Collision2D collision) { }
     protected virtual string[] GetEnemies() { return new string[] { }; }
 
-    protected uint _livesCount;
-    public uint LivesCount => _livesCount;
+    public uint LivesCount { get; protected set; }
 
     private void Awake()
     {
@@ -43,9 +42,15 @@ public abstract class BaseMortalObjectController : MonoBehaviour
 
     protected void DecrementLive()
     {
-        if (_livesCount > 0)
+        if (LivesCount > 0)
         {
-            _livesCount--;
+            LivesCount--;
         }
+    }
+
+    private void OnDestroy()
+    {
+        _collisionController.CollisionEnter -= CollisionEnter;
+        _collisionController.CollisionExit -= CollisionExit;
     }
 }

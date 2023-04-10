@@ -74,9 +74,14 @@ public class AsteroidMovementController : BaseMovementController
         if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > maxOutsideScreenTime)
         {
             DeactivateMovingObject();
-            _firstScreenApperance = false;
-            _isOutsideScreenTimeSet = false;
         }
+    }
+
+    protected override void DeactivateMovingObject()
+    {
+        _firstScreenApperance = false;
+        _isOutsideScreenTimeSet = false;
+        base.DeactivateMovingObject();
     }
 
     protected override void OnInsideScreen()

@@ -100,6 +100,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void StartGameplay()
     {
+        ResumeGameplay();
         ActivatePlayer();
         SpawnAllPlayerObjects();
         AsteroidReleasingManager.Instance.StartReleasingAsteroidCoroutine();
