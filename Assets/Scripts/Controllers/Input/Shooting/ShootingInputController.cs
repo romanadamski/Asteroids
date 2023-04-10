@@ -18,6 +18,11 @@ public class ShootingInputController : BaseInputController
             ReleaseBullet();
             EventsManager.Instance.OnBulletFired();
         }
+        if (Input.GetKeyDown(shootKey))
+        {
+            ReleaseBullet();
+            EventsManager.Instance.OnBulletFired();
+        }
     }
 
     private void ReleaseBullet()

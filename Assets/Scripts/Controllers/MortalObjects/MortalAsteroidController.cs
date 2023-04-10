@@ -14,7 +14,7 @@ public class MortalAsteroidController : BaseMortalObjectController
         return new string[] { GameObjectTagsConstants.BULLET };
     }
 
-    protected override void OnCollisionWithEnemyEnter(Collision2D collision)
+    protected override void OnTriggerWithEnemyEnter(Collider2D collider)
     {
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
         var randomPieceCount = Random.Range(pieceCountRange.Item1, pieceCountRange.Item2 + 1);
@@ -22,7 +22,7 @@ public class MortalAsteroidController : BaseMortalObjectController
         for (int i = 0; i < randomPieceCount; i++)
         {
             var asteroid = ObjectPoolingManager.Instance.GetFromPool(pieceType);
-            
+
             var randomPosition = new Vector2(
                 Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
                 Random.Range(transform.position.y - POSITION_RANDOMIZE_RANGE, transform.position.y + POSITION_RANDOMIZE_RANGE));
