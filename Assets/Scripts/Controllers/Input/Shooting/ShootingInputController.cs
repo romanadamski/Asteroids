@@ -50,8 +50,7 @@ public class ShootingInputController : BaseInputController
     private bool CheckBulletBeginningPosition(BaseBulletMovementController bullet)
     {
         //bullets without collider cannot cause collision
-        Collider2D bulletCollider = bullet.GetComponent<Collider2D>();
-        if (!bulletCollider)
+        if (!bullet.TryGetComponent(out Collider2D bulletCollider))
         {
             return true;
         }

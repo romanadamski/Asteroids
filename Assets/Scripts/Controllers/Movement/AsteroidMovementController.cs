@@ -23,7 +23,6 @@ public class AsteroidMovementController : BaseMovementController
             {
                 _rotationCoroutine = StartCoroutine(SmoothRotateTowardsVelocity());
             }
-
         }
         else
         {

@@ -28,7 +28,7 @@ public class SaveManager : BaseManager<SaveManager>
 
     public List<uint> GetHighscore()
     {
-        return saveData.Highscore.OrderByDescending(x => x).ToList();
+        return saveData.Highscore;
     }
 
     public uint GetHighestScore()
@@ -39,13 +39,21 @@ public class SaveManager : BaseManager<SaveManager>
             : 0;
     }
 
-    public void SetHighscore(uint score)
+    public void AddScoreToHighscores(uint score)
     {
-        saveData.Highscore.Add(score);
-        saveData.Highscore = saveData.Highscore.OrderByDescending(x => x).ToList();
-        if (saveData.Highscore.Count > 10)
+        if (saveData.Highscore.Count.Equals(GameSettingsManager.Instance.Settings.MaxHighscoresSaveCount))
         {
+            if(saveData.Highscore.Last() >= score) return;
+
             saveData.Highscore.Remove(saveData.Highscore.Last());
         }
+
+        AddScoreToSaveData(score);
+    }
+
+    private void AddScoreToSaveData(uint score)
+    {
+        saveData.Highscore.Add(score);
+        saveData.Highscore.Sort((x, y) => y.CompareTo(x));
     }
 }

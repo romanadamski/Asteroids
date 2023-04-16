@@ -58,7 +58,7 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         if (CurrentScore > 0)
         {
-            SaveManager.Instance.SetHighscore(CurrentScore);
+            SaveManager.Instance.AddScoreToHighscores(CurrentScore);
             SaveManager.Instance.Save();
         }
     }
