@@ -1,28 +1,18 @@
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
-//todo connect input to shooting, some IInput to easily swap between input type
-public class ShootingInputController : BaseInputController
-{
-    [SerializeField]
-    private KeyCode shootKey = KeyCode.Space;
-    [SerializeField]
-    private string bulletTypeName;
-    [SerializeField]
-    private int selectedTypeIndex;
 
-    public override void OnUpdate()
+public class AutoShootingController : MonoBehaviour
+{
+    private string bulletTypeName = "SimpleBulletMovementController";
+
+    private void Update()
     {
-        if (Input.GetAxis("Fire1") > 0)
-        {
-            ReleaseBullet();
-            EventsManager.Instance.OnBulletFired();
-        }
-        if (Input.GetKeyDown(shootKey))
-        {
-            ReleaseBullet();
-            EventsManager.Instance.OnBulletFired();
-        }
+        ReleaseBullet();
+        EventsManager.Instance.OnBulletFired();
     }
 
     private void ReleaseBullet()
@@ -44,7 +34,7 @@ public class ShootingInputController : BaseInputController
 
     private BaseBulletMovementController GetBulletFromPool()
     {
-        return ObjectPoolingManager.Instance.GetFromPool(bulletTypeName).GetComponent(bulletTypeName) as BaseBulletMovementController;
+        return BulletPoolingManager.Instance.GetFromPool(bulletTypeName).GetComponent(bulletTypeName) as BaseBulletMovementController;
     }
 
     private bool CheckBulletBeginningPosition(BaseBulletMovementController bullet)

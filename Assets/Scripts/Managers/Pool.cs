@@ -10,7 +10,6 @@ public class Pool
     public BasePoolableController PoolObjectPrefab;
     public bool CanGrow;
     public Queue<GameObject> PooledObjects = new Queue<GameObject>();
-    public Transform ObjectsParent;
 
     [HideInInspector]
     public int ObjectCount;
@@ -23,7 +22,7 @@ public class Pool
     /// <summary>
     /// Type choosen by attached Poolable component
     /// </summary>
-    public string PoolableComponentType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType().Name;
+    public Type PoolableComponentType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType();
 
     [HideInInspector]
     public List<GameObject> ObjectsOutsidePool = new List<GameObject>();

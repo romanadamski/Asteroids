@@ -4,7 +4,7 @@
 public abstract class BaseMovementController : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
-
+    private Plane[] _cameraPlanes;
     protected Rigidbody2D _rigidbody2D;
     protected float _speedMultiplier;
 
@@ -16,12 +16,13 @@ public abstract class BaseMovementController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
     }
 
     private void Update()
     {
-        var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        if (!GeometryUtility.TestPlanesAABB(planes, _spriteRenderer.bounds))
+        if (!GeometryUtility.TestPlanesAABB(_cameraPlanes, _spriteRenderer.bounds))
         {
             OnOutsideScreen();
         }

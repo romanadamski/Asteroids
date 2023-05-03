@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   playerMovementSpeed: 10
-  playerRotationSpeed: 100
+  playerRotationSpeed: 10
   playerMovementPrecision: 10
   baseBulletMovementSpeed: 11
   baseAsteroidMovementSpeed: 1
