@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 553567925}
   - component: {fileID: 3183700407203918364}
   - component: {fileID: 5227165344776928440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerTripleRiffle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -239,6 +239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8649188709760131041}
     m_Modifications:
+    - target: {fileID: 2147313549649093467, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2265806192552167812, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -295,6 +299,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TripleRifle
       objectReference: {fileID: 0}
+    - target: {fileID: 5153310891857614070, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301702373269646416, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7301702373269646418, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: bulletTypeName
       value: SimpleBulletMovementController
@@ -310,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 7301702373490885429, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
       propertyPath: selectedTypeIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162223500464394488, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8683147223481144641, guid: 9ff824cab1882dd4e9ce0d155e036b73, type: 3}

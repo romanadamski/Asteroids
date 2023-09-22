@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7031475595846978511}
   - component: {fileID: 3606859666954047742}
   - component: {fileID: 8947749724186666943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AsteroidSmall
   m_TagString: Asteroid
   m_Icon: {fileID: 0}

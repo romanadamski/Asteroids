@@ -2,11 +2,6 @@
 
 public class MortalPlayerController : BaseMortalObjectController
 {
-    protected override string[] GetEnemies()
-    {
-        return new string[] { GameObjectTagsConstants.ASTEROID };
-    }
-
     protected override void OnCollisionWithEnemyEnter(Collision2D collision)
     {
         DecrementLive();

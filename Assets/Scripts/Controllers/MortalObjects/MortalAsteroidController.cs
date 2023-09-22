@@ -9,11 +9,6 @@ public class MortalAsteroidController : BaseMortalObjectController
     [SerializeField]
     private string pieceType;
 
-    protected override string[] GetEnemies()
-    {
-        return new string[] { GameObjectTagsConstants.BULLET };
-    }
-
     protected override void OnTriggerWithEnemyEnter(Collider2D collider)
     {
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
