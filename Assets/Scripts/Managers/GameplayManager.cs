@@ -180,13 +180,11 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void PauseGameplay()
     {
-        InputManager.Instance.ToggleInput(false);
         Time.timeScale = 0;
     }
 
     public void ResumeGameplay()
     {
-        InputManager.Instance.ToggleInput(true);
         Time.timeScale = 1;
     }
 

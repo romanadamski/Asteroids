@@ -2,7 +2,7 @@
 
 public class MortalPlayerController : BaseMortalObjectController
 {
-    protected override void OnCollisionWithEnemyEnter(Collision2D collision)
+    protected override void OnTriggerWithEnemyEnter(Collider2D collision)
     {
         DecrementLive();
         GameplayManager.Instance.SetDeathState();

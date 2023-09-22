@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameSettings", menuName = "ScriptableObjects/Game Settings")]
-public class GameSettingsScriptableObject : ScriptableObject
+public class GameSettingsSO : ScriptableObject
 {
     [Header("Player settings")]
     [SerializeField]

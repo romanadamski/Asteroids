@@ -1,35 +1,28 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
-public class MovementInputController : BaseInputController
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(MovementTrigger))]
+public class MovementController : MonoBehaviour
 {
-    private readonly string HORIZONTAL_AXIS_NAME = "Horizontal";
-    private readonly string VERTICAL_AXIS_NAME = "Vertical";
-
     [SerializeField]
     [Range(1, 10)]
     private float speedMultiplier = 5;
 
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
-    private float _xAxis;
-    private float _yAxis;
+    private MovementTrigger _movementTrigger;
 
-    private Vector2 MovementAxis => new Vector2(CalculateAxis(_xAxis), CalculateAxis(_yAxis));
+    private Vector2 MovementAxis => new Vector2(CalculateAxis(_movementTrigger.XAxis), CalculateAxis(_movementTrigger.YAxis));
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _movementTrigger = GetComponent<MovementTrigger>();
+
+        _movementTrigger.OnFixedUpdate += OnFixedUpdate;
     }
 
-    public override void OnUpdate()
-    {
-        _xAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);
-        _yAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
-    }
-
-    public override void OnFixedUpdate()
+    public void OnFixedUpdate()
     {
         MoveByArrows();
         Rotate();
@@ -75,9 +68,8 @@ public class MovementInputController : BaseInputController
         }
     }
 
-    protected override void OnDisable()
+    protected void OnDisable()
     {
-        base.OnDisable();
         StopMovement();
     }
 }

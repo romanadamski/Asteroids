@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(BaseCollisionController))]
 public class AsteroidMovementController : BaseMovementController
 {
     private bool _firstScreenApperance;

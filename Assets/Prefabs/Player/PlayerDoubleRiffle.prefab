@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4181482277596349960}
   - component: {fileID: 553567925}
   - component: {fileID: 3183700407203918364}
-  - component: {fileID: 5227165344776928440}
+  - component: {fileID: 2707031362041976536}
   m_Layer: 7
   m_Name: PlayerDoubleRiffle
   m_TagString: Player
@@ -119,7 +119,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22464981b23b1fc4fb9545612fee4cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5227165344776928440
+--- !u!114 &2707031362041976536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3873032853012233273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344c81912fac6dc4cb9aa9a2b9145614, type: 3}
+  m_Script: {fileID: 11500000, guid: c5a265214a69a5847b324691df22c213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &245867274265567258

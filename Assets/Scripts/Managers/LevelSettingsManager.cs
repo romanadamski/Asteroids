@@ -5,12 +5,12 @@ using UnityEngine;
 public class LevelSettingsManager : BaseManager<LevelSettingsManager>
 {
     [SerializeField]
-    private List<LevelSettingsScriptableObject> levelSettings;
-    public List<LevelSettingsScriptableObject> LevelSettings => levelSettings;
+    private List<LevelSettingsSO> levelSettings;
+    public List<LevelSettingsSO> LevelSettings => levelSettings;
 
     public uint CurrentLevelNumber { get; private set; }
 
-    public LevelSettingsScriptableObject CurrentLevel { get; private set; }
+    public LevelSettingsSO CurrentLevel { get; private set; }
 
     public void SetCurrentLevel()
     {
@@ -22,7 +22,7 @@ public class LevelSettingsManager : BaseManager<LevelSettingsManager>
         CurrentLevelNumber = levelNumber;
     }
 
-    private LevelSettingsScriptableObject GetLevelByNumber(uint levelNumber)
+    private LevelSettingsSO GetLevelByNumber(uint levelNumber)
     {
         return levelSettings.FirstOrDefault(x => x.LevelNumber.Equals(levelNumber));
     }

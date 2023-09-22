@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1006996477057112103}
   - component: {fileID: 7031475595846978511}
   - component: {fileID: 3606859666954047742}
-  - component: {fileID: 8947749724186666943}
   m_Layer: 8
   m_Name: AsteroidSmall
   m_TagString: Asteroid
@@ -197,15 +196,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxOutsideScreenTime: 5
---- !u!114 &8947749724186666943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3909010953527000373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344c81912fac6dc4cb9aa9a2b9145614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

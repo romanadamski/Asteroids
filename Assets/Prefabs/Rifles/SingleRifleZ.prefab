@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2265806192552167812}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SingleRifleZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4438687839703308472}
-  - component: {fileID: 7301702373490885429}
   - component: {fileID: 5974162837716314225}
-  m_Layer: 0
+  - component: {fileID: 4746468719660413149}
+  - component: {fileID: 8311679611031876749}
+  m_Layer: 7
   m_Name: FrontStraightShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,21 +64,6 @@ Transform:
   m_Father: {fileID: 2265806192552167812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7301702373490885429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162223500464394488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootKey: 122
-  bulletTypeName: SimpleBulletMovementController
-  selectedTypeIndex: 1
 --- !u!82 &5974162837716314225
 AudioSource:
   m_ObjectHideFlags: 0
@@ -174,3 +160,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4746468719660413149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162223500464394488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755e5fd61375a0640bdf9bbc12ed871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootKey: 32
+--- !u!114 &8311679611031876749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162223500464394488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: SimpleBulletMovementController
+  selectedTypeIndex: 1

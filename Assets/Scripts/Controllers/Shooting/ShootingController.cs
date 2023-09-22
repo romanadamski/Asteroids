@@ -1,20 +1,27 @@
 using UnityEngine;
-//todo connect input to shooting, some IInput to easily swap between input type
-public class ShootingInputController : BaseInputController
+
+[RequireComponent(typeof(ShootingTrigger))]
+public class ShootingController : MonoBehaviour
 {
-    [SerializeField]
-    private KeyCode shootKey = KeyCode.Space;
     [SerializeField]
     private string bulletTypeName;
     [SerializeField]
     private int selectedTypeIndex;
 
-    public override void OnUpdate()
+    private ShootingTrigger _shootingTrigger;
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(shootKey))
+        _shootingTrigger = GetComponent<ShootingTrigger>();
+
+        _shootingTrigger.OnUpdate += OnUpdate;
+    }
+
+    private void OnUpdate()
+    {
+        if (_shootingTrigger.TriggerShoot)
         {
             ReleaseBullet();
-            EventsManager.Instance.OnBulletFired();
         }
     }
 
@@ -26,6 +33,8 @@ public class ShootingInputController : BaseInputController
         bullet.gameObject.SetActive(true);
 
         bullet.Release(transform.up);
+
+        EventsManager.Instance.OnBulletFired();
     }
 
     private BaseBulletMovementController GetBulletFromPool()

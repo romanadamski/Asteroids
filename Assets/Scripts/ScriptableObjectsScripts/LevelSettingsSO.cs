@@ -19,7 +19,7 @@ public struct PlayerObject
 }
 
 [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level Settings")]
-public class LevelSettingsScriptableObject : ScriptableObject
+public class LevelSettingsSO : ScriptableObject
 {
     [SerializeField]
     private uint levelNumber;

@@ -8,10 +8,9 @@ using UnityEditor;
 using System.Reflection;
 using System.Collections;
 
-[CustomEditor(typeof(ShootingInputController))]
+[CustomEditor(typeof(ShootingController))]
 public class ShootingInputControllerInspector : Editor
 {
-    private SerializedProperty _shootKey;
     private SerializedProperty _bulletTypeName;
     private SerializedProperty _selectedTypeIndex;
     private Type[] _allBulletTypes;
@@ -19,7 +18,6 @@ public class ShootingInputControllerInspector : Editor
 
     private void OnEnable()
     {
-        _shootKey = serializedObject.FindProperty("shootKey");
         _bulletTypeName = serializedObject.FindProperty("bulletTypeName");
         _selectedTypeIndex = serializedObject.FindProperty("selectedTypeIndex");
 
@@ -44,7 +42,6 @@ public class ShootingInputControllerInspector : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        EditorGUILayout.PropertyField(_shootKey);
 
         _selectedTypeIndex.intValue = EditorGUILayout.Popup(new GUIContent("Bullet type"), _selectedTypeIndex.intValue, _allBulletTypesGUI);
         _bulletTypeName.stringValue = _allBulletTypesGUI[_selectedTypeIndex.intValue].tooltip;

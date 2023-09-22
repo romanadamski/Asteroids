@@ -1,11 +1,7 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(BaseCollisionController))]
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
-    private BaseCollisionController _collisionController;
-
     protected bool _enemyCollideExited = true;
     protected bool _enemyTriggerExited = true;
 
@@ -16,45 +12,31 @@ public abstract class BaseMortalObjectController : MonoBehaviour
 
     public uint LivesCount { get; protected set; }
 
-    private void Awake()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        _collisionController = GetComponent<BaseCollisionController>();
-        SubscribeToEvents();
+        if (!gameObject.activeSelf) return;
+        if (!_enemyCollideExited) return;
+        
+        _enemyCollideExited = false;
+        OnCollisionWithEnemyEnter(collision);
     }
 
-    private void SubscribeToEvents()
-    {
-        _collisionController.CollisionEnter += CollisionEnter;
-        _collisionController.CollisionExit += CollisionExit;
-        _collisionController.TriggerEnter += TriggerEnter;
-        _collisionController.TriggerExit += TriggerExit;
-    }
-
-    private void CollisionEnter(Collision2D collision)
-    {
-        if (_enemyCollideExited)
-        {
-            _enemyCollideExited = false;
-            OnCollisionWithEnemyEnter(collision);
-        }
-    }
-
-    private void CollisionExit(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         _enemyCollideExited = true;
         OnCollisionWithEnemyExit(collision);
     }
 
-    private void TriggerEnter(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (_enemyTriggerExited)
-        {
-            _enemyTriggerExited = false;
-            OnTriggerWithEnemyEnter(collider);
-        }
+        if (!gameObject.activeSelf) return;
+        if (!_enemyTriggerExited) return;
+        
+        _enemyTriggerExited = false;
+        OnTriggerWithEnemyEnter(collider);
     }
 
-    private void TriggerExit(Collider2D collider)
+    private void OnTriggerExit2D(Collider2D collider)
     {
         _enemyTriggerExited = true;
         OnTriggerWithEnemyExit(collider);
@@ -66,18 +48,5 @@ public abstract class BaseMortalObjectController : MonoBehaviour
         {
             LivesCount--;
         }
-    }
-
-    private void UnsubscribeFromEvents()
-    {
-        _collisionController.CollisionEnter -= CollisionEnter;
-        _collisionController.CollisionExit -= CollisionExit;
-        _collisionController.TriggerEnter -= TriggerEnter;
-        _collisionController.TriggerExit -= TriggerExit;
-    }
-
-    private void OnDestroy()
-    {
-        UnsubscribeFromEvents();
     }
 }
