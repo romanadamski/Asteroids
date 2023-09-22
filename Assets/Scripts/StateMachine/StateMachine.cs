@@ -13,7 +13,7 @@ public class StateMachine : MonoBehaviour
 
         _currentState = state;
 
-        state.Enter();
+        _currentState.Enter();
     }
 
     private void Update()

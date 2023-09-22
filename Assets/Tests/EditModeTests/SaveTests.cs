@@ -12,8 +12,13 @@ public class SaveTests
     [TestCase(200u)]
     public void SaveHighscore_ScoreIsHigherThanLowest_ScoreIsAdded(uint score)
     {
+        //arrange
         SaveManager saveManager = CreateFakeSaveManager();
+
+        //act
         saveManager.AddScoreToHighscores(score);
+
+        //assert
         Assert.Contains(score, saveManager.GetHighscore());
     }
 
@@ -23,11 +28,15 @@ public class SaveTests
     [TestCase(10u)]
     public void SaveHighscore_ScoreIsLessThanLowestLessThanMaxCount_ScoreIsAdded(uint score)
     {
+        //arrange
         SaveManager saveManager = CreateFakeSaveManager();
         FillSaveManagerWithHighscores(saveManager,
             100u, 200u, 500u);
 
+        //act
         saveManager.AddScoreToHighscores(score);
+
+        //assert
         Assert.IsTrue(saveManager.GetHighscore().Contains(score));
     }
 
@@ -36,11 +45,15 @@ public class SaveTests
     [TestCase(10u)]
     public void SaveHighscore_ScoreIsLessThanLowestMoreThanMaxCount_ScoreIsNotAdded(uint score)
     {
+        //arrange
         SaveManager saveManager = CreateFakeSaveManager();
         FillSaveManagerWithHighscores(saveManager, 
             100u, 200u, 300u, 400u, 500u, 1100u, 1200u, 1300u, 1400u, 1500u);
 
+        //act
         saveManager.AddScoreToHighscores(score);
+
+        //assert
         var highscore = saveManager.GetHighscore();
         Assert.IsFalse(highscore.Contains(score));
     }
@@ -51,11 +64,15 @@ public class SaveTests
     [TestCase(1500u)]
     public void SaveHighscore_AddHighestScore_ScoreIsHighestScore(uint score)
     {
+        //arrange
         SaveManager saveManager = CreateFakeSaveManager();
         FillSaveManagerWithHighscores(saveManager, 
             100u, 200u, 300u, 400u, 500u, 1100u, 1200u, 1300u, 1400u, 1500u);
 
+        //act
         saveManager.AddScoreToHighscores(score);
+
+        //assert
         Assert.AreEqual(saveManager.GetHighestScore(), score);
     }
 
@@ -65,11 +82,15 @@ public class SaveTests
     [TestCase(0u)]
     public void SaveHighscore_AddLessThanHighestScore_ScoreIsNotHighestScore(uint score)
     {
+        //arrange
         SaveManager saveManager = CreateFakeSaveManager();
         FillSaveManagerWithHighscores(saveManager, 
             100u, 200u, 300u, 400u, 500u, 1100u, 1200u, 1300u, 1400u, 1500u);
 
+        //act
         saveManager.AddScoreToHighscores(score);
+
+        //assert
         Assert.AreNotEqual(saveManager.GetHighestScore(), score);
     }
 

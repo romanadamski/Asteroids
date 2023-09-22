@@ -1,6 +1,6 @@
 ﻿public class AsteroidPoolableController : BasePoolableController
 {
-    private const string ASTEROID_SMALL_POOLABLE = "AsteroidSmall";
+    public const string ASTEROID_SMALL_POOLABLE = "AsteroidSmall";
     private const string ASTEROID_MEDIUM_POOLABLE = "AsteroidMedium";
     private const string ASTEROID_BIG_POOLABLE = "AsteroidBig";
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,20 +7,30 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
 {
     [SerializeField]
     private List<Pool> pools = new List<Pool>();
+    public List<Pool> Pools => pools;
+
+    private Transform _objectsParent;
 
     private void Start()
     {
+        CreateObjectsParent();
+
         foreach (var pool in pools)
         {
             for (int i = 0; i < pool.StartPoolCount; i++)
             {
-                var newObject = Instantiate(pool.PoolObjectPrefab.gameObject, pool.ObjectsParent);
+                var newObject = Instantiate(pool.PoolObjectPrefab.gameObject, _objectsParent);
                 newObject.gameObject.SetActive(false);
                 newObject.name = newObject.name.Replace("(Clone)", $"{newObject.GetInstanceID()}");
                 pool.PooledObjects.Enqueue(newObject);
                 pool.ObjectCount++;
             }
         }
+    }
+
+    private void CreateObjectsParent()
+    {
+        _objectsParent = Instantiate(new GameObject(GetType().Name).transform, GameLauncher.Instance.GamePlane.transform);
     }
 
     public BasePoolableController GetFromPool(string poolableType)
@@ -41,7 +52,7 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
             if (pool.CanGrow)
             {
                 pool.ObjectCount++;
-                var newObject = Instantiate(pool.PoolObjectPrefab, pool.ObjectsParent);
+                var newObject = Instantiate(pool.PoolObjectPrefab, _objectsParent);
                 pool.ObjectsOutsidePool.Add(newObject.gameObject);
                 return newObject;
             }
@@ -63,16 +74,6 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         }
     }
 
-    /// <summary>
-    /// Returns all object of given type to pool
-    /// </summary>
-    /// <param name="poolableType">Type of poolable</param>
-    public void ReturnAllToPool(string poolableType)
-    {
-        var pool = GetPoolByPoolableNameType(poolableType);
-        pool.ReturnAllToPool();
-    }
-
     public void ReturnToPool(BasePoolableController objectToReturn)
     {
         var pool = GetPoolByPoolableNameType(objectToReturn.PoolableType);
@@ -84,13 +85,11 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
         return pools.FirstOrDefault(x => x.PoolableNameType.Equals(poolableType));
     }
 
-    private Pool GetPoolByPoolableComponentType<T>() where T : BasePoolableController
-    {
-        return pools.FirstOrDefault(x => x.PoolableComponentType.Equals(typeof(T).Name));
-    }
+    private IEnumerable<Pool> GetPoolByPoolableComponentType<T>() where T : BasePoolableController =>
+        pools.Where(x => x.PoolableComponentType.Equals(typeof(T)) || x.PoolableComponentType.IsSubclassOf(typeof(T)));
 
     public string[] GetAllPoolableNamesByPoolableComponentType<T>() where T : BasePoolableController
     {
-        return GetPoolByPoolableComponentType<T>().PoolObjectPrefab.PoolableTypes;
+        return GetPoolByPoolableComponentType<T>().SelectMany(x => x.PoolObjectPrefab.PoolableTypes).Distinct().ToArray();
     }
 }

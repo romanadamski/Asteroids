@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//todo connect input to shooting, some IInput to easily swap between input type
 public class ShootingInputController : BaseInputController
 {
     [SerializeField]
