@@ -1,35 +1,41 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    private State _currentState;
+    private State CurrentState => _states?.Peek();
+    private Stack<State> _states = new Stack<State>();
+    private bool IsEmpty => _states.Count == 0;
+
+    public void PushState(State state)
+    {
+        if (IsEmpty || CurrentState != state)
+        {
+            _states.Push(state);
+        }
+
+        CurrentState.Enter();
+    }
+
+    public void PopState()
+    {
+        if (IsEmpty) return;
+        
+        CurrentState?.Exit();
+        _states.Pop();
+    }
 
     public void SetState(State state)
     {
-        if (_currentState != null)
-        {
-            _currentState.Exit();
-        }
-
-        _currentState = state;
-
-        _currentState.Enter();
-    }
-
-    private void Update()
-    {
-        if (_currentState != null)
-        {
-            _currentState.Update();
-        }
+        PopState();
+        PushState(state);
     }
 
     public void Clear()
     {
-        if (_currentState != null)
-        {
-            _currentState.Exit();
-        }
-        _currentState = null;
+        if (IsEmpty) return;
+
+        CurrentState?.Exit();
+        _states.Clear();
     }
 }

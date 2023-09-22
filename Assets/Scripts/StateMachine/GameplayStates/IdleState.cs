@@ -23,7 +23,6 @@ public class IdleState : State
     private IEnumerator IdleCoroutine()
     {
         yield return new WaitForSecondsRealtime(GameSettingsManager.Instance.Settings.IdleStateTime);
-        GameplayManager.Instance.ResumeGameplay();
         GameplayManager.Instance.SetGameplayState();
     }
 

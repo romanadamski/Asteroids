@@ -13,6 +13,5 @@ public class GameLauncher : BaseManager<GameLauncher>
     private void Awake()
     {
         SaveManager.Instance.LoadSave();
-        var allAsteroidTypes = ObjectPoolingManager.Instance.GetAllPoolableNamesByPoolableComponentType<BasePoolableController>();
     }
 }

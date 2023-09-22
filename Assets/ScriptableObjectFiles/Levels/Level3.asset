@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   levelNumber: 3
-  activatePlayer: 0
+  backgroundImage: {fileID: 21300000, guid: f9dfd5b05c9513d4aae2329021de4f8c, type: 3}
+  activatePlayer: 1
   playerStartLivesCount: 5
   mainPlayerObject:
     objectStartPosition: {x: 0, y: 0, z: 0}
     objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
-    objectPrefab: {fileID: 3873032853012233273, guid: c1c8da319f8d13d4698c67e97dbd3fb7, type: 3}
+    objectPrefab: {fileID: 3873032853012233273, guid: 5f3787515f1395c4dae547fd584f9723, type: 3}
   playerObjects: []
   asteroidsReleasingFrequency:
-    item1: 0.01
-    item2: 0.02
+    item1: 2
+    item2: 5
   asteroidsSpeedRange:
-    item1: 10
-    item2: 10
+    item1: 1
+    item2: 2

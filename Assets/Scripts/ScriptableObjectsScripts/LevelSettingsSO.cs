@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public struct PlayerObject
@@ -24,6 +25,9 @@ public class LevelSettingsSO : ScriptableObject
     [SerializeField]
     private uint levelNumber;
     public uint LevelNumber => levelNumber;
+    [SerializeField]
+    private Sprite backgroundImage;
+    public Sprite BackgroundSprite => backgroundImage;
 
     [Header("Player settings")]
     [SerializeField]

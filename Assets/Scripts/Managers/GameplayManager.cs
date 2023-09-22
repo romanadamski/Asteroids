@@ -13,7 +13,6 @@ public class GameplayManager : BaseManager<GameplayManager>
     public GameplayState GameplayState { get; private set; }
     public WinState WinState { get; private set; }
     public LoseState LoseState { get; private set; }
-    public DeathState DeathState { get; private set; }
     public IdleState IdleState { get; private set; }
     public EndGameplayState EndGameplayState { get; private set; }
 
@@ -39,7 +38,6 @@ public class GameplayManager : BaseManager<GameplayManager>
         GameplayState = new GameplayState(_gameplayStateMachine);
         WinState = new WinState(_gameplayStateMachine);
         LoseState = new LoseState(_gameplayStateMachine);
-        DeathState = new DeathState(_gameplayStateMachine);
         IdleState = new IdleState(_gameplayStateMachine);
         EndGameplayState = new EndGameplayState(_gameplayStateMachine);
     }
@@ -47,11 +45,28 @@ public class GameplayManager : BaseManager<GameplayManager>
     private void SubscribeToEvents()
     {
         EventsManager.Instance.AsteroidShotted += AsteroidShotted;
+        EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
     }
 
-    public void SetDeathState()
+    private void PlayerLoseLife(uint lives)
     {
-        _gameplayStateMachine.SetState(DeathState);
+        if (PlayerLivesCount == 0)
+        {
+            OnPlayerLose();
+        }
+        else
+        {
+            _gameplayStateMachine.PushState(IdleState);
+        }
+    }
+
+    private void OnPlayerLose()
+    {
+        ClearGameplay();
+
+        DestroyPlayer();
+        SaveScore();
+        _gameplayStateMachine.SetState(LoseState);
     }
 
     public void SaveScore()
@@ -83,7 +98,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
         SpawnPlayer();
 
-        EventsManager.Instance.OnLevelStarted(LevelSettingsManager.Instance.CurrentLevelNumber);
+        EventsManager.Instance.OnLevelStarted(LevelSettingsManager.Instance.CurrentLevel);
     }
 
     private void IncrementScore()

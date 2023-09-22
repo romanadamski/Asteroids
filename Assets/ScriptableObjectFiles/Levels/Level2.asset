@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   levelNumber: 2
+  backgroundImage: {fileID: 21300000, guid: 5b1c116d3551a3e4a9f6d9fc438ef0d1, type: 3}
   activatePlayer: 1
   playerStartLivesCount: 7
   mainPlayerObject:
