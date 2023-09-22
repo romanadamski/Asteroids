@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2265806192552167812}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoubleRifleSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,9 +41,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4438687839703308472}
-  - component: {fileID: 7301702373490885429}
   - component: {fileID: 5375204385660134528}
-  m_Layer: 0
+  - component: {fileID: 5650076257691814341}
+  - component: {fileID: 6918984786565169649}
+  m_Layer: 7
   m_Name: FrontStraightShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,21 +65,6 @@ Transform:
   m_Father: {fileID: 2265806192552167812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7301702373490885429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162223500464394488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootKey: 32
-  bulletTypeName: SimpleBulletMovementController
-  selectedTypeIndex: 1
 --- !u!82 &5375204385660134528
 AudioSource:
   m_ObjectHideFlags: 0
@@ -175,6 +161,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5650076257691814341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162223500464394488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755e5fd61375a0640bdf9bbc12ed871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootKey: 32
+--- !u!114 &6918984786565169649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162223500464394488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: SimpleBulletMovementController
+  selectedTypeIndex: 1
 --- !u!1 &8480811115582615428
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,9 +197,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625901774927712312}
-  - component: {fileID: 2528516196400845756}
   - component: {fileID: 2131311955998997728}
-  m_Layer: 0
+  - component: {fileID: 1410927418826638081}
+  - component: {fileID: 5752410255634522933}
+  m_Layer: 7
   m_Name: FrontStraightShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,21 +221,6 @@ Transform:
   m_Father: {fileID: 2265806192552167812}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2528516196400845756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8480811115582615428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootKey: 32
-  bulletTypeName: SimpleBulletMovementController
-  selectedTypeIndex: 1
 --- !u!82 &2131311955998997728
 AudioSource:
   m_ObjectHideFlags: 0
@@ -318,3 +317,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1410927418826638081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480811115582615428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: SimpleBulletMovementController
+  selectedTypeIndex: 1
+--- !u!114 &5752410255634522933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480811115582615428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755e5fd61375a0640bdf9bbc12ed871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootKey: 32

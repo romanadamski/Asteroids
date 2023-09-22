@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1252155580231548724}
-  - component: {fileID: 4999060892972715063}
   - component: {fileID: 7272102169858039675}
-  m_Layer: 0
+  - component: {fileID: 1173930949682268175}
+  - component: {fileID: 1958803076528329073}
+  m_Layer: 7
   m_Name: FrontRightShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,21 +33,6 @@ Transform:
   m_Father: {fileID: 2265806192552167812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
---- !u!114 &4999060892972715063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147313549649093467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootKey: 32
-  bulletTypeName: CrossingEdgesBulletMovementController
-  selectedTypeIndex: 0
 --- !u!82 &7272102169858039675
 AudioSource:
   m_ObjectHideFlags: 0
@@ -143,6 +129,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1173930949682268175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147313549649093467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: CrossingEdgesBulletMovementController
+  selectedTypeIndex: 0
+--- !u!114 &1958803076528329073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147313549649093467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755e5fd61375a0640bdf9bbc12ed871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootKey: 32
 --- !u!1 &5153310891857614070
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2265806192552167812}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TripleRifleSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,9 +198,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301702373269646417}
-  - component: {fileID: 7301702373269646418}
   - component: {fileID: 490944951418371383}
-  m_Layer: 0
+  - component: {fileID: 1107874113343149644}
+  - component: {fileID: 7343549606300279785}
+  m_Layer: 7
   m_Name: FrontLeftShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,21 +222,6 @@ Transform:
   m_Father: {fileID: 2265806192552167812}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
---- !u!114 &7301702373269646418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301702373269646416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootKey: 32
-  bulletTypeName: CrossingEdgesBulletMovementController
-  selectedTypeIndex: 0
 --- !u!82 &490944951418371383
 AudioSource:
   m_ObjectHideFlags: 0
@@ -319,6 +318,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1107874113343149644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301702373269646416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: CrossingEdgesBulletMovementController
+  selectedTypeIndex: 0
+--- !u!114 &7343549606300279785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301702373269646416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755e5fd61375a0640bdf9bbc12ed871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootKey: 32
 --- !u!1 &8162223500464394488
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,9 +354,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4438687839703308472}
-  - component: {fileID: 7301702373490885429}
   - component: {fileID: 7462835091634052796}
-  m_Layer: 0
+  - component: {fileID: 4083355747876095744}
+  - component: {fileID: 8156065330229379056}
+  m_Layer: 7
   m_Name: FrontStraightShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,21 +378,6 @@ Transform:
   m_Father: {fileID: 2265806192552167812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7301702373490885429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162223500464394488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9044abd460d7484690947feb3997116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootKey: 32
-  bulletTypeName: CrossingEdgesBulletMovementController
-  selectedTypeIndex: 0
 --- !u!82 &7462835091634052796
 AudioSource:
   m_ObjectHideFlags: 0
@@ -462,3 +474,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4083355747876095744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162223500464394488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755e5fd61375a0640bdf9bbc12ed871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootKey: 32
+--- !u!114 &8156065330229379056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162223500464394488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: SimpleBulletMovementController
+  selectedTypeIndex: 1

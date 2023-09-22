@@ -287,18 +287,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleRifleSpace
       objectReference: {fileID: 0}
-    - target: {fileID: 5153310891857614070, guid: 28392c1c18942034194cbf75a70b46a9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162223500464394488, guid: 28392c1c18942034194cbf75a70b46a9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8480811115582615428, guid: 28392c1c18942034194cbf75a70b46a9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28392c1c18942034194cbf75a70b46a9, type: 3}
 --- !u!4 &2024575022220044702 stripped
