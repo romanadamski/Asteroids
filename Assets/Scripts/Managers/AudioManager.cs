@@ -37,6 +37,6 @@ public class AudioManager : BaseManager<AudioManager>
 
     private void PlayerLoseLife(uint lives)
     {
-        _audioSource.PlayOneShot(crashClip);
+        //_audioSource.PlayOneShot(crashClip);
     }
 }
