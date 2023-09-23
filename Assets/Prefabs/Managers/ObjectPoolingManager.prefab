@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8451442360122341185}
+  - component: {fileID: 2529853039728884078}
   m_Layer: 0
   m_Name: ObjectPoolingManager
   m_TagString: Untagged
@@ -30,3 +31,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2529853039728884078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091118244273913890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93bf9da5d0ccd04fa2a7207bc1c0cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - StartPoolCount: 50
+    PoolObjectPrefab: {fileID: 8173949608060943752, guid: 1520fc0db75a8df4ea8094c197552283, type: 3}
+    CanGrow: 1
+    ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 50
+    PoolObjectPrefab: {fileID: 1006996477057112103, guid: ad76217d713ce8e4482bd7c814dff167, type: 3}
+    CanGrow: 1
+    ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 50
+    PoolObjectPrefab: {fileID: 1006996477057112103, guid: 4009f21067af50f4885f6731726e930b, type: 3}
+    CanGrow: 1
+    ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 50
+    PoolObjectPrefab: {fileID: 6646689137284849275, guid: 681f721ad11f6d041944f0fa4fd90027, type: 3}
+    CanGrow: 1
+    ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 50
+    PoolObjectPrefab: {fileID: 2576260184604008686, guid: 2a44c843ffa3ab447af1889ec9192b98, type: 3}
+    CanGrow: 1
+    ObjectCount: 0
+    ObjectsOutsidePool: []
+  - StartPoolCount: 50
+    PoolObjectPrefab: {fileID: 8188935199124485700, guid: 7ebebe2ce65df8647a8ed13700775902, type: 3}
+    CanGrow: 1
+    ObjectCount: 0
+    ObjectsOutsidePool: []

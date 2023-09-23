@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Asteroid
+  - PlayerShip
+  - PlayerBullet
+  - EnemyShip
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -13,11 +16,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Bullet
-  - Player
   - Asteroid
-  - CrossingEdgeBullet
-  - 
+  - PlayerShip
+  - PlayerBullet
+  - EnemyShip
+  - EnemyBullet
   - 
   - 
   - 

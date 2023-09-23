@@ -8,10 +8,7 @@ public class AsteroidMovementController : BaseMovementController
     private DateTime _outsideScreenStartTime;
     private bool _isOutsideScreenTimeSet;
     private Coroutine _rotationCoroutine;
-
-    [Tooltip("Time in seconds")]
-    [SerializeField]
-    private float maxOutsideScreenTime = 5;
+    private float _maxOutsideScreenTime = 5;
 
     private void RotateTowardsVelocity(bool smooth = true)
     {
@@ -69,7 +66,7 @@ public class AsteroidMovementController : BaseMovementController
             _isOutsideScreenTimeSet = true;
         }
 
-        if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > maxOutsideScreenTime)
+        if ((DateTime.Now - _outsideScreenStartTime).TotalSeconds > _maxOutsideScreenTime)
         {
             DeactivateMovingObject();
         }

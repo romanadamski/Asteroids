@@ -90,6 +90,15 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
 
     public string[] GetAllPoolableNamesByPoolableComponentType<T>() where T : BasePoolableController
     {
-        return GetPoolByPoolableComponentType<T>().SelectMany(x => x.PoolObjectPrefab.PoolableTypes).Distinct().ToArray();
+        var poolsOfType = GetPoolByPoolableComponentType<T>().Where(x => x.PoolObjectPrefab.TryGetComponent<T>(out _));
+        var poolsOfTypeCount = poolsOfType.Count();
+        var poolNamesOfType = new string[poolsOfTypeCount];
+        
+        for(int i = 0; i < poolsOfTypeCount; i++)
+        {
+            poolNamesOfType[i] = poolsOfType.ElementAt(i).PoolableNameType;
+        }
+
+        return poolNamesOfType;
     }
 }

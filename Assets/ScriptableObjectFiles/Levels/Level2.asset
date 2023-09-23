@@ -15,15 +15,16 @@ MonoBehaviour:
   levelNumber: 2
   backgroundImage: {fileID: 21300000, guid: 5b1c116d3551a3e4a9f6d9fc438ef0d1, type: 3}
   activatePlayer: 1
-  playerStartLivesCount: 7
   mainPlayerObject:
-    objectStartPosition: {x: 0, y: 0, z: 0}
+    objectStartPosition: {x: 0, y: 0}
     objectStartRotation: {x: 0, y: 0, z: 0, w: 0}
-    objectPrefab: {fileID: 3873032853012233273, guid: faf4a96e313af114fb778c143105e68d, type: 3}
+    shipLivesCount: 5
+    objectPrefab: {fileID: 3873032853012233273, guid: 1a6b542871cbdc5498d2ee32947397b9, type: 3}
   playerObjects: []
   asteroidsReleasingFrequency:
-    item1: 0.1
-    item2: 2
+    item1: 0.5
+    item2: 1
   asteroidsSpeedRange:
-    item1: 1
+    item1: 2
     item2: 4
+  enemyObjects: []

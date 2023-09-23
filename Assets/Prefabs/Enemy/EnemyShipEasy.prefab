@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2828818559615570192}
   - component: {fileID: 5418372379875784463}
   - component: {fileID: 119500657443403278}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: FrontStraightShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93206d8e09acc574c895fbbd5ce1738d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotingFrequency: 3
+  shotingFrequency: 1
 --- !u!114 &119500657443403278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypeName: SimpleBulletMovementController
-  selectedTypeIndex: 1
+  bulletTypeName: EnemySimpleBullet
 --- !u!1 &3615751680929541527
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7698979115683246309}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: SingleRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,9 +201,9 @@ GameObject:
   - component: {fileID: 553567925}
   - component: {fileID: 3183700407203918364}
   - component: {fileID: 4978583389954718951}
-  m_Layer: 7
-  m_Name: PlayerSingleRiffleAutoMovementAutoShot
-  m_TagString: Player
+  m_Layer: 9
+  m_Name: EnemyShipEasy
+  m_TagString: EnemyShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,7 +284,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 264816491dc7905409aa07486b092cba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e69988f12c048814b82cd31cfe9be77b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -394,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aede857ff03189d4f867751b98634160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 5.01
+  speedMultiplier: 2
 --- !u!114 &3183700407203918364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,9 +403,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3873032853012233273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22464981b23b1fc4fb9545612fee4cf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 27046b136a35dfe4fa953da38fb22c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnDelay: 3
 --- !u!114 &4978583389954718951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,4 +419,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23917a6ac41caea46a5faaa7da6f2ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeMovementDirectionFrequency: 3
+  changeMovementFrequency: 2.5

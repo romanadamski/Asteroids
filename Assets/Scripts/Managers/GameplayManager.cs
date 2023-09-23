@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class GameplayManager : BaseManager<GameplayManager>
 {
-    private MortalPlayerController _playerInstance;
-    private List<GameObject> _playerObjects = new List<GameObject>();
+    private BaseMortalObjectController _playerInstance;
+    private List<GameObject> _ships = new List<GameObject>();
 
     #region States
 
@@ -82,12 +82,14 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         ObjectPoolingManager.Instance.ReturnAllToPools();
         DeactivatePlayer();
-        DestroyAllPlayerObjects();
+        DestroyAllShips();
         AsteroidReleasingManager.Instance.StopReleasingAsteroidsCoroutine();
     }
 
-    private void AsteroidShotted()
+    private void AsteroidShotted(string tag)
     {
+        if (!tag.Equals(GameObjectTagsConstants.PLAYER_BULLET)) return;
+
         IncrementScore();
     }
 
@@ -117,13 +119,16 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         ResumeGameplay();
         ActivatePlayer();
-        SpawnAllPlayerObjects();
+        SpawnShips(LevelSettingsManager.Instance.CurrentLevel.PlayerObjects);
+        SpawnShips(LevelSettingsManager.Instance.CurrentLevel.EnemyObjects);
         AsteroidReleasingManager.Instance.StartReleasingAsteroidCoroutine();
     }
 
     private void SpawnPlayer()
     {
-        _playerInstance = Instantiate(LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectPrefab, GameLauncher.Instance.GamePlane.transform).GetComponent<MortalPlayerController>();
+        _playerInstance = Instantiate(LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectPrefab,
+            GameLauncher.Instance.GamePlane.transform).GetComponent<BaseMortalObjectController>();
+        _playerInstance.SetLivesCount(LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ShipLivesCount);
     }
 
     private void ActivatePlayer()
@@ -141,15 +146,17 @@ public class GameplayManager : BaseManager<GameplayManager>
         _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartRotation;
     }
 
-    private void SpawnAllPlayerObjects()
+    private void SpawnShips(List<ShipObject> shipObjects)
     {
-        foreach (var playerObject in LevelSettingsManager.Instance.CurrentLevel.PlayerObjects)
+        foreach (var ship in shipObjects)
         {
-            var playerObjectInstance = Instantiate(playerObject.ObjectPrefab, GameLauncher.Instance.GamePlane.transform);
-            playerObjectInstance.SetActive(true);
-            playerObjectInstance.transform.position = playerObject.ObjectStartPosition;
-            playerObjectInstance.transform.rotation = playerObject.ObjectStartRotation;
-            _playerObjects.Add(playerObjectInstance);
+            var shipInstance = Instantiate(ship.ObjectPrefab, GameLauncher.Instance.GamePlane.transform).GetComponent<BaseMortalObjectController>();
+            shipInstance.gameObject.SetActive(true);
+            shipInstance.transform.position = ship.ObjectStartPosition;
+            shipInstance.transform.rotation = ship.ObjectStartRotation;
+            shipInstance.SetLivesCount(ship.ShipLivesCount);
+
+            _ships.Add(shipInstance.gameObject);
         }
     }
 
@@ -184,13 +191,13 @@ public class GameplayManager : BaseManager<GameplayManager>
         Destroy(_playerInstance.gameObject);
     }
 
-    public void DestroyAllPlayerObjects()
+    public void DestroyAllShips()
     {
-        foreach (var playerObject in _playerObjects)
+        foreach (var playerObject in _ships)
         {
             Destroy(playerObject);
         }
-        _playerObjects.Clear();
+        _ships.Clear();
     }
 
     public void PauseGameplay()
@@ -201,17 +208,5 @@ public class GameplayManager : BaseManager<GameplayManager>
     public void ResumeGameplay()
     {
         Time.timeScale = 1;
-    }
-
-    private void UnsubscribeFromEvents()
-    {
-        if (!EventsManager.Instance) return;
-
-        EventsManager.Instance.AsteroidShotted -= AsteroidShotted;
-    }
-
-    private void OnDestroy()
-    {
-        UnsubscribeFromEvents();
     }
 }

@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5825940216150708518}
   - component: {fileID: 8199793717485860160}
   - component: {fileID: 4988057040177498854}
-  - component: {fileID: 7117399712587549171}
-  m_Layer: 6
-  m_Name: SimpleBullet
-  m_TagString: Bullet
+  - component: {fileID: 2576260184604008686}
+  m_Layer: 8
+  m_Name: PlayerSimpleBullet
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83d1699353e354c87bc5435be1c33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7117399712587549171
+--- !u!114 &2576260184604008686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,8 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4245572761706607601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e8e8f9c9b382d4b8683c00ef0a0aac, type: 3}
+  m_Script: {fileID: 11500000, guid: d2851d174f8ab6f43846fd789f1ce753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTypeIndex: 1
-  PoolableType: SimpleBulletMovementController
+  PoolableType: PlayerSimpleBullet

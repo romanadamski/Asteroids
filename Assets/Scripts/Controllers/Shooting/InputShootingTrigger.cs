@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputShootingTrigger : ShootingTrigger
@@ -9,13 +7,11 @@ public class InputShootingTrigger : ShootingTrigger
 
     protected override void SetTrigger()
     {
+        TriggerShoot = false;
+
         if (Input.GetKeyDown(shootKey))
         {
             TriggerShoot = true;
-        }
-        if (Input.GetKeyUp(shootKey))
-        {
-            TriggerShoot = false;
         }
     }
 }

@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [Serializable]
-public struct PlayerObject
+public struct ShipObject
 {
     [SerializeField]
-    private Vector3 objectStartPosition;
-    public Vector3 ObjectStartPosition => objectStartPosition;
+    private Vector2 objectStartPosition;
+    public Vector2 ObjectStartPosition => objectStartPosition;
 
     [SerializeField]
     private Quaternion objectStartRotation;
     public Quaternion ObjectStartRotation => objectStartRotation;
+
+    [SerializeField]
+    private uint shipLivesCount;
+    public uint ShipLivesCount => shipLivesCount;
 
     [SerializeField]
     GameObject objectPrefab;
@@ -33,17 +36,14 @@ public class LevelSettingsSO : ScriptableObject
     [SerializeField]
     private bool activatePlayer = true;
     public bool ActivatePlayer => activatePlayer;
-    [SerializeField]
-    private uint playerStartLivesCount;
-    public uint PlayerStartLivesCount => playerStartLivesCount;
 
     [SerializeField]
-    private PlayerObject mainPlayerObject;
-    public PlayerObject MainPlayerObject => mainPlayerObject;
+    private ShipObject mainPlayerObject;
+    public ShipObject MainPlayerObject => mainPlayerObject;
 
     [SerializeField]
-    private List<PlayerObject> playerObjects;
-    public List<PlayerObject> PlayerObjects => playerObjects;
+    private List<ShipObject> playerObjects;
+    public List<ShipObject> PlayerObjects => playerObjects;
 
     [Header("Asteroids settings")]
     [SerializeField]
@@ -53,4 +53,9 @@ public class LevelSettingsSO : ScriptableObject
     [SerializeField]
     private SerializableTuple<float, float> asteroidsSpeedRange;
     public SerializableTuple<float, float> AsteroidsSpeedRange => asteroidsSpeedRange;
+
+    [Header("Enemy settings")]
+    [SerializeField]
+    private List<ShipObject> enemyObjects;
+    public List<ShipObject> EnemyObjects => enemyObjects;
 }

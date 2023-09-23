@@ -9,6 +9,10 @@ public class MortalAsteroidController : BaseMortalObjectController
     [SerializeField]
     private string pieceType;
 
+    private string[] _enemies = new string[] { GameObjectTagsConstants.PLAYER_BULLET, GameObjectTagsConstants.ENEMY_BULLET };
+
+    protected override string[] GetEnemies() => _enemies;
+
     protected override void OnTriggerWithEnemyEnter(Collider2D collider)
     {
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
@@ -26,6 +30,6 @@ public class MortalAsteroidController : BaseMortalObjectController
             AsteroidReleasingManager.Instance.ReleaseAsteroid(asteroid.gameObject);
         }
 
-        EventsManager.Instance.OnAsteroidShotted();
+        EventsManager.Instance.OnAsteroidShotted(collider.tag);
     }
 }

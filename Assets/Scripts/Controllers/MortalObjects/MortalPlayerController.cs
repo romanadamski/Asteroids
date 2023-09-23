@@ -2,6 +2,11 @@
 
 public class MortalPlayerController : BaseMortalObjectController
 {
+    protected override string[] GetEnemies()
+    {
+        return new string[] { GameObjectTagsConstants.ASTEROID, GameObjectTagsConstants.ENEMY_SHIP, GameObjectTagsConstants.ENEMY_BULLET };
+    }
+
     protected override void OnTriggerWithEnemyEnter(Collider2D collision)
     {
         DecrementLive();
@@ -10,7 +15,6 @@ public class MortalPlayerController : BaseMortalObjectController
 
     private void Start()
     {
-        LivesCount = LevelSettingsManager.Instance.CurrentLevel.PlayerStartLivesCount;
         EventsManager.Instance.OnPlayerSpawned(LivesCount);
     }
 }

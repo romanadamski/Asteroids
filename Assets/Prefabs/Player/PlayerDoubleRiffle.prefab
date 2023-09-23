@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2707031362041976536}
   m_Layer: 7
   m_Name: PlayerDoubleRiffle
-  m_TagString: Player
+  m_TagString: PlayerShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

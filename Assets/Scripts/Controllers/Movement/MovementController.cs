@@ -24,8 +24,9 @@ public class MovementController : MonoBehaviour
 
     public void OnFixedUpdate()
     {
-        MoveByArrows();
+        Move();
         Rotate();
+        Debug.Log($"{name} MOVE {_rigidbody2D.velocity} ROTATE {transform.rotation}");
     }
 
     private float CalculateAxis(float axis)
@@ -38,10 +39,9 @@ public class MovementController : MonoBehaviour
     {
         _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.angularVelocity = 0;
-        Input.ResetInputAxes();
     }
 
-    private void MoveByArrows()
+    private void Move()
     {
         _rigidbody2D.velocity = Vector2.Lerp(_rigidbody2D.velocity, MovementAxis, Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerMovementPrecision);
         ManageScreenEdges();

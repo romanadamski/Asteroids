@@ -10,4 +10,9 @@ public class InputMovementTrigger : MovementTrigger
         XAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);
         YAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
     }
+
+    private void OnDisable()
+    {
+        Input.ResetInputAxes();
+    }
 }

@@ -14,10 +14,16 @@ public class EventsManager : BaseManager<EventsManager>
         PlayerSpawned?.Invoke(livesCount);
     }
     
-    public event Action AsteroidShotted;
-    public void OnAsteroidShotted()
+    public event Action<string> AsteroidShotted;
+    public void OnAsteroidShotted(string tag)
     {
-        AsteroidShotted?.Invoke();
+        AsteroidShotted?.Invoke(tag);
+    }
+    
+    public event Action<string> EnemyShotted;
+    public void OnEnemyShotted(string tag)
+    {
+        EnemyShotted?.Invoke(tag);
     }
     
     public event Action<LevelSettingsSO> LevelStarted;

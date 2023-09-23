@@ -5,8 +5,6 @@ public class ShootingController : MonoBehaviour
 {
     [SerializeField]
     private string bulletTypeName;
-    [SerializeField]
-    private int selectedTypeIndex;
 
     private ShootingTrigger _shootingTrigger;
 
@@ -14,7 +12,7 @@ public class ShootingController : MonoBehaviour
     {
         _shootingTrigger = GetComponent<ShootingTrigger>();
 
-        _shootingTrigger.OnUpdate += OnUpdate;
+        _shootingTrigger.OnFixedUpdate += OnUpdate;
     }
 
     private void OnUpdate()
@@ -27,6 +25,7 @@ public class ShootingController : MonoBehaviour
 
     private void ReleaseBullet()
     {
+        Debug.Log($"{name} release bullet {bulletTypeName}");
         var bullet = GetBulletFromPool();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
@@ -39,6 +38,6 @@ public class ShootingController : MonoBehaviour
 
     private BaseBulletMovementController GetBulletFromPool()
     {
-        return ObjectPoolingManager.Instance.GetFromPool(bulletTypeName).GetComponent(bulletTypeName) as BaseBulletMovementController;
+        return ObjectPoolingManager.Instance.GetFromPool(bulletTypeName).GetComponent<BaseBulletMovementController>();
     }
 }

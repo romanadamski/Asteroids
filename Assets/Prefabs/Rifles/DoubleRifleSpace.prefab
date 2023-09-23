@@ -186,8 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypeName: SimpleBulletMovementController
-  selectedTypeIndex: 1
+  bulletTypeName: PlayerSimpleBullet
 --- !u!1 &8480811115582615428
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,8 +197,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8625901774927712312}
   - component: {fileID: 2131311955998997728}
-  - component: {fileID: 1410927418826638081}
   - component: {fileID: 5752410255634522933}
+  - component: {fileID: 1410927418826638081}
   m_Layer: 7
   m_Name: FrontStraightShoot
   m_TagString: Untagged
@@ -317,20 +316,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1410927418826638081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8480811115582615428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletTypeName: SimpleBulletMovementController
-  selectedTypeIndex: 1
 --- !u!114 &5752410255634522933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,3 +329,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootKey: 32
+--- !u!114 &1410927418826638081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480811115582615428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTypeName: PlayerSimpleBullet

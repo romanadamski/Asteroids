@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5825940216150708518}
   - component: {fileID: 8199793717485860160}
   - component: {fileID: 4988057040177498854}
-  - component: {fileID: 7117399712587549171}
-  m_Layer: 6
-  m_Name: CrossingEdgesBullet
-  m_TagString: Bullet
+  - component: {fileID: 8188935199124485700}
+  m_Layer: 10
+  m_Name: EnemySimpleBullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f2149444491c99442acde3d7c0c2e5e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca09dbc51c0c395439d056efab5b9f89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.33}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.11, y: 0.66}
     newSize: {x: 0.11, y: 0.66}
     adaptiveTilingThreshold: 0.5
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4245572761706607601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ee600e63306744d8c66ce64e72159b, type: 3}
+  m_Script: {fileID: 11500000, guid: bf1da97f894039d48a0a1935f203e71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4988057040177498854
@@ -160,10 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4245572761706607601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd83d1699353e354c87bc5435be1c33f, type: 3}
+  m_Script: {fileID: 11500000, guid: 71ed9cf2579166b4787cdb222dc40179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7117399712587549171
+--- !u!114 &8188935199124485700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,8 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4245572761706607601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e8e8f9c9b382d4b8683c00ef0a0aac, type: 3}
+  m_Script: {fileID: 11500000, guid: d2851d174f8ab6f43846fd789f1ce753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTypeIndex: 0
-  PoolableType: CrossingEdgesBulletMovementController
+  PoolableType: EnemySimpleBullet

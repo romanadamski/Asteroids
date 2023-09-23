@@ -5,7 +5,7 @@ public class AudioManager : BaseManager<AudioManager>
     [SerializeField]
     private AudioClip bulletShotClip;
     [SerializeField]
-    private AudioClip asteroidExplosionClip;
+    private AudioClip explosionClip;
     [SerializeField]
     private AudioClip crashClip;
 
@@ -18,17 +18,18 @@ public class AudioManager : BaseManager<AudioManager>
 
     private void Start()
     {
-        EventsManager.Instance.AsteroidShotted += OnAsteroidShotted;
-        EventsManager.Instance.BulletFired += OnBulletFired;
+        EventsManager.Instance.AsteroidShotted += AsteroidShotted;
+        EventsManager.Instance.EnemyShotted += AsteroidShotted;
+        EventsManager.Instance.BulletFired += BulletFired;
         EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
     }
 
-    private void OnAsteroidShotted()
+    private void AsteroidShotted(string tag)
     {
-        _audioSource.PlayOneShot(asteroidExplosionClip);
+        _audioSource.PlayOneShot(explosionClip);
     }
     
-    private void OnBulletFired()
+    private void BulletFired()
     {
         _audioSource.PlayOneShot(bulletShotClip);
     }

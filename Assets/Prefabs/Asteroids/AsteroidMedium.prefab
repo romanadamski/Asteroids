@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1006996477057112103}
   - component: {fileID: 7031475595846978511}
   - component: {fileID: 3606859666954047742}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: AsteroidMedium
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570c6bc02a50d6f4a82af6d48192505b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTypeIndex: 1
   PoolableType: AsteroidMedium
 --- !u!114 &7031475595846978511
 MonoBehaviour:
@@ -195,4 +194,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696d93a6f2f9ddb4b990fdb26777caf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutsideScreenTime: 5

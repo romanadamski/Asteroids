@@ -1,17 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AutoMovementTrigger : MovementTrigger
 {
-    [Range(1,10)]
+    [Range(1, 5)]
     [SerializeField]
-    private int changeMovementDirectionFrequency;
+    private float changeMovementFrequency;
+
+    private float _timeElapsed;
+
+    private void OnEnable()
+    {
+        SetRandomAxis();
+    }
 
     protected override void SetAxis()
     {
-        if (Time.frameCount % (20 * changeMovementDirectionFrequency) != 0) return;
+        _timeElapsed += Time.deltaTime;
+        if (_timeElapsed < changeMovementFrequency) return;
+        
+        SetRandomAxis();
+        _timeElapsed = 0;
+    }
 
+    private void SetRandomAxis()
+    {
         XAxis = Random.Range(-1f, 1f);
         YAxis = Random.Range(-1f, 1f);
     }

@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ShootingTrigger : MonoBehaviour
 {
-    public event Action OnUpdate;
+    public event Action OnFixedUpdate;
 
     public bool TriggerShoot { get; protected set; }
 
@@ -14,6 +12,10 @@ public abstract class ShootingTrigger : MonoBehaviour
     private void Update()
     {
         SetTrigger();
-        OnUpdate?.Invoke();
+    }
+
+    private void FixedUpdate()
+    {
+        OnFixedUpdate?.Invoke();
     }
 }
