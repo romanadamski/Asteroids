@@ -3,12 +3,18 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public abstract class BaseMovementController : MonoBehaviour
 {
+    [Range(1, 10)]
+    [SerializeField]
+    protected float speedMultiplier;
+
     private SpriteRenderer _spriteRenderer;
     private Plane[] _cameraPlanes;
-    protected Rigidbody2D _rigidbody2D;
-    protected float _speedMultiplier;
 
-    protected abstract void MoveObject(Vector3 direction);
+    protected Rigidbody2D _rigidbody2D;
+
+    public MovementTrigger MovementTrigger { get; private set; }
+
+    protected abstract void MoveObject();
     protected virtual void OnOutsideScreen() { }
     protected virtual void OnInsideScreen() { }
 
@@ -16,8 +22,16 @@ public abstract class BaseMovementController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-
+        MovementTrigger = GetComponent<MovementTrigger>();
         _cameraPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+
+        if (!MovementTrigger)
+        {
+            Debug.LogError($"There is no {typeof(MovementTrigger).Name} attached to object {name}!");
+            return;
+        }
+
+        MovementTrigger.HandleMovement += OnHandleMovement;
     }
 
     private void Update()
@@ -32,19 +46,18 @@ public abstract class BaseMovementController : MonoBehaviour
         }
     }
 
-    public void Release(Vector3 direction, float speedMultiplier = 1)
+    protected virtual void OnHandleMovement()
     {
-        _speedMultiplier = speedMultiplier;
-        MoveObject(direction);
+        MoveObject();
     }
 
-    protected virtual void DeactivateMovingObject()
+    protected void DeactivateMovingObject()
     {
         StopMovement();
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }
 
-    private void StopMovement()
+    protected void StopMovement()
     {
         _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.angularVelocity = 0;

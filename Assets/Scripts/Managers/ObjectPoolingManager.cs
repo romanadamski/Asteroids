@@ -17,14 +17,17 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
 
         foreach (var pool in pools)
         {
+            pool.PoolObjectPrefab.gameObject.SetActive(false);
+
             for (int i = 0; i < pool.StartPoolCount; i++)
             {
                 var newObject = Instantiate(pool.PoolObjectPrefab.gameObject, _objectsParent);
-                newObject.gameObject.SetActive(false);
                 newObject.name = newObject.name.Replace("(Clone)", $"{newObject.GetInstanceID()}");
                 pool.PooledObjects.Enqueue(newObject);
                 pool.ObjectCount++;
             }
+
+            pool.PoolObjectPrefab.gameObject.SetActive(true);
         }
     }
 

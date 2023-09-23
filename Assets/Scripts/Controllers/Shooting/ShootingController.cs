@@ -12,7 +12,7 @@ public class ShootingController : MonoBehaviour
     {
         _shootingTrigger = GetComponent<ShootingTrigger>();
 
-        _shootingTrigger.OnFixedUpdate += OnUpdate;
+        _shootingTrigger.OnUpdate += OnUpdate;
     }
 
     private void OnUpdate()
@@ -25,13 +25,10 @@ public class ShootingController : MonoBehaviour
 
     private void ReleaseBullet()
     {
-        Debug.Log($"{name} release bullet {bulletTypeName}");
         var bullet = GetBulletFromPool();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
         bullet.gameObject.SetActive(true);
-
-        bullet.Release(transform.up);
 
         EventsManager.Instance.OnBulletFired();
     }

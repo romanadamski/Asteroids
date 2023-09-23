@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93206d8e09acc574c895fbbd5ce1738d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotingFrequency: 3
+  shotingFrequency: 0.4
 --- !u!114 &119500657443403278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,4 +419,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23917a6ac41caea46a5faaa7da6f2ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeMovementFrequency: 1
+  triggerType: 0
+  changeMovementFrequency: 0.5

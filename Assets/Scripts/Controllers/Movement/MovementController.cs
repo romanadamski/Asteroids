@@ -1,59 +1,23 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(MovementTrigger))]
-public class MovementController : MonoBehaviour
+public class MovementController : BaseMovementController
 {
-    [SerializeField]
-    [Range(1, 10)]
-    private float speedMultiplier = 5;
-
-    private Rigidbody2D _rigidbody2D;
-    private SpriteRenderer _spriteRenderer;
-    private MovementTrigger _movementTrigger;
-
-    private Vector2 MovementAxis => new Vector2(CalculateAxis(_movementTrigger.XAxis), CalculateAxis(_movementTrigger.YAxis));
-
-    private void Awake()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _movementTrigger = GetComponent<MovementTrigger>();
-
-        _movementTrigger.OnFixedUpdate += OnFixedUpdate;
-    }
-
-    public void OnFixedUpdate()
-    {
-        Move();
-        Rotate();
-        Debug.Log($"{name} MOVE {_rigidbody2D.velocity} ROTATE {transform.rotation}");
-    }
+    private Vector2 MovementAxis => new Vector2(CalculateAxis(MovementTrigger.XAxis), CalculateAxis(MovementTrigger.YAxis));
 
     private float CalculateAxis(float axis)
     {
         return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed * (speedMultiplier / 5);
     }
 
-    //todo why after disable and enable only one axis is taken if i do not release keys?
-    private void StopMovement()
-    {
-        _rigidbody2D.velocity = Vector2.zero;
-        _rigidbody2D.angularVelocity = 0;
-    }
-
-    private void Move()
+    protected override void MoveObject()
     {
         _rigidbody2D.velocity = Vector2.Lerp(_rigidbody2D.velocity, MovementAxis, Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerMovementPrecision);
-        ManageScreenEdges();
+        Rotate();
     }
 
-    private void ManageScreenEdges()
+    protected override void OnOutsideScreen()
     {
-        var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        if (!GeometryUtility.TestPlanesAABB(planes, _spriteRenderer.bounds))
-        {
-            ScreenManager.Instance.HandleScreenEdgeCrossing(transform);
-        }
+        ScreenManager.Instance.HandleScreenEdgeCrossing(transform);
     }
 
     private void Rotate()
@@ -68,7 +32,7 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    protected void OnDisable()
+    private void OnDisable()
     {
         StopMovement();
     }

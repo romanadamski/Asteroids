@@ -20,6 +20,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public uint CurrentScore { get; private set; }
     public uint PlayerLivesCount => _playerInstance.LivesCount;
+    public bool IsPaused => Time.deltaTime == 0;
 
     private void Awake()
     {
@@ -44,7 +45,8 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void SubscribeToEvents()
     {
-        EventsManager.Instance.AsteroidShotted += AsteroidShotted;
+        EventsManager.Instance.AsteroidShotted += ObjectShotted;
+        EventsManager.Instance.EnemyShotted += ObjectShotted;
         EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
     }
 
@@ -86,7 +88,7 @@ public class GameplayManager : BaseManager<GameplayManager>
         AsteroidReleasingManager.Instance.StopReleasingAsteroidsCoroutine();
     }
 
-    private void AsteroidShotted(string tag)
+    private void ObjectShotted(string tag)
     {
         if (!tag.Equals(GameObjectTagsConstants.PLAYER_BULLET)) return;
 

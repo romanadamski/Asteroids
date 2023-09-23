@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 8173949608060943752}
   - component: {fileID: 7031475595846978511}
   - component: {fileID: 3606859666954047742}
+  - component: {fileID: 6366557846896999676}
   m_Layer: 6
   m_Name: AsteroidBig
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8901445280901242605
 Transform:
   m_ObjectHideFlags: 0
@@ -197,3 +198,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696d93a6f2f9ddb4b990fdb26777caf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiplier: 1
+--- !u!114 &6366557846896999676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909010953527000373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23917a6ac41caea46a5faaa7da6f2ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerType: 1
+  changeMovementFrequency: 0

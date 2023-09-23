@@ -9,9 +9,9 @@ public class InputShootingTrigger : ShootingTrigger
     {
         TriggerShoot = false;
 
-        if (Input.GetKeyDown(shootKey))
-        {
-            TriggerShoot = true;
-        }
+        if (!Input.GetKeyDown(shootKey)
+            || GameplayManager.Instance.IsPaused) return;
+        
+        TriggerShoot = true;
     }
 }

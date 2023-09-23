@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class ShootingTrigger : MonoBehaviour
 {
-    public event Action OnFixedUpdate;
+    public event Action OnUpdate;
 
     public bool TriggerShoot { get; protected set; }
 
@@ -12,10 +12,6 @@ public abstract class ShootingTrigger : MonoBehaviour
     private void Update()
     {
         SetTrigger();
-    }
-
-    private void FixedUpdate()
-    {
-        OnFixedUpdate?.Invoke();
+        OnUpdate?.Invoke();
     }
 }

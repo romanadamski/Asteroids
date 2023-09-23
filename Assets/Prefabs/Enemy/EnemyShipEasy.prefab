@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aede857ff03189d4f867751b98634160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 2
+  speedMultiplier: 3
 --- !u!114 &3183700407203918364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,4 +419,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23917a6ac41caea46a5faaa7da6f2ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeMovementFrequency: 2.5
+  triggerType: 0
+  changeMovementFrequency: 1.5

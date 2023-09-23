@@ -1,58 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 {
-    private Coroutine _releasingAsteroidsCoroutine;
-    private AsteroidsRandomizeHelper _asteroidsRandomizeHelper;
-
     [SerializeField]
     private bool _isReleasingEnabled = true;
 
-    private void Start()
-    {
-        _asteroidsRandomizeHelper = new AsteroidsRandomizeHelper();
-    }
-
     public void StartReleasingAsteroidCoroutine()
     {
-        StopReleasingAsteroidsCoroutine();
-        _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());
+        InvokeRepeating(nameof(ReleaseAsteroids), 0, AsteroidsRandomizeHelper.GetRandomAsteroidFrequency());
     }
 
-    private IEnumerator ReleaseAsteroids()
+    private void ReleaseAsteroids()
     {
-        yield return new WaitUntil(() => _isReleasingEnabled);
+        if (!_isReleasingEnabled) return;
 
         ReleaseRandomAsteroid();
-
-        yield return new WaitForSeconds(_asteroidsRandomizeHelper.GetRandomAsteroidFrequency());
-
-        //releasing in recursion
-        _releasingAsteroidsCoroutine = StartCoroutine(ReleaseAsteroids());
     }
 
     private void ReleaseRandomAsteroid()
     {
         var randomAsteroid = GetRandomAsteroid();
-        randomAsteroid.transform.position = _asteroidsRandomizeHelper.GetRandomAsteroidPositionOutsideScreen();
+        randomAsteroid.transform.position = AsteroidsRandomizeHelper.GetRandomAsteroidPositionOutsideScreen();
         ReleaseAsteroid(randomAsteroid);
     }
 
     public void ReleaseAsteroid(GameObject asteroid)
     {
         asteroid.gameObject.SetActive(true);
-
-        asteroid.GetComponent<AsteroidMovementController>().
-            Release(_asteroidsRandomizeHelper.GetRandomAsteroidDirectionDependsOnPosition(asteroid.transform),
-            _asteroidsRandomizeHelper.GetRandomAsteroidSpeed());
     }
 
     public void StopReleasingAsteroidsCoroutine()
     {
-        if (_releasingAsteroidsCoroutine == null) return;
-        StopCoroutine(_releasingAsteroidsCoroutine);
+        CancelInvoke(nameof(ReleaseAsteroids));
     }
 
     private GameObject GetRandomAsteroid()

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8199793717485860160}
   - component: {fileID: 4988057040177498854}
   - component: {fileID: 6646689137284849275}
+  - component: {fileID: 7992377236066809822}
   m_Layer: 8
   m_Name: PlayerCrossingEdgesBullet
   m_TagString: PlayerBullet
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b8043c01939a438c32df2e6f1ce94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiplier: 1
   maxCrossingEdgeCount: 3
 --- !u!114 &4988057040177498854
 MonoBehaviour:
@@ -177,3 +179,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolableType: PlayerCrossingEdgesBullet
+--- !u!114 &7992377236066809822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4245572761706607601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de10e55ea5349849b79fa8245681d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerType: 1

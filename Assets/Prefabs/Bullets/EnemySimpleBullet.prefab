@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8199793717485860160}
   - component: {fileID: 4988057040177498854}
   - component: {fileID: 8188935199124485700}
+  - component: {fileID: 5651959797318329055}
   m_Layer: 10
   m_Name: EnemySimpleBullet
   m_TagString: EnemyBullet
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1da97f894039d48a0a1935f203e71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiplier: 1
 --- !u!114 &4988057040177498854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +178,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolableType: EnemySimpleBullet
+--- !u!114 &5651959797318329055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4245572761706607601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de10e55ea5349849b79fa8245681d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerType: 1

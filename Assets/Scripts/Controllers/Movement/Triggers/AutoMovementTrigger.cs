@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class AutoMovementTrigger : MovementTrigger
 {
-    [Range(1, 5)]
+    [Tooltip("In seconds")]
+    [Range(0.1f, 5.0f)]
     [SerializeField]
     private float changeMovementFrequency;
 
     private float _timeElapsed;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         SetRandomAxis();
     }
 
@@ -24,7 +27,8 @@ public class AutoMovementTrigger : MovementTrigger
 
     private void SetRandomAxis()
     {
-        XAxis = Random.Range(-1f, 1f);
-        YAxis = Random.Range(-1f, 1f);
+        var randomDirection = RandomizeHelper.GetRandomDirectionDependsOnPosition(transform);
+        XAxis = randomDirection.x;
+        YAxis = randomDirection.y;
     }
 }
