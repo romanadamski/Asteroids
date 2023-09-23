@@ -18,5 +18,5 @@ MonoBehaviour:
   baseBulletMovementSpeed: 11
   baseAsteroidMovementSpeed: 1
   _asteroidShottedPoints: 1
-  _idleStateTime: 5
+  _idleStateTime: 1
   _maxHighscoresSaveCount: 10

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AutoMovementTrigger : MovementTrigger
+public class RandomMovementTrigger : MovementTrigger
 {
     [Tooltip("In seconds")]
     [Range(0.1f, 5.0f)]
