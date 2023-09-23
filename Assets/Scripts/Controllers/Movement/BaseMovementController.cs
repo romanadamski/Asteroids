@@ -12,9 +12,9 @@ public abstract class BaseMovementController : MonoBehaviour
 
     protected Rigidbody2D _rigidbody2D;
 
-    public MovementTrigger MovementTrigger { get; private set; }
+    protected MovementTrigger MovementTrigger { get; private set; }
 
-    protected abstract void MoveObject();
+    protected abstract void HandleMovement();
     protected virtual void OnOutsideScreen() { }
     protected virtual void OnInsideScreen() { }
 
@@ -31,7 +31,7 @@ public abstract class BaseMovementController : MonoBehaviour
             return;
         }
 
-        MovementTrigger.HandleMovement += OnHandleMovement;
+        MovementTrigger.HandleMovement += HandleMovement;
     }
 
     private void Update()
@@ -44,11 +44,6 @@ public abstract class BaseMovementController : MonoBehaviour
         {
             OnInsideScreen();
         }
-    }
-
-    protected virtual void OnHandleMovement()
-    {
-        MoveObject();
     }
 
     protected void DeactivateMovingObject()

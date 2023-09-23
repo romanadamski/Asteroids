@@ -1,4 +1,1 @@
-﻿public class AsteroidPoolableController : BasePoolableController
-{
-
-}
+﻿public class AsteroidPoolableController : BasePoolableController { }

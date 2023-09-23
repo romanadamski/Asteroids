@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MovementController : BaseMovementController
+public class PlayerMovementController : BaseMovementController
 {
     private Vector2 MovementAxis => new Vector2(CalculateAxis(MovementTrigger.XAxis), CalculateAxis(MovementTrigger.YAxis));
 
@@ -9,7 +9,7 @@ public class MovementController : BaseMovementController
         return axis * GameSettingsManager.Instance.Settings.PlayerMovementSpeed * (speedMultiplier / 5);
     }
 
-    protected override void MoveObject()
+    protected override void HandleMovement()
     {
         _rigidbody2D.velocity = Vector2.Lerp(_rigidbody2D.velocity, MovementAxis, Time.deltaTime * GameSettingsManager.Instance.Settings.PlayerMovementPrecision);
         Rotate();

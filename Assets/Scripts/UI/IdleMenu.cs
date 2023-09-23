@@ -1,4 +1,1 @@
-public class IdleMenu : BaseMenu
-{
-    
-}
+public class IdleMenu : BaseMenu { }

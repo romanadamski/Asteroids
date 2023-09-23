@@ -36,7 +36,7 @@ public class AsteroidMovementController : BaseMovementController
         }
     }
 
-    protected override void MoveObject()
+    protected override void HandleMovement()
     {
         _rigidbody2D.velocity = MovementTrigger.MovementDirection * GameSettingsManager.Instance.Settings.BaseAsteroidMovementSpeed * AsteroidsRandomizeHelper.GetRandomAsteroidSpeed();
         RotateTowardsVelocity();

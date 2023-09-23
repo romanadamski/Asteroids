@@ -1,4 +1,5 @@
-﻿public class SimpleBulletMovementController : BaseBulletMovementController
+﻿
+public class SimpleBulletMovementController : BaseBulletMovementController
 {
     protected override void OnOutsideScreen()
     {
