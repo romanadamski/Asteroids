@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(ShootingTrigger))]
 public class ShootingController : MonoBehaviour
 {
     [SerializeField]

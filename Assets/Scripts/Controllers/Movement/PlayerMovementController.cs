@@ -2,7 +2,7 @@
 
 public class PlayerMovementController : BaseMovementController
 {
-    private Vector2 MovementAxis => new Vector2(CalculateAxis(MovementTrigger.XAxis), CalculateAxis(MovementTrigger.YAxis));
+    private Vector2 MovementAxis => new Vector2(CalculateAxis(MovementTrigger.XDirection), CalculateAxis(MovementTrigger.YDirection));
 
     private float CalculateAxis(float axis)
     {

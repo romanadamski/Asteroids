@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameplayManager : BaseManager<GameplayManager>
 {
     private BaseMortalObjectController _playerInstance;
-    private List<GameObject> _ships = new List<GameObject>();
+    private List<GameObject> _playerShips = new List<GameObject>();
+    private List<GameObject> _enemyShips = new List<GameObject>();
 
     #region States
 
@@ -121,9 +123,26 @@ public class GameplayManager : BaseManager<GameplayManager>
     {
         ResumeGameplay();
         ActivatePlayer();
-        SpawnShips(LevelSettingsManager.Instance.CurrentLevel.PlayerObjects);
-        SpawnShips(LevelSettingsManager.Instance.CurrentLevel.EnemyObjects);
+        _playerShips.AddRange(SpawnShips(LevelSettingsManager.Instance.CurrentLevel.PlayerObjects));
+        _enemyShips.AddRange(SpawnShips(LevelSettingsManager.Instance.CurrentLevel.EnemyObjects));
         AsteroidReleasingManager.Instance.StartReleasingAsteroidCoroutine();
+    }
+
+    private List<GameObject> SpawnShips(List<ShipObject> shipObjects)
+    {
+        var ships = new List<GameObject>();
+        foreach (var ship in shipObjects)
+        {
+            var shipInstance = Instantiate(ship.ObjectPrefab, GameLauncher.Instance.GamePlane.transform).GetComponent<BaseMortalObjectController>();
+            shipInstance.gameObject.SetActive(true);
+            shipInstance.transform.position = ship.ObjectStartPosition;
+            shipInstance.transform.rotation = ship.ObjectStartRotation;
+            shipInstance.SetLivesCount(ship.ShipLivesCount);
+
+            ships.Add(shipInstance.gameObject);
+        }
+
+        return ships;
     }
 
     private void SpawnPlayer()
@@ -146,20 +165,6 @@ public class GameplayManager : BaseManager<GameplayManager>
         _playerInstance.gameObject.SetActive(true);
         _playerInstance.transform.position = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartPosition;
         _playerInstance.transform.rotation = LevelSettingsManager.Instance.CurrentLevel.MainPlayerObject.ObjectStartRotation;
-    }
-
-    private void SpawnShips(List<ShipObject> shipObjects)
-    {
-        foreach (var ship in shipObjects)
-        {
-            var shipInstance = Instantiate(ship.ObjectPrefab, GameLauncher.Instance.GamePlane.transform).GetComponent<BaseMortalObjectController>();
-            shipInstance.gameObject.SetActive(true);
-            shipInstance.transform.position = ship.ObjectStartPosition;
-            shipInstance.transform.rotation = ship.ObjectStartRotation;
-            shipInstance.SetLivesCount(ship.ShipLivesCount);
-
-            _ships.Add(shipInstance.gameObject);
-        }
     }
 
     public void SetGameplayState()
@@ -195,11 +200,36 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     public void DestroyAllShips()
     {
-        foreach (var playerObject in _ships)
+        foreach (var playerObject in _playerShips)
         {
             Destroy(playerObject);
         }
-        _ships.Clear();
+        foreach (var playerObject in _enemyShips)
+        {
+            Destroy(playerObject);
+        }
+        _playerShips.Clear();
+        _enemyShips.Clear();
+    }
+
+    public GameObject GetClosestEnemy(Vector3 position)
+    {
+        GameObject closest = null;
+        var minDist = Mathf.Infinity;
+
+        foreach (var enemy in _enemyShips)
+        {
+            if (!enemy.activeSelf) continue;
+
+            var distance = Vector3.Distance(position, enemy.transform.position);
+            if (distance < minDist)
+            {
+                minDist = distance;
+                closest = enemy;
+            }
+        }
+
+        return closest;
     }
 
     public void PauseGameplay()

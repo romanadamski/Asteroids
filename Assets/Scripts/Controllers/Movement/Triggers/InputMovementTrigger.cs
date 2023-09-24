@@ -7,8 +7,8 @@ public class InputMovementTrigger : MovementTrigger
 
     protected override void SetAxis()
     {
-        XAxis = Input.GetAxis(HORIZONTAL_AXIS_NAME);
-        YAxis = Input.GetAxis(VERTICAL_AXIS_NAME);
+        XDirection = Input.GetAxis(HORIZONTAL_AXIS_NAME);
+        YDirection = Input.GetAxis(VERTICAL_AXIS_NAME);
     }
 
     private void OnDisable()

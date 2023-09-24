@@ -14,9 +14,9 @@ public abstract class MovementTrigger : MonoBehaviour
 
     public event Action HandleMovement;
 
-    public float XAxis { get; protected set; }
-    public float YAxis { get; protected set; }
-    public Vector2 MovementDirection => new Vector2(XAxis, YAxis);
+    public float XDirection { get; protected set; }
+    public float YDirection { get; protected set; }
+    public Vector2 MovementDirection => new Vector2(XDirection, YDirection);
 
     protected abstract void SetAxis();
 

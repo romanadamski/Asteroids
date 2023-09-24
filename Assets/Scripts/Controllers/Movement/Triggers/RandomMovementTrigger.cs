@@ -28,7 +28,7 @@ public class RandomMovementTrigger : MovementTrigger
     private void SetRandomAxis()
     {
         var randomDirection = RandomizeHelper.GetRandomDirectionDependsOnPosition(transform);
-        XAxis = randomDirection.x;
-        YAxis = randomDirection.y;
+        XDirection = randomDirection.x;
+        YDirection = randomDirection.y;
     }
 }
