@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22464981b23b1fc4fb9545612fee4cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livesCount: 5
+  mainPlayer: 1
 --- !u!114 &4978583389954718951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a265214a69a5847b324691df22c213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerType: 0
 --- !u!1001 &8478455163080718689
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,10 +14,6 @@ public struct ShipObject
     public Quaternion ObjectStartRotation => objectStartRotation;
 
     [SerializeField]
-    private uint shipLivesCount;
-    public uint ShipLivesCount => shipLivesCount;
-
-    [SerializeField]
     GameObject objectPrefab;
     public GameObject ObjectPrefab => objectPrefab;
 }

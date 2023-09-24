@@ -3,6 +3,14 @@ using UnityEngine;
 
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
+    [SerializeField]
+    protected uint livesCount;
+    public uint LivesCount => livesCount;
+
+    [SerializeField]
+    protected bool immortal;
+    public bool Immortal => immortal;
+
     private string[] _enemyObjectsTags;
 
     protected bool _enemyCollideExited = true;
@@ -14,7 +22,7 @@ public abstract class BaseMortalObjectController : MonoBehaviour
     protected virtual void OnTriggerWithEnemyExit(Collider2D collider) { }
     protected virtual string[] GetEnemies() { return new string[] { }; }
 
-    public uint LivesCount { get; protected set; }
+    public uint CurrentLivesCount { get; protected set; }
 
     private void Awake()
     {
@@ -28,6 +36,7 @@ public abstract class BaseMortalObjectController : MonoBehaviour
         if (!_enemyCollideExited) return;
         
         _enemyCollideExited = false;
+        DecrementLive();
         OnCollisionWithEnemyEnter(collision);
     }
 
@@ -46,6 +55,8 @@ public abstract class BaseMortalObjectController : MonoBehaviour
         if (!_enemyTriggerExited) return;
         
         _enemyTriggerExited = false;
+
+        DecrementLive();
         OnTriggerWithEnemyEnter(collider);
     }
 
@@ -59,14 +70,9 @@ public abstract class BaseMortalObjectController : MonoBehaviour
 
     protected void DecrementLive()
     {
-        if (LivesCount > 0)
+        if (!immortal && CurrentLivesCount > 0)
         {
-            LivesCount--;
+            CurrentLivesCount--;
         }
-    }
-
-    public void SetLivesCount(uint livesCount)
-    {
-        LivesCount = livesCount;
     }
 }

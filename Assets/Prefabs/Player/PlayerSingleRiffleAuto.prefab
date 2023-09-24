@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerType: 0
+  targetTag: EnemyShip
 --- !u!114 &2529865894482201048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,3 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22464981b23b1fc4fb9545612fee4cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livesCount: 2
+  mainPlayer: 0
+  respawnDelay: 1

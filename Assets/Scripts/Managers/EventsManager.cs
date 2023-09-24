@@ -31,6 +31,12 @@ public class EventsManager : BaseManager<EventsManager>
     {
         LevelStarted?.Invoke(levelNumber);
     }
+    
+    public event Action GameplayStarted;
+    public void OnGameplayStarted()
+    {
+        GameplayStarted?.Invoke();
+    }
 
     public event Action<uint> ScoreUpdated;
     public void OnScoreUpdated(uint score)

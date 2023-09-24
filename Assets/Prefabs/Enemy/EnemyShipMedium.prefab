@@ -406,6 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27046b136a35dfe4fa953da38fb22c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livesCount: 0
+  immortal: 1
   respawnDelay: 1
 --- !u!114 &4978583389954718951
 MonoBehaviour:
