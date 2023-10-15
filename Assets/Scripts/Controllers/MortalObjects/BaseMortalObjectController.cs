@@ -4,12 +4,18 @@ using UnityEngine;
 public abstract class BaseMortalObjectController : MonoBehaviour
 {
     [SerializeField]
+    protected bool immortal;
+    public bool Immortal => immortal;
+
+    [SerializeField]
+    protected bool respawnable;
+
+    [SerializeField]
     protected uint livesCount;
     public uint LivesCount => livesCount;
 
     [SerializeField]
-    protected bool immortal;
-    public bool Immortal => immortal;
+    protected float respawnDelay;
 
     private string[] _enemyObjectsTags;
 
@@ -74,5 +80,18 @@ public abstract class BaseMortalObjectController : MonoBehaviour
         {
             CurrentLivesCount--;
         }
+    }
+
+    protected void Respawn()
+    {
+        if (!respawnable ||
+            !immortal && CurrentLivesCount == 0) return;
+        
+        Invoke(nameof(DoRespawn), respawnDelay);
+    }
+
+    private void DoRespawn()
+    {
+        gameObject.SetActive(true);
     }
 }

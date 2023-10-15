@@ -5,6 +5,7 @@ public class GameManager : BaseManager<GameManager>
     private StateMachine gameStateMachine;
     public MainMenuState MainMenuState;
     public LevelState LevelState;
+    public HighscoresState HighscoresState;
 
     #endregion
 
@@ -25,10 +26,16 @@ public class GameManager : BaseManager<GameManager>
 
         MainMenuState = new MainMenuState(gameStateMachine);
         LevelState = new LevelState(gameStateMachine);
+        HighscoresState = new HighscoresState(gameStateMachine);
     }
 
     public void SetLevelState()
     {
         gameStateMachine.SetState(LevelState);
+    }
+
+    public void SetHighscoresState()
+    {
+        gameStateMachine.SetState(HighscoresState);
     }
 }

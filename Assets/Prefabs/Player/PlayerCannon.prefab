@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 553567924}
   - component: {fileID: 553567926}
   - component: {fileID: 4181482277596349960}
+  - component: {fileID: 3682838486664945477}
   m_Layer: 7
   m_Name: PlayerCannon
   m_TagString: PlayerShip
@@ -378,3 +379,20 @@ PolygonCollider2D:
       - {x: -0.815, y: -1.765}
       - {x: -0.805, y: -1.425}
       - {x: -0.79499996, y: -1.3149999}
+--- !u!114 &3682838486664945477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873032853012233273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22464981b23b1fc4fb9545612fee4cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immortal: 1
+  respawnable: 1
+  livesCount: 0
+  respawnDelay: 3
+  mainPlayer: 0

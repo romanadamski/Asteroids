@@ -4,8 +4,6 @@ public class MortalPlayerController : BaseMortalObjectController
 {
     [SerializeField]
     private bool mainPlayer;
-    [SerializeField]
-    private float respawnDelay;
 
     protected override string[] GetEnemies()
     {
@@ -21,16 +19,8 @@ public class MortalPlayerController : BaseMortalObjectController
         else
         {
             gameObject.SetActive(false);
-            if (CurrentLivesCount > 0)
-            {
-                Invoke(nameof(Respawn), respawnDelay);
-            }
+            Respawn();
         }
-    }
-
-    private void Respawn()
-    {
-        gameObject.SetActive(true);
     }
 
     private void Start()

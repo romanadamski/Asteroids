@@ -8,13 +8,14 @@ public class MainMenu : BaseMenu
     [SerializeField]
     private Button playButton;
     [SerializeField]
-    private TextMeshProUGUI highscores;
-    [SerializeField]
     private TMP_Dropdown levelsDropdown;
+    [SerializeField]
+    private Button highscoresButton;
 
     private void Awake()
     {
         playButton.onClick.AddListener(OnPlayClick);
+        highscoresButton.onClick.AddListener(OnHighscoresClick);
         levelsDropdown.onValueChanged.AddListener(OnLevelsDropdownValueChanged);
     }
 
@@ -28,7 +29,7 @@ public class MainMenu : BaseMenu
     {
         List<TMP_Dropdown.OptionData> dropdownData = new List<TMP_Dropdown.OptionData>();
 
-        foreach (var level in LevelSettingsManager.Instance.LevelSettings)
+        foreach (var level in LevelSettingsManager.Instance.LevelSettings.LevelSettings)
         {
             dropdownData.Add(new CustomOptionData
             {
@@ -40,21 +41,14 @@ public class MainMenu : BaseMenu
         levelsDropdown.AddOptions(dropdownData);
     }
 
-    public override void Show()
-    {
-        base.Show();
-        SetHighscores();
-    }
-
     private void OnPlayClick()
     {
         GameManager.Instance.SetLevelState();
     }
 
-    private void SetHighscores()
+    private void OnHighscoresClick()
     {
-        var allHighscores = string.Join("\n", SaveManager.Instance.GetHighscore());
-        highscores.text = allHighscores;
+        GameManager.Instance.SetHighscoresState();
     }
 
     private void OnLevelsDropdownValueChanged(int dropdownIndex)

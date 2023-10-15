@@ -179,6 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cce72778027524ca8e4241403794e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immortal: 0
+  respawnable: 0
+  livesCount: 0
+  respawnDelay: 0
   pieceCountRange:
     item1: 0
     item2: 0

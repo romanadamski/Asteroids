@@ -161,7 +161,7 @@ public class GameplayManager : BaseManager<GameplayManager>
 
         return ships;
     }
-
+    //todo handle activate/deactivate in one place
     private void ActivateShips(List<ShipData> shipObjects)
     {
         foreach (var ship in shipObjects)

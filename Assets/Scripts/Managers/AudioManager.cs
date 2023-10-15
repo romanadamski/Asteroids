@@ -33,9 +33,10 @@ public class AudioManager : BaseManager<AudioManager>
     {
         _audioSource.PlayOneShot(bulletShotClip);
     }
-    //todo some sound on player lose life
+
+    //todo some other sound on player lose life
     private void PlayerLoseLife(uint lives)
     {
-        //_audioSource.PlayOneShot(crashClip);
+        _audioSource.PlayOneShot(crashClip);
     }
 }

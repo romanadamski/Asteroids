@@ -420,6 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22464981b23b1fc4fb9545612fee4cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immortal: 0
+  respawnable: 1
   livesCount: 2
-  mainPlayer: 0
   respawnDelay: 1
+  mainPlayer: 0

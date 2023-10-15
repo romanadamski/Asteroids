@@ -1,19 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class IdleState : State
+public class IdleState : StateWithMenu<IdleMenu>
 {
-    private IdleMenu _idleMenu;
     private Coroutine _idleCoroutine;
 
     public IdleState(StateMachine stateMachine) : base(stateMachine) { }
 
     protected override void OnEnter()
     {
-        if (_idleMenu || UIManager.Instance.TryGetMenuByType(out _idleMenu))
-        {
-            _idleMenu.Show();
-        }
+        base.OnEnter();
+
         GameplayManager.Instance.PauseGameplay();
 
         StopIdleCoroutine();
@@ -40,9 +37,6 @@ public class IdleState : State
         StopIdleCoroutine();
         GameplayManager.Instance.ClearGameplay();
 
-        if (_idleMenu || UIManager.Instance.TryGetMenuByType(out _idleMenu))
-        {
-            _idleMenu.Hide();
-        }
+        base.OnExit();
     }
 }

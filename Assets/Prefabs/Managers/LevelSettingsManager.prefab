@@ -43,10 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046e561840e432d4cb765f3d5027f3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSettings:
-  - {fileID: 11400000, guid: 25f3f4728fd316e4c8d40801ff838f20, type: 2}
-  - {fileID: 11400000, guid: ce9b74ebcb28ea341a0fb24eaa5b723c, type: 2}
-  - {fileID: 11400000, guid: c936f9a8991dbb74e83593515e965d2c, type: 2}
-  - {fileID: 11400000, guid: d0a8eaf1ee98bfc4b9141a848a59af40, type: 2}
-  - {fileID: 11400000, guid: 912131e122173cd43a04abc9b53af758, type: 2}
-  - {fileID: 11400000, guid: 7cc9af2f5eceba745901cfa3cd6d91ce, type: 2}
+  levelSettings: {fileID: 11400000, guid: 95cbe1fc4d214d9408efeddd65451c10, type: 2}

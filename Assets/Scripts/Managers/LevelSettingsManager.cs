@@ -1,12 +1,11 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class LevelSettingsManager : BaseManager<LevelSettingsManager>
 {
     [SerializeField]
-    private List<LevelSettingsSO> levelSettings;
-    public List<LevelSettingsSO> LevelSettings => levelSettings;
+    private LevelSettingsGroupSO levelSettings;
+    public LevelSettingsGroupSO LevelSettings => levelSettings;
 
     public uint CurrentLevelNumber { get; private set; }
 
@@ -24,6 +23,6 @@ public class LevelSettingsManager : BaseManager<LevelSettingsManager>
 
     private LevelSettingsSO GetLevelByNumber(uint levelNumber)
     {
-        return levelSettings.FirstOrDefault(x => x.LevelNumber.Equals(levelNumber));
+        return levelSettings.GetLevelByNumber(levelNumber);
     }
 }
