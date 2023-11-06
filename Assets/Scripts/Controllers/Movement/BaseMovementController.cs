@@ -49,7 +49,7 @@ public abstract class BaseMovementController : MonoBehaviour
     protected void DeactivateMovingObject()
     {
         StopMovement();
-        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+        //ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }
 
     protected void StopMovement()

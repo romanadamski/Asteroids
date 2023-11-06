@@ -15,19 +15,19 @@ public class MortalAsteroidController : BaseMortalObjectController
 
     protected override void OnTriggerWithEnemyEnter(Collider2D collider)
     {
-        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+        //ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
         var randomPieceCount = Random.Range(pieceCountRange.Item1, pieceCountRange.Item2 + 1);
 
         for (int i = 0; i < randomPieceCount; i++)
         {
-            var asteroid = ObjectPoolingManager.Instance.GetFromPool(pieceType);
+            //var asteroid = ObjectPoolingManager.Instance.GetFromPool(pieceType);
 
-            var randomPosition = new Vector2(
-                Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
-                Random.Range(transform.position.y - POSITION_RANDOMIZE_RANGE, transform.position.y + POSITION_RANDOMIZE_RANGE));
-            asteroid.transform.position = randomPosition;
+            //var randomPosition = new Vector2(
+            //    Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
+            //    Random.Range(transform.position.y - POSITION_RANDOMIZE_RANGE, transform.position.y + POSITION_RANDOMIZE_RANGE));
+            //asteroid.transform.position = randomPosition;
 
-            AsteroidReleasingManager.Instance.ReleaseAsteroid(asteroid.gameObject);
+            //AsteroidReleasingManager.Instance.ReleaseAsteroid(asteroid.gameObject);
         }
 
         EventsManager.Instance.OnAsteroidShotted(collider.tag);

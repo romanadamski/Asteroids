@@ -26,12 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147313549649093467}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.6600001, y: 2.1500003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2265806192552167812}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!82 &7272102169858039675
 AudioSource:
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypeName: PlayerCrossingEdgesBullet
+  bulletName: PlayerSimpleBullet
 --- !u!1 &5153310891857614070
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,15 +179,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5153310891857614070}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4438687839703308472}
   - {fileID: 7301702373269646417}
   - {fileID: 1252155580231548724}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7301702373269646416
 GameObject:
@@ -214,12 +216,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7301702373269646416}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: -0.34999996, y: 2.1500003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2265806192552167812}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!82 &490944951418371383
 AudioSource:
@@ -342,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypeName: PlayerCrossingEdgesBullet
+  bulletName: PlayerCrossingEdgesBullet
 --- !u!1 &8162223500464394488
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,12 +372,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8162223500464394488}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2265806192552167812}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &7462835091634052796
 AudioSource:
@@ -497,4 +501,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c839e78ec80a1c428901c1af412da86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypeName: PlayerSimpleBullet
+  bulletName: PlayerSimpleBullet

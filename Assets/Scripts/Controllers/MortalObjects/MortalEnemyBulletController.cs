@@ -9,6 +9,6 @@ public class MortalEnemyBulletController : BaseMortalObjectController
 
     protected override void OnTriggerWithEnemyEnter(Collider2D collider)
     {
-        ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+        //ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
     }
 }

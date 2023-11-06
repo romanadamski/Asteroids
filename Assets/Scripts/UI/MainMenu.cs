@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System.Collections.Generic;
 
 public class MainMenu : BaseMenu
@@ -8,37 +7,34 @@ public class MainMenu : BaseMenu
     [SerializeField]
     private Button playButton;
     [SerializeField]
-    private TMP_Dropdown levelsDropdown;
-    [SerializeField]
     private Button highscoresButton;
+    [SerializeField]
+    private LevelButton levelButtonPrefab;
+    [SerializeField]
+    private ObjectPoolingController buttonPooling;
+
+    private List<LevelButton> _levelButtons = new List<LevelButton>();
 
     private void Awake()
     {
         playButton.onClick.AddListener(OnPlayClick);
         highscoresButton.onClick.AddListener(OnHighscoresClick);
-        levelsDropdown.onValueChanged.AddListener(OnLevelsDropdownValueChanged);
     }
 
     private void Start()
     {
-        SetDropdownValues();
-        OnLevelsDropdownValueChanged(levelsDropdown.value);
+        SetLevels();
     }
 
-    private void SetDropdownValues()
+    private void SetLevels()
     {
-        List<TMP_Dropdown.OptionData> dropdownData = new List<TMP_Dropdown.OptionData>();
-
         foreach (var level in LevelSettingsManager.Instance.LevelSettings.LevelSettings)
         {
-            dropdownData.Add(new CustomOptionData
-            {
-                text = $"Level {level.LevelNumber}",
-                value = level.LevelNumber
-            });
+            var levelButton = buttonPooling.GetFromPool().GetComponent<LevelButton>();
+            levelButton.Init(level.LevelNumber);
+            levelButton.gameObject.SetActive(true);
+            _levelButtons.Add(levelButton);
         }
-
-        levelsDropdown.AddOptions(dropdownData);
     }
 
     private void OnPlayClick()
@@ -49,11 +45,5 @@ public class MainMenu : BaseMenu
     private void OnHighscoresClick()
     {
         GameManager.Instance.SetHighscoresState();
-    }
-
-    private void OnLevelsDropdownValueChanged(int dropdownIndex)
-    {
-        var levelDropdownValue = levelsDropdown.options[dropdownIndex] as CustomOptionData;
-        LevelSettingsManager.Instance.SetLevelNumber(levelDropdownValue.value);
     }
 }

@@ -4,6 +4,8 @@ public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 {
     [SerializeField]
     private bool _isReleasingEnabled = true;
+    [SerializeField]
+    private ObjectPoolingController objectPoolingController;
 
     public void StartReleasingAsteroidCoroutine()
     {
@@ -36,8 +38,12 @@ public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 
     private GameObject GetRandomAsteroid()
     {
-        var allAsteroidTypes = ObjectPoolingManager.Instance.GetAllPoolableNamesByPoolableComponentType<AsteroidPoolableController>();
+        string[] allAsteroidTypes = new string[objectPoolingController.Pools.Count];
+        for (int i = 0; i < objectPoolingController.Pools.Count; i++)
+        {
+            allAsteroidTypes[i] = objectPoolingController.Pools[i].PoolableNameType;
+        }
         var randomAsteroidType = allAsteroidTypes[Random.Range(0, allAsteroidTypes.Length)];
-        return ObjectPoolingManager.Instance.GetFromPool(randomAsteroidType).gameObject;
+        return objectPoolingController.GetFromPool(randomAsteroidType).gameObject;
     }
 }

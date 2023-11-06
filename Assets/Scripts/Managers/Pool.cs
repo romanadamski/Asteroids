@@ -6,26 +6,41 @@ using UnityEngine;
 [Serializable]
 public class Pool
 {
-    public int StartPoolCount;
-    public BasePoolableController PoolObjectPrefab;
-    public bool CanGrow;
-    public Queue<GameObject> PooledObjects = new Queue<GameObject>();
+    [SerializeField]
+    private int startPoolCount;
+    public int StartPoolCount => startPoolCount;
 
-    [HideInInspector]
-    public int ObjectCount;
+    [SerializeField]
+    private BasePoolableController poolObjectPrefab;
+    public BasePoolableController PoolObjectPrefab => poolObjectPrefab;
 
-    /// <summary>
-    /// Type choosen in prefab from Poolable type dropdown
-    /// </summary>
+    [SerializeField]
+    private bool canGrow;
+    public bool CanGrow => canGrow;
+
+    [SerializeField]
+    private Queue<BasePoolableController> pooledObjects = new Queue<BasePoolableController>();
+    public Queue<BasePoolableController> PooledObjects => pooledObjects;
+
+    [SerializeField]
+    private Transform parent;
+    public Transform Parent
+    {
+        get
+        {
+            if (parent) return parent;
+
+            var newParent = new GameObject(PoolableNameType);
+            parent = newParent.transform;
+            newParent.transform.SetParent(GameLauncher.Instance.GamePlane.transform);
+
+            return parent;
+        }
+    }
+
     public string PoolableNameType => PoolObjectPrefab.GetComponent<BasePoolableController>().PoolableType;
 
-    /// <summary>
-    /// Type choosen by attached Poolable component
-    /// </summary>
-    public Type PoolableComponentType => PoolObjectPrefab.GetComponent<BasePoolableController>().GetType();
-
-    [HideInInspector]
-    public List<GameObject> ObjectsOutsidePool = new List<GameObject>();
+    public List<BasePoolableController> ObjectsOutsidePool { get; private set; } = new List<BasePoolableController>();
 
     public void ReturnAllToPool()
     {
@@ -36,12 +51,12 @@ public class Pool
         ObjectsOutsidePool.Clear();
     }
 
-    public void ReturnToPool(GameObject objectToReturn)
+    public void ReturnToPool(BasePoolableController objectToReturn)
     {
-        if (!PooledObjects.Contains(objectToReturn.gameObject))
+        if (!PooledObjects.Contains(objectToReturn))
         {
             objectToReturn.gameObject.SetActive(false);
-            PooledObjects.Enqueue(objectToReturn.gameObject);
+            PooledObjects.Enqueue(objectToReturn);
         }
     }
 }

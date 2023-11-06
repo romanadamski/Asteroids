@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5296316189100707383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256081174723238285}
+  - component: {fileID: 1840676734333849610}
+  - component: {fileID: 2893778212000038640}
+  m_Layer: 0
+  m_Name: AsteroidsReleasingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256081174723238285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296316189100707383}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1840676734333849610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296316189100707383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c3c62bbfd35e14fa59cb8607660909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isReleasingEnabled: 1
+  objectPoolingController: {fileID: 2893778212000038640}
+--- !u!114 &2893778212000038640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296316189100707383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c6a7fc1d3d7df4a968e6c6498e1249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - startPoolCount: 20
+    poolObjectPrefab: {fileID: -4297239523186165354, guid: 4009f21067af50f4885f6731726e930b, type: 3}
+    canGrow: 1
+    parent: {fileID: 0}
+  - startPoolCount: 20
+    poolObjectPrefab: {fileID: -8132461951243421863, guid: ad76217d713ce8e4482bd7c814dff167, type: 3}
+    canGrow: 1
+    parent: {fileID: 0}
+  - startPoolCount: 20
+    poolObjectPrefab: {fileID: -5830633428194999334, guid: 1520fc0db75a8df4ea8094c197552283, type: 3}
+    canGrow: 1
+    parent: {fileID: 0}

@@ -12,17 +12,17 @@ GameObject:
   - component: {fileID: 252305055428806584}
   - component: {fileID: 252305055428806586}
   - component: {fileID: 4145499574952822532}
-  - component: {fileID: 8173949608060943752}
   - component: {fileID: 7031475595846978511}
   - component: {fileID: 3606859666954047742}
   - component: {fileID: 6366557846896999676}
+  - component: {fileID: -5830633428194999334}
   m_Layer: 6
   m_Name: AsteroidBig
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8901445280901242605
 Transform:
   m_ObjectHideFlags: 0
@@ -157,19 +157,6 @@ PolygonCollider2D:
       - {x: -0.655, y: -0.935}
       - {x: -0.355, y: -1.025}
       - {x: -0.035, y: -1.045}
---- !u!114 &8173949608060943752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3909010953527000373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570c6bc02a50d6f4a82af6d48192505b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PoolableType: AsteroidBig
 --- !u!114 &7031475595846978511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +204,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerType: 1
   changeMovementFrequency: 0
+--- !u!114 &-5830633428194999334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909010953527000373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2851d174f8ab6f43846fd789f1ce753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PoolableType: AsteroidBig
