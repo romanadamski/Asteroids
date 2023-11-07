@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
 {
@@ -8,9 +9,12 @@ public class ObjectPoolingManager : BaseManager<ObjectPoolingManager>
     {
         objectPoolings.Add(objectPoolingController);
     }
-    //todo do not return main menu level buttons
+
     public void ReturnAllToPools()
     {
-        objectPoolings.ForEach(objectPoolingController => objectPoolingController.ReturnAllToPools());
+        foreach (var objectPoolingController in objectPoolings.Where(x => x.IsGameplayPooling))
+        {
+            objectPoolingController.ReturnAllToPools();
+        }
     }
 }

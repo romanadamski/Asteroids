@@ -58,6 +58,7 @@ MonoBehaviour:
     poolObjectPrefab: {fileID: 8188935199124485700, guid: 7ebebe2ce65df8647a8ed13700775902, type: 3}
     canGrow: 1
     parent: {fileID: 0}
+  isGameplayPooling: 1
 --- !u!114 &1387840190532215228
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class MortalEnemyController : BaseMortalObjectController
 
     protected override void OnTriggerWithEnemyEnter(Collider2D collision)
     {
-        EventsManager.Instance.OnEnemyShotted(collision.transform.tag);
+        //todo audio
 
         gameObject.SetActive(false);
         Respawn();

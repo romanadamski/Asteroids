@@ -8,6 +8,10 @@ public class ObjectPoolingController : MonoBehaviour
     private List<Pool> pools;
     public List<Pool> Pools => pools;
 
+    [SerializeField]
+    private bool isGameplayPooling;
+    public bool IsGameplayPooling => isGameplayPooling;
+
     private void Awake()
     {
         foreach (var pool in pools)
@@ -70,6 +74,11 @@ public class ObjectPoolingController : MonoBehaviour
         {
             pool.ReturnAllToPool();
         }
+    }
+
+    public void ReturnToPool(GameObject objectToReturn)
+    {
+        ReturnToPool(objectToReturn.GetComponent<BasePoolableController>());
     }
 
     public void ReturnToPool(BasePoolableController objectToReturn)

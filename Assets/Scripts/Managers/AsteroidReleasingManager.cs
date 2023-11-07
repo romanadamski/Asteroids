@@ -1,11 +1,17 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ObjectPoolingController))]
 public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 {
     [SerializeField]
     private bool _isReleasingEnabled = true;
-    [SerializeField]
-    private ObjectPoolingController objectPoolingController;
+    
+    public ObjectPoolingController ObjectPoolingController { get; private set; }
+
+    private void Awake()
+    {
+        ObjectPoolingController = GetComponent<ObjectPoolingController>();
+    }
 
     public void StartReleasingAsteroidCoroutine()
     {
@@ -38,12 +44,12 @@ public class AsteroidReleasingManager : BaseManager<AsteroidReleasingManager>
 
     private GameObject GetRandomAsteroid()
     {
-        string[] allAsteroidTypes = new string[objectPoolingController.Pools.Count];
-        for (int i = 0; i < objectPoolingController.Pools.Count; i++)
+        string[] allAsteroidTypes = new string[ObjectPoolingController.Pools.Count];
+        for (int i = 0; i < ObjectPoolingController.Pools.Count; i++)
         {
-            allAsteroidTypes[i] = objectPoolingController.Pools[i].PoolableNameType;
+            allAsteroidTypes[i] = ObjectPoolingController.Pools[i].PoolableNameType;
         }
         var randomAsteroidType = allAsteroidTypes[Random.Range(0, allAsteroidTypes.Length)];
-        return objectPoolingController.GetFromPool(randomAsteroidType).gameObject;
+        return ObjectPoolingController.GetFromPool(randomAsteroidType).gameObject;
     }
 }

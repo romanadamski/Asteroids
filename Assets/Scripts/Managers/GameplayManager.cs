@@ -57,7 +57,6 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void SubscribeToEvents()
     {
-        EventsManager.Instance.AsteroidShotted += ObjectShotted;
         EventsManager.Instance.EnemyShotted += ObjectShotted;
         EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;
     }
@@ -103,8 +102,6 @@ public class GameplayManager : BaseManager<GameplayManager>
 
     private void ObjectShotted(string tag)
     {
-        if (!tag.Equals(GameObjectTagsConstants.PLAYER_BULLET)) return;
-
         IncrementScore();
     }
 

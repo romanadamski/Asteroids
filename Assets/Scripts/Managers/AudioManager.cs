@@ -18,7 +18,7 @@ public class AudioManager : BaseManager<AudioManager>
 
     private void Start()
     {
-        EventsManager.Instance.AsteroidShotted += AsteroidShotted;
+        //EventsManager.Instance.AsteroidShotted += AsteroidShotted;
         EventsManager.Instance.EnemyShotted += AsteroidShotted;
         EventsManager.Instance.BulletFired += BulletFired;
         EventsManager.Instance.PlayerLoseLife += PlayerLoseLife;

@@ -9,27 +9,28 @@ public class MortalAsteroidController : BaseMortalObjectController
     [SerializeField]
     private string pieceType;
 
-    private string[] _enemies = new string[] { GameObjectTagsConstants.PLAYER_BULLET, GameObjectTagsConstants.ENEMY_BULLET };
-
-    protected override string[] GetEnemies() => _enemies;
+    protected override string[] GetEnemies()
+    {
+        return new string[] { GameObjectTagsConstants.PLAYER_BULLET, GameObjectTagsConstants.ENEMY_BULLET };
+    }
 
     protected override void OnTriggerWithEnemyEnter(Collider2D collider)
     {
-        //ObjectPoolingManager.Instance.ReturnToPool(gameObject.GetComponent<BasePoolableController>());
+        AsteroidReleasingManager.Instance.ObjectPoolingController.ReturnToPool(gameObject);
         var randomPieceCount = Random.Range(pieceCountRange.Item1, pieceCountRange.Item2 + 1);
 
         for (int i = 0; i < randomPieceCount; i++)
         {
-            //var asteroid = ObjectPoolingManager.Instance.GetFromPool(pieceType);
+            var asteroid = AsteroidReleasingManager.Instance.ObjectPoolingController.GetFromPool(pieceType);
 
-            //var randomPosition = new Vector2(
-            //    Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
-            //    Random.Range(transform.position.y - POSITION_RANDOMIZE_RANGE, transform.position.y + POSITION_RANDOMIZE_RANGE));
-            //asteroid.transform.position = randomPosition;
+            var randomPosition = new Vector2(
+                Random.Range(transform.position.x - POSITION_RANDOMIZE_RANGE, transform.position.x + POSITION_RANDOMIZE_RANGE),
+                Random.Range(transform.position.y - POSITION_RANDOMIZE_RANGE, transform.position.y + POSITION_RANDOMIZE_RANGE));
+            asteroid.transform.position = randomPosition;
 
-            //AsteroidReleasingManager.Instance.ReleaseAsteroid(asteroid.gameObject);
+            AsteroidReleasingManager.Instance.ReleaseAsteroid(asteroid.gameObject);
         }
-
-        EventsManager.Instance.OnAsteroidShotted(collider.tag);
+        //todo audio
+        //EventsManager.Instance.OnAsteroidShotted(collider.tag);
     }
 }
